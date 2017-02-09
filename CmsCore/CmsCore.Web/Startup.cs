@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using CmsCore.Data;
-using CmsCore.Model;
+using CmsCore.Model.Entities;
 using CmsCore.Service;
 
 namespace CmsCore.Web

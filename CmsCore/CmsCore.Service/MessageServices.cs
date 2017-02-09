@@ -5,6 +5,15 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Service
 {
+    public interface IEmailSender
+    {
+        Task SendEmailAsync(string email, string subject, string message);
+    }
+
+    public interface ISmsSender
+    {
+        Task SendSmsAsync(string number, string message);
+    }
     // This class is used by the application to send Email and SMS
     // when you turn on two-factor authentication in ASP.NET Identity.
     // For more details see this link http://go.microsoft.com/fwlink/?LinkID=532713

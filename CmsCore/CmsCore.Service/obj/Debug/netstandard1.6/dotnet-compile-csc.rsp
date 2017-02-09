@@ -112,8 +112,5 @@
 -r:"C:\Users\BEM\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll"
 -r:"C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\bin\Debug\netstandard1.6\CmsCore.Data.dll"
 -r:"C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\bin\Debug\netstandard1.6\CmsCore.Model.dll"
-"C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\Class1.cs"
-"C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\IEmailSender.cs"
-"C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\ISmsSender.cs"
 "C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\MessageServices.cs"
 "C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\Properties\AssemblyInfo.cs"

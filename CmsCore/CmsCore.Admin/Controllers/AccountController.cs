@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using CmsCore.Model;
+using CmsCore.Model.Entities;
 using CmsCore.Admin.Models.AccountViewModels;
 using CmsCore.Service;
 

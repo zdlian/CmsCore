@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using CmsCore.Model;
+using CmsCore.Model.Entities;
 using CmsCore.Admin.Models.ManageViewModels;
 using CmsCore.Service;
 

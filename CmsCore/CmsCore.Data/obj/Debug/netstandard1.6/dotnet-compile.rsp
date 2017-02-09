@@ -114,7 +114,6 @@
 --reference:C:\Users\BEM\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll
 --reference:C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\bin\Debug\netstandard1.6\CmsCore.Model.dll
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\ApplicationDbContext.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Class1.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\00000000000000_CreateIdentitySchema.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\ApplicationDbContextModelSnapshot.cs
