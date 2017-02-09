@@ -1,3 +1,5 @@
+#:C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\CmsCore.Data.xproj
+C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\CmsCore.Data.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\CmsCore.Model.xproj
 #:C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\CmsCore.Admin.xproj
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\CmsCore.Admin.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\CmsCore.Data.xproj
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\CmsCore.Admin.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\CmsCore.Model.xproj
@@ -12,4 +14,7 @@ C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Web\CmsCore.Web.xproj|C:\Users
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\CmsCore.Data.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\CmsCore.Model.xproj
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\CmsCore.Service.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\CmsCore.Data.xproj
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\CmsCore.Service.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\CmsCore.Model.xproj
-#:C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\CmsCore.Assets.xproj
+#:C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\CmsCore.Service.xproj
+C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\CmsCore.Service.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\CmsCore.Data.xproj
+C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\CmsCore.Service.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\CmsCore.Model.xproj
+C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\CmsCore.Data.xproj|C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\CmsCore.Model.xproj

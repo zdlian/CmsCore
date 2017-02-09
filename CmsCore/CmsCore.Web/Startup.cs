@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using CmsCore.Data;
 using CmsCore.Model.Entities;
 using CmsCore.Service;
+using CmsCore.Data.Infrastructure;
+using CmsCore.Data.Repositories;
 
 namespace CmsCore.Web
 {
@@ -52,6 +54,11 @@ namespace CmsCore.Web
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            services.AddTransient<IPageRepository, PageRepository>();
+            services.AddScoped(typeof(IDbFactory), typeof(DbFactory));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.AddTransient<IPageService, PageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

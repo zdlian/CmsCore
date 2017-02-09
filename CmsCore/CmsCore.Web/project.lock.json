@@ -4463,7 +4463,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
           "Microsoft.EntityFrameworkCore": "1.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "System.Linq.Expressions": "4.3.0"
         },
         "compile": {
           "netstandard1.6/CmsCore.Data.dll": {}
@@ -9074,7 +9075,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
           "Microsoft.EntityFrameworkCore": "1.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "System.Linq.Expressions": "4.3.0"
         },
         "compile": {
           "netstandard1.6/CmsCore.Data.dll": {}
@@ -13702,7 +13704,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
           "Microsoft.EntityFrameworkCore": "1.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
-          "NETStandard.Library": "1.6.1"
+          "NETStandard.Library": "1.6.1",
+          "System.Linq.Expressions": "4.3.0"
         },
         "compile": {
           "netstandard1.6/CmsCore.Data.dll": {}
