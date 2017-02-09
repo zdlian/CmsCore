@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using CmsCore.Web.Data;
-using CmsCore.Web.Models;
-using CmsCore.Web.Services;
+using CmsCore.Data;
+using CmsCore.Model;
+using CmsCore.Service;
 
 namespace CmsCore.Web
 {

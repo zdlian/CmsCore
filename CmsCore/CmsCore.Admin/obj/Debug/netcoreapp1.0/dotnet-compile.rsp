@@ -227,17 +227,15 @@
 --reference:C:\Users\BEM\.nuget\packages\System.Threading.Timer\4.3.0\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\BEM\.nuget\packages\System.Xml.ReaderWriter\4.3.0\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\BEM\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll
+--reference:C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Data\bin\Debug\netstandard1.6\CmsCore.Data.dll
+--reference:C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Model\bin\Debug\netstandard1.6\CmsCore.Model.dll
+--reference:C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Service\bin\Debug\netstandard1.6\CmsCore.Service.dll
 --resource:"C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\obj\Debug\netcoreapp1.0\CmsCore.Admindotnet-compile.deps.json",CmsCore.Admin.deps.json
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Program.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Startup.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Controllers\AccountController.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Controllers\HomeController.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Controllers\ManageController.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Data\ApplicationDbContext.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Data\Migrations\00000000000000_CreateIdentitySchema.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Data\Migrations\ApplicationDbContextModelSnapshot.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Models\ApplicationUser.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Models\AccountViewModels\ForgotPasswordViewModel.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Models\AccountViewModels\LoginViewModel.cs
@@ -254,6 +252,3 @@ C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Models\ManageViewModels\
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Models\ManageViewModels\RemoveLoginViewModel.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Models\ManageViewModels\SetPasswordViewModel.cs
 C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Services\IEmailSender.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Services\ISmsSender.cs
-C:\Users\BEM\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\Services\MessageServices.cs

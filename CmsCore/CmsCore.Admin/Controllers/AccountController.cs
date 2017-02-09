@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using CmsCore.Admin.Models;
+using CmsCore.Model;
 using CmsCore.Admin.Models.AccountViewModels;
-using CmsCore.Admin.Services;
+using CmsCore.Service;
 
 namespace CmsCore.Admin.Controllers
 {

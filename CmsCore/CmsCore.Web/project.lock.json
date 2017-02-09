@@ -4454,6 +4454,52 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "CmsCore.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "CmsCore.Model": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+          "Microsoft.EntityFrameworkCore": "1.1.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "netstandard1.6/CmsCore.Data.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/CmsCore.Data.dll": {}
+        }
+      },
+      "CmsCore.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "netstandard1.6/CmsCore.Model.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/CmsCore.Model.dll": {}
+        }
+      },
+      "CmsCore.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "CmsCore.Data": "1.0.0",
+          "CmsCore.Model": "1.0.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "netstandard1.6/CmsCore.Service.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/CmsCore.Service.dll": {}
+        }
       }
     },
     ".NETCoreApp,Version=v1.0/win10-x64": {
@@ -9018,6 +9064,52 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
+        }
+      },
+      "CmsCore.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "CmsCore.Model": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+          "Microsoft.EntityFrameworkCore": "1.1.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "netstandard1.6/CmsCore.Data.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/CmsCore.Data.dll": {}
+        }
+      },
+      "CmsCore.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "netstandard1.6/CmsCore.Model.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/CmsCore.Model.dll": {}
+        }
+      },
+      "CmsCore.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "CmsCore.Data": "1.0.0",
+          "CmsCore.Model": "1.0.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "netstandard1.6/CmsCore.Service.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/CmsCore.Service.dll": {}
         }
       }
     }
@@ -16569,11 +16661,29 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
       ]
+    },
+    "CmsCore.Data/1.0.0": {
+      "type": "project",
+      "path": "../CmsCore.Data/project.json",
+      "msbuildProject": "../CmsCore.Data/CmsCore.Data.xproj"
+    },
+    "CmsCore.Model/1.0.0": {
+      "type": "project",
+      "path": "../CmsCore.Model/project.json",
+      "msbuildProject": "../CmsCore.Model/CmsCore.Model.xproj"
+    },
+    "CmsCore.Service/1.0.0": {
+      "type": "project",
+      "path": "../CmsCore.Service/project.json",
+      "msbuildProject": "../CmsCore.Service/CmsCore.Service.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "BundlerMinifier.Core >= 2.2.306",
+      "CmsCore.Data >= 1.0.0-*",
+      "CmsCore.Model >= 1.0.0-*",
+      "CmsCore.Service >= 1.0.0-*",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.1.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.1.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.1.0",

@@ -36,7 +36,10 @@
           "Microsoft.AspNetCore.Server.IISIntegration": "1.1.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
           "Microsoft.Extensions.Logging.Console": "1.1.0",
-          "Microsoft.NETCore.App": "1.1.0"
+          "Microsoft.NETCore.App": "1.1.0",
+          "CmsCore.Data": "1.0.0",
+          "CmsCore.Model": "1.0.0",
+          "CmsCore.Service": "1.0.0"
         },
         "compile": {
           "CmsCore.Admin.dll": {}
@@ -3330,6 +3333,37 @@
           "System.Xml.XDocument": "4.3.0",
           "System.Xml.XPath": "4.0.1"
         }
+      },
+      "CmsCore.Data/1.0.0": {
+        "dependencies": {
+          "CmsCore.Model": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+          "Microsoft.EntityFrameworkCore": "1.1.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "CmsCore.Data.dll": {}
+        }
+      },
+      "CmsCore.Model/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "CmsCore.Model.dll": {}
+        }
+      },
+      "CmsCore.Service/1.0.0": {
+        "dependencies": {
+          "CmsCore.Data": "1.0.0",
+          "CmsCore.Model": "1.0.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "CmsCore.Service.dll": {}
+        }
       }
     },
     ".NETCoreApp,Version=v1.0/win10-x64": {
@@ -3355,7 +3389,10 @@
           "Microsoft.AspNetCore.Server.IISIntegration": "1.1.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
           "Microsoft.Extensions.Logging.Console": "1.1.0",
-          "Microsoft.NETCore.App": "1.1.0"
+          "Microsoft.NETCore.App": "1.1.0",
+          "CmsCore.Data": "1.0.0",
+          "CmsCore.Model": "1.0.0",
+          "CmsCore.Service": "1.0.0"
         },
         "runtime": {
           "CmsCore.Admin.dll": {}
@@ -6753,6 +6790,37 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "CmsCore.Data/1.0.0": {
+        "dependencies": {
+          "CmsCore.Model": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+          "Microsoft.EntityFrameworkCore": "1.1.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "CmsCore.Data.dll": {}
+        }
+      },
+      "CmsCore.Model/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "CmsCore.Model.dll": {}
+        }
+      },
+      "CmsCore.Service/1.0.0": {
+        "dependencies": {
+          "CmsCore.Data": "1.0.0",
+          "CmsCore.Model": "1.0.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "CmsCore.Service.dll": {}
+        }
       }
     }
   },
@@ -8206,6 +8274,21 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-FLhdYJx4331oGovQypQ8JIw2kEmNzCsjVOVYY/16kZTUoquZG85oVn7yUhBE2OZt1yGPSXAL0HTEfzjlbNpM7Q=="
+    },
+    "CmsCore.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CmsCore.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CmsCore.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
