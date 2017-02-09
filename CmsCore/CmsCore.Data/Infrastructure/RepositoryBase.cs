@@ -8,27 +8,23 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Data.Infrastructure
 {
-    public class RepositoryBase<T> where T : BaseEntity
+    public abstract class RepositoryBase<T> where T : BaseEntity
     {
         #region Properties
         private ApplicationDbContext dataContext;
         private readonly DbSet<T> dbSet;
 
-        protected IDbFactory DbFactory
-        {
-            get;
-            private set;
-        }
+        
 
         protected ApplicationDbContext DbContext
         {
-            get { return dataContext ?? (dataContext = DbFactory.Init()); }
+            get { return dataContext; }
         }
         #endregion
 
-        protected RepositoryBase(IDbFactory dbFactory)
+        protected RepositoryBase(ApplicationDbContext dbContext)
         {
-            DbFactory = dbFactory;
+            dataContext = dbContext;
             dbSet = DbContext.Set<T>();
         }
 

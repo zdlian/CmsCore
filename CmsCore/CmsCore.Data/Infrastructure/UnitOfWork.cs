@@ -7,17 +7,16 @@ namespace CmsCore.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IDbFactory dbFactory;
         private ApplicationDbContext dbContext;
 
-        public UnitOfWork(IDbFactory dbFactory)
+        public UnitOfWork(ApplicationDbContext dbContext)
         {
-            this.dbFactory = dbFactory;
+            this.dbContext = dbContext;
         }
 
         public ApplicationDbContext DbContext
         {
-            get { return dbContext ?? (dbContext = dbFactory.Init()); }
+            get { return dbContext; }
         }
 
         public void Commit()

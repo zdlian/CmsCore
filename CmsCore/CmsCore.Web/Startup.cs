@@ -52,12 +52,14 @@ namespace CmsCore.Web
             services.AddMvc();
 
             // Add application services.
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // repositories
+            services.AddTransient<IPageRepository, PageRepository>();
+
+            // services
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-
-            services.AddTransient<IPageRepository, PageRepository>();
-            services.AddScoped(typeof(IDbFactory), typeof(DbFactory));
-            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddTransient<IPageService, PageService>();
         }
 
@@ -79,7 +81,7 @@ namespace CmsCore.Web
             }
 
             app.UseStaticFiles();
-
+            app.ApplicationServices.GetRequiredService<ApplicationDbContext>().Seed();
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715

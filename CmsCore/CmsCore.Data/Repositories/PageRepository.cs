@@ -5,8 +5,8 @@ namespace CmsCore.Data.Repositories
 {
     public class PageRepository : RepositoryBase<Page>, IPageRepository
     {
-        public PageRepository(IDbFactory dbFactory)
-                : base(dbFactory) { }  
+        public PageRepository(ApplicationDbContext dbContext)
+                : base(dbContext) { }  
         
         public Page GetBySlug(string slug)
         {
