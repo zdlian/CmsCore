@@ -1,0 +1,16 @@
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Admin.deps.json
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Admin.runtimeconfig.json
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Admin.runtimeconfig.dev.json
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Admin.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Admin.pdb
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Data.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Model.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Service.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Data.pdb
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Model.pdb
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\bin\Debug\netcoreapp1.0\CmsCore.Service.pdb
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\obj\Debug\netcoreapp1.0\CmsCore.Admin.csprojResolveAssemblyReference.cache
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\obj\Debug\netcoreapp1.0\UserSecretsAssemblyInfo.cs
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\obj\Debug\netcoreapp1.0\CmsCore.Admin.AssemblyInfo.cs
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\obj\Debug\netcoreapp1.0\CmsCore.Admin.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Admin\obj\Debug\netcoreapp1.0\CmsCore.Admin.pdb
