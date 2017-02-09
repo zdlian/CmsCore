@@ -13,5 +13,8 @@ namespace CmsCore.Model.Entities
 
         public int? ParentMenuItemId { get; set; }
         public virtual MenuItem ParentMenuItem { get; set; }
+
+        public int MenuId { get; set; }
+        public virtual Menu Menu { get; set; }
     }
 }
