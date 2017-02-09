@@ -1,0 +1,9 @@
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\bin\Debug\netcoreapp1.0\CmsCore.Assets.deps.json
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\bin\Debug\netcoreapp1.0\CmsCore.Assets.runtimeconfig.json
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\bin\Debug\netcoreapp1.0\CmsCore.Assets.runtimeconfig.dev.json
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\bin\Debug\netcoreapp1.0\CmsCore.Assets.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\bin\Debug\netcoreapp1.0\CmsCore.Assets.pdb
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\obj\Debug\netcoreapp1.0\CmsCore.Assets.csprojResolveAssemblyReference.cache
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\obj\Debug\netcoreapp1.0\CmsCore.Assets.AssemblyInfo.cs
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\obj\Debug\netcoreapp1.0\CmsCore.Assets.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Assets\obj\Debug\netcoreapp1.0\CmsCore.Assets.pdb

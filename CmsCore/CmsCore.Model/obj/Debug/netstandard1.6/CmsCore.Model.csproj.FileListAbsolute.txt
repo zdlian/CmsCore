@@ -1,0 +1,7 @@
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Model\bin\Debug\netstandard1.6\CmsCore.Model.deps.json
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Model\bin\Debug\netstandard1.6\CmsCore.Model.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Model\bin\Debug\netstandard1.6\CmsCore.Model.pdb
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Model\obj\Debug\netstandard1.6\CmsCore.Model.csprojResolveAssemblyReference.cache
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Model\obj\Debug\netstandard1.6\CmsCore.Model.AssemblyInfo.cs
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Model\obj\Debug\netstandard1.6\CmsCore.Model.dll
+C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Model\obj\Debug\netstandard1.6\CmsCore.Model.pdb
