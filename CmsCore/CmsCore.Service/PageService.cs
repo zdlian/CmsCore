@@ -14,6 +14,8 @@ namespace CmsCore.Service
         Page GetPage(long id);
         Page GetPageBySlug(string slug);
         void CreatePage(Page page);
+        void UpdatePage(Page page);
+        void DeletePage(long id);
         void SavePage();
     }
 
@@ -22,9 +24,9 @@ namespace CmsCore.Service
         private readonly IPageRepository pagesRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public PageService(IPageRepository pagesRepository, IUnitOfWork unitOfWork)
+        public PageService(IPageRepository pageRepository, IUnitOfWork unitOfWork)
         {
-            this.pagesRepository = pagesRepository;
+            this.pagesRepository = pageRepository;
             this.unitOfWork = unitOfWork;
         }
 
@@ -52,6 +54,16 @@ namespace CmsCore.Service
         public void CreatePage(Page page)
         {
             pagesRepository.Add(page);
+        }
+
+        public void UpdatePage(Page page)
+        {
+            pagesRepository.Update(page);
+        }
+
+        public void DeletePage(long id)
+        {
+            pagesRepository.Delete(p => p.Id == id);
         }
 
         public void SavePage()

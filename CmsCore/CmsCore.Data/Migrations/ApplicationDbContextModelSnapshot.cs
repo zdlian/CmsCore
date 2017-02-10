@@ -66,6 +66,86 @@ namespace CmsCore.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("CmsCore.Model.Entities.Menu", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AddedBy");
+
+                    b.Property<DateTime>("AddedDate");
+
+                    b.Property<long?>("MenuLocationId");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuLocationId");
+
+                    b.ToTable("Menus");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.MenuItem", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AddedBy");
+
+                    b.Property<DateTime>("AddedDate");
+
+                    b.Property<long>("MenuId");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<long?>("ParentMenuItemId");
+
+                    b.Property<string>("Target");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.HasIndex("ParentMenuItemId");
+
+                    b.ToTable("MenuItems");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.MenuLocation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AddedBy");
+
+                    b.Property<DateTime>("AddedDate");
+
+                    b.Property<long?>("MenuId");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("MenuLocations");
+                });
+
             modelBuilder.Entity("CmsCore.Model.Entities.Page", b =>
                 {
                     b.Property<long>("Id")
@@ -287,6 +367,32 @@ namespace CmsCore.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.Menu", b =>
+                {
+                    b.HasOne("CmsCore.Model.Entities.MenuLocation", "MenuLocation")
+                        .WithMany()
+                        .HasForeignKey("MenuLocationId");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.MenuItem", b =>
+                {
+                    b.HasOne("CmsCore.Model.Entities.Menu", "Menu")
+                        .WithMany("MenuItems")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CmsCore.Model.Entities.MenuItem", "ParentMenuItem")
+                        .WithMany()
+                        .HasForeignKey("ParentMenuItemId");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.MenuLocation", b =>
+                {
+                    b.HasOne("CmsCore.Model.Entities.Menu", "Menu")
+                        .WithMany()
+                        .HasForeignKey("MenuId");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Page", b =>

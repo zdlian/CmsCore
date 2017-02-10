@@ -2156,11 +2156,12 @@ footer {
 }
 
 .slider-banner-02 {
-    background-image: url("../images/banner-2.jpg");
+    /*background-image: url("../images/banner-2.jpg");*/
     height: 100vh;
     color: #49575f;
     background-size: cover;
-    position: relative
+    position: relative;
+    background-color:transparent;
 }
 
 .slider-banner-02 .logo-banner img {
@@ -2185,9 +2186,11 @@ footer {
 }
 
 .slider-banner-03 {
-    background-image: url("../images/background-best-staff.jpg");
-    color: #fff;
-    background-position: top
+    /*background-image: url("../images/background-best-staff.jpg");*/
+    /*color: #fff;*/
+    background-color:transparent !important;
+    background-position: top;
+       
 }
 
 .slider-item {
@@ -2195,17 +2198,21 @@ footer {
 }
 
 .slider-item .slider-1, .slider-item .slider-2, .slider-item .slider-3 {
-    background-image: url(../images/background-slider-1.jpg);
+    /*background-image: url(../images/background-slider-1.jpg);*/
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
-    display: table
+    display: table;
+    background-color:transparent;
+      
 }
 
 .slider-item .slider-2 {
-    background-image: url(../images/bg-404.jpg)
+    /*background-image: url(../images/bg-404.jpg)*/
+    background-color:transparent !important;
+
 }
 
 .slider-item .slider-2 .slider-caption {
@@ -2213,7 +2220,8 @@ footer {
 }
 
 .slider-item .slider-3 {
-    background-image: url(../images/banner-2.jpg)
+    /*background-image: url(../images/banner-2.jpg)*/
+    background-color : transparent;
 }
 
 .slider-item .slider-3 .slider-caption {
