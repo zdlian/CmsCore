@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using CmsCore.Admin.Models;
+using Microsoft.Extensions.Options;
 
 namespace CmsCore.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        public HomeController(IOptions<AppSettings> appSettings):base(appSettings.Value)
+        {
+            IOptions <AppSettings> as1 = appSettings;
+        }
+
         public IActionResult Index()
         {
             return View();

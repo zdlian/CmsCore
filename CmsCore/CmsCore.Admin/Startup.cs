@@ -14,6 +14,7 @@ using CmsCore.Model.Entities;
 using CmsCore.Service;
 using CmsCore.Data.Infrastructure;
 using CmsCore.Data.Repositories;
+using CmsCore.Admin.Models;
 
 namespace CmsCore.Admin
 {
@@ -48,9 +49,18 @@ namespace CmsCore.Admin
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+            
+            //AppSettings
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            services.Configure<AppSettings>(mySetting =>
+            {
+                mySetting.AssetsUrl = "http://localhost:61645/";
+                mySetting.UploadPath = "C:\\Users\\NEX\\Source\\Repos\\CmsCore\\CmsCore\\CmsCore.Assets\\wwwroot\\uploads";
+            });
 
             services.AddMvc();
-
+            
             // Add application services.
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -68,6 +78,7 @@ namespace CmsCore.Admin
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            app.UseStaticFiles();
 
             if (env.IsDevelopment())
             {
