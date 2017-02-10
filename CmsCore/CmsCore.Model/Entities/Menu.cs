@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,9 +14,9 @@ namespace CmsCore.Model.Entities
         }
         public string Name { get; set; }
 
-        public int? MenuLocationId { get; set; }
+        public long? MenuLocationId { get; set; }
+        [ForeignKey("MenuLocationId")]
         public virtual MenuLocation MenuLocation { get; set; }
-
         public virtual ICollection<MenuItem> MenuItems { get; set; }
     }
 }

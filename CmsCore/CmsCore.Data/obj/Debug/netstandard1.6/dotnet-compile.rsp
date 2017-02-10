@@ -123,6 +123,9 @@ C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\0000
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170209212619_AddPages.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170209212619_AddPages.Designer.cs
+C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170210152227_intToLong.cs
+C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170210152227_intToLong.Designer.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Properties\AssemblyInfo.cs
+C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Repositories\MenuRepository.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Repositories\PageRepository.cs

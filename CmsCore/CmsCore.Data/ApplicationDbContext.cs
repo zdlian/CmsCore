@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using CmsCore.Model.Entities;
 
@@ -11,6 +7,10 @@ namespace CmsCore.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Page> Pages { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<MenuLocation> MenuLocations { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
