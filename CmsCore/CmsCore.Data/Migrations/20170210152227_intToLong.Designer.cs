@@ -8,9 +8,10 @@ using CmsCore.Data;
 namespace CmsCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170210152227_intToLong")]
+    partial class intToLong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -75,7 +76,7 @@ namespace CmsCore.Data.Migrations
 
                     b.Property<DateTime>("AddedDate");
 
-                    b.Property<long?>("MenuLocationId");
+                    b.Property<int?>("MenuLocationId");
 
                     b.Property<string>("ModifiedBy");
 
@@ -84,8 +85,6 @@ namespace CmsCore.Data.Migrations
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MenuLocationId");
 
                     b.ToTable("Menus");
                 });
@@ -141,7 +140,8 @@ namespace CmsCore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MenuId");
+                    b.HasIndex("MenuId")
+                        .IsUnique();
 
                     b.ToTable("MenuLocations");
                 });
@@ -369,13 +369,6 @@ namespace CmsCore.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CmsCore.Model.Entities.Menu", b =>
-                {
-                    b.HasOne("CmsCore.Model.Entities.MenuLocation", "MenuLocation")
-                        .WithMany()
-                        .HasForeignKey("MenuLocationId");
-                });
-
             modelBuilder.Entity("CmsCore.Model.Entities.MenuItem", b =>
                 {
                     b.HasOne("CmsCore.Model.Entities.Menu", "Menu")
@@ -391,8 +384,8 @@ namespace CmsCore.Data.Migrations
             modelBuilder.Entity("CmsCore.Model.Entities.MenuLocation", b =>
                 {
                     b.HasOne("CmsCore.Model.Entities.Menu", "Menu")
-                        .WithMany()
-                        .HasForeignKey("MenuId");
+                        .WithOne("MenuLocation")
+                        .HasForeignKey("CmsCore.Model.Entities.MenuLocation", "MenuId");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Page", b =>

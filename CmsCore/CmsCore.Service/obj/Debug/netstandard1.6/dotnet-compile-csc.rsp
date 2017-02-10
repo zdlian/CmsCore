@@ -112,6 +112,7 @@
 -r:"C:\Users\Administrator\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll"
 -r:"C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\bin\Debug\netstandard1.6\CmsCore.Data.dll"
 -r:"C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Model\bin\Debug\netstandard1.6\CmsCore.Model.dll"
+"C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Service\MenuService.cs"
 "C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Service\MessageServices.cs"
 "C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Service\PageService.cs"
 "C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Service\Properties\AssemblyInfo.cs"
