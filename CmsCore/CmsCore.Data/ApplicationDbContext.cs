@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using CmsCore.Model.Entities;
+using CmsCore.Model.EntityBuilders;
 
 namespace CmsCore.Data
 {
@@ -19,6 +20,11 @@ namespace CmsCore.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            new MenuBuilder(builder.Entity<Menu>());
+            new PageBuilder(builder.Entity<Page>());
+            new PostBuilder(builder.Entity<Post>());
+            new SettingBuilder(builder.Entity<Setting>());
+
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.

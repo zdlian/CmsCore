@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CmsCore.Service;
+using CmsCore.Model.Entities;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,6 +21,40 @@ namespace CmsCore.Admin.Controllers
         {
             var menus = menuService.GetMenus();
             return View(menus);
+        }
+        public IActionResult Create() {
+            var menu = new Menu();
+            return View(menu);
+
+        }
+        [HttpPost]
+        public IActionResult Create(Menu menu) {
+            if (ModelState.IsValid)
+            {
+                menuService.CreateMenu(menu);
+                menuService.SaveMenu();
+                return RedirectToAction("Index", "Menus");
+            }
+            return View(menu);
+        }
+        public IActionResult Edit(long id) {
+            var menu = menuService.GetMenu(id);
+            return View(menu);
+        }
+        [HttpPost]
+        public IActionResult Edit(Menu menu) {
+            if (ModelState.IsValid)
+            {
+                menuService.UpdateMenu(menu);
+                menuService.SaveMenu();
+                return RedirectToAction("Index", "Menus");
+            }
+            return View(menu);
+        }
+        public IActionResult Delete(long id) {
+            menuService.DeleteMenu(id);
+            menuService.SaveMenu();
+            return RedirectToAction("Index", "Menus");
         }
     }
 }

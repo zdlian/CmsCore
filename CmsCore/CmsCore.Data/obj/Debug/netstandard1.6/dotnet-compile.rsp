@@ -125,6 +125,8 @@ C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\2017
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170209212619_AddPages.Designer.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170210152227_intToLong.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170210152227_intToLong.Designer.cs
+C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170210161156_intToLong2.cs
+C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\20170210161156_intToLong2.Designer.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Properties\AssemblyInfo.cs
 C:\Users\Administrator\Source\Repos\CmsCore\CmsCore\CmsCore.Data\Repositories\MenuRepository.cs

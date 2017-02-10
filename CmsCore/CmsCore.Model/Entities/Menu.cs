@@ -15,7 +15,7 @@ namespace CmsCore.Model.Entities
         public string Name { get; set; }
 
         public long? MenuLocationId { get; set; }
-        [ForeignKey("MenuLocationId")]
+       
         public virtual MenuLocation MenuLocation { get; set; }
         public virtual ICollection<MenuItem> MenuItems { get; set; }
     }
