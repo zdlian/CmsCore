@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Data
 {
-    public static class DbContextExtensions
+    public static class ApplicationDbContextSeed
     {
         public static void Seed(this ApplicationDbContext context)
         {

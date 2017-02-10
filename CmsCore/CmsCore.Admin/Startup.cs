@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using CmsCore.Data;
 using CmsCore.Model.Entities;
 using CmsCore.Service;
+using CmsCore.Data.Infrastructure;
+using CmsCore.Data.Repositories;
 
 namespace CmsCore.Admin
 {
@@ -50,8 +52,15 @@ namespace CmsCore.Admin
             services.AddMvc();
 
             // Add application services.
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // repositories
+            services.AddTransient<IPageRepository, PageRepository>();
+
+            // services
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddTransient<IPageService, PageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +81,7 @@ namespace CmsCore.Admin
             }
 
             app.UseStaticFiles();
-
+            app.ApplicationServices.GetRequiredService<ApplicationDbContext>().Seed();
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
