@@ -10,7 +10,7 @@ namespace CmsCore.Model.EntityBuilders
     public class PostBuilder
     {
 
-        public PostBuilder(EntityTypeBuilder<Post>entityBuilder)
+        public PostBuilder(EntityTypeBuilder<Post> entityBuilder)
         {
             entityBuilder.HasKey(p => p.Id);
             entityBuilder.Property(p => p.Title).IsRequired().HasMaxLength(200);

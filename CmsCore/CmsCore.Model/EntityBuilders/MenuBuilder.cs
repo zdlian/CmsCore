@@ -12,8 +12,7 @@ namespace CmsCore.Model.EntityBuilders
             entityBuilder
                 .HasOne(e => e.MenuLocation)
                 .WithOne(l => l.Menu)
-                .HasForeignKey<MenuLocation>(m => m.MenuId)
-                .HasForeignKey<Menu>(m=>m.MenuLocationId);
+                .HasForeignKey<MenuLocation>(m => m.MenuId);
             entityBuilder
                 .HasMany(I => I.MenuItems)
                 .WithOne(m => m.Menu)

@@ -22,7 +22,7 @@ namespace CmsCore.Data
 
 
             // Save changes and release resources
-            context.SaveChanges();
+            //context.SaveChanges();
             context.Dispose();
         }
         static Menu menu;

@@ -21,7 +21,7 @@ namespace CmsCore.Model.Entities
 
         public bool IsPublished { get; set; }
 
-        public int TemplateId { get; set; }
+        public long TemplateId { get; set; }
         public virtual Template Template { get; set; }
     }
 }
