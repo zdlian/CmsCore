@@ -26,13 +26,7 @@ namespace CmsCore.Data.Repositories
             }
 
             var allMenus = query;
-
-
-
             IEnumerable<Menu> filteredMenus = allMenus;
-
-
-
             if (sortDirection == "asc")
             {
                 switch (sortColumnIndex)

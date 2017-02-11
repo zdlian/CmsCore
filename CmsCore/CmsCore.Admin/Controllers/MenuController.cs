@@ -71,8 +71,8 @@ namespace CmsCore.Admin.Controllers
                          select new[] {
                              p.Id.ToString(),
                              p.Name.ToString(),
-                             p.MenuLocation.Name.ToString()
-                             ,string.Empty
+                             p.MenuLocation.Name.ToString(),
+                             string.Empty
                          };
             return Json(new
             {
