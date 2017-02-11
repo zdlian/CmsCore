@@ -1,5 +1,6 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="js/pages/menu-index.js" />
+/// <reference path="js/pages/menuloc-index.js" />
 /// <reference path="js/pages/pages-index.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />

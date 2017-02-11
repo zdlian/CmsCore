@@ -36,7 +36,6 @@ namespace CmsCore.Assets
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseCors("AllowAll");
-            app.UseStaticFiles();
 
             loggerFactory.AddConsole();            
 

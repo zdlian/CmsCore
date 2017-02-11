@@ -1,9 +1,0 @@
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\bin\Debug\netstandard1.6\CmsCore.Data.deps.json
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\bin\Debug\netstandard1.6\CmsCore.Data.dll
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\bin\Debug\netstandard1.6\CmsCore.Data.pdb
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\bin\Debug\netstandard1.6\CmsCore.Model.dll
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\bin\Debug\netstandard1.6\CmsCore.Model.pdb
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\obj\Debug\netstandard1.6\CmsCore.Data.csprojResolveAssemblyReference.cache
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\obj\Debug\netstandard1.6\CmsCore.Data.AssemblyInfo.cs
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\obj\Debug\netstandard1.6\CmsCore.Data.dll
-C:\Users\NEX\Source\Repos\CmsCore\CmsCore\CmsCore.Data\obj\Debug\netstandard1.6\CmsCore.Data.pdb

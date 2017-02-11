@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace CmsCore.Service
 {
     public interface IMenuService {
+        IEnumerable<Menu> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords);
         IEnumerable<Menu> GetMenus();
         Menu GetMenu(long id);
         void CreateMenu(Menu menu);
@@ -51,6 +52,11 @@ namespace CmsCore.Service
         {
            unitOfWork.Commit();
         }
-    }
+        public IEnumerable<Menu> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords)
+        {
+            var menus = menuRepository.Search(search, sortColumnIndex, sortDirection, displayStart, displayLength, out totalRecords, out totalDisplayRecords);
+            return menus;
+        }
+        }
 }
 #endregion
