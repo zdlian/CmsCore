@@ -10,17 +10,17 @@ using CmsCore.Model.Entities;
 
 namespace CmsCore.Admin.Controllers
 {
-    public class MenusController : Controller
+    public class MenuController : Controller
     {
         private readonly IMenuService menuService;
-        public MenusController(IMenuService menuService) {
+        public MenuController(IMenuService menuService) {
             this.menuService = menuService;
         }
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var menus = menuService.GetMenus();
-            return View(menus);
+          
+            return View();
         }
         public IActionResult Create() {
             var menu = new Menu();
@@ -33,7 +33,7 @@ namespace CmsCore.Admin.Controllers
             {
                 menuService.CreateMenu(menu);
                 menuService.SaveMenu();
-                return RedirectToAction("Index", "Menus");
+                return RedirectToAction("Index", "Menu");
             }
             return View(menu);
         }
@@ -47,14 +47,14 @@ namespace CmsCore.Admin.Controllers
             {
                 menuService.UpdateMenu(menu);
                 menuService.SaveMenu();
-                return RedirectToAction("Index", "Menus");
+                return RedirectToAction("Index", "Menu");
             }
             return View(menu);
         }
         public IActionResult Delete(long id) {
             menuService.DeleteMenu(id);
             menuService.SaveMenu();
-            return RedirectToAction("Index", "Menus");
+            return RedirectToAction("Index", "Menu");
         }
     }
 }
