@@ -1,5 +1,6 @@
 ﻿using CmsCore.Data.Infrastructure;
 using CmsCore.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace CmsCore.Data.Repositories
             search = search.Trim();
             var searchWords = search.Split(' ');
 
-            var query = this.DbContext.Menus.AsQueryable();
+            var query = this.DbContext.Menus.Include(m => m.MenuLocation).AsQueryable();
             foreach (string sSearch in searchWords)
             {
                 if (sSearch != null && sSearch != "")
