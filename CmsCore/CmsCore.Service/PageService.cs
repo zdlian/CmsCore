@@ -10,6 +10,7 @@ namespace CmsCore.Service
 {
     public interface IPageService
     {
+        IEnumerable<Page> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords);
         IEnumerable<Page> GetPages();
         Page GetPage(long id);
         Page GetPageBySlug(string slug);
@@ -69,6 +70,12 @@ namespace CmsCore.Service
         public void SavePage()
         {
             unitOfWork.Commit();
+        }
+
+        public IEnumerable<Page> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords)
+        {
+            var pages = pagesRepository.Search(search, sortColumnIndex, sortDirection, displayStart, displayLength, out totalRecords, out totalDisplayRecords);
+            return pages;
         }
 
         #endregion

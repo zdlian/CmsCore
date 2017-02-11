@@ -10,10 +10,12 @@ namespace CmsCore.Model.Entities
         public Page()
         {
             IsPublished = true;
+            ViewCount = 0;
         }
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Body { get; set; }
+        public long ViewCount { get; set; }
 
         public string SeoTitle { get; set; }
         public string SeoDescription { get; set; }

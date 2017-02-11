@@ -10,9 +10,9 @@ namespace CmsCore.Admin.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(IOptions<AppSettings> appSettings):base(appSettings.Value)
+        public HomeController()
         {
-            IOptions <AppSettings> as1 = appSettings;
+            
         }
 
         public IActionResult Index()
