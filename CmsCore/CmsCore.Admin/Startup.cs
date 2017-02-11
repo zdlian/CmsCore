@@ -67,12 +67,15 @@ namespace CmsCore.Admin
             // repositories
             services.AddTransient<IPageRepository, PageRepository>();
             services.AddTransient<IMenuRepository, MenuRepository>();
+            services.AddTransient<ITemplateRepository, TemplateRepository>();
 
             // services
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<ITemplateService, TemplateService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

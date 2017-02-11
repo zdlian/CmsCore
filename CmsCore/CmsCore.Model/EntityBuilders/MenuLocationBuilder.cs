@@ -1,4 +1,5 @@
 ﻿using CmsCore.Model.Entities;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace CmsCore.Model.EntityBuilders
                 .HasOne(l => l.Menu)
                 .WithOne(l=>l.MenuLocation)
                 .HasForeignKey<MenuLocation>(m => m.MenuId)
-                .HasForeignKey<Menu>(m => m.MenuLocationId);
+                .HasForeignKey<Menu>(m => m.MenuLocationId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

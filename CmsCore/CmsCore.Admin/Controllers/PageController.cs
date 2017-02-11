@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using CmsCore.Service;
 using CmsCore.Model.Entities;
 using CmsCore.Admin.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,9 +15,11 @@ namespace CmsCore.Admin.Controllers
     public class PageController : BaseController
     {
         private readonly IPageService pageService;
-        public PageController(IPageService pageService)
+        private readonly ITemplateService templateService;
+        public PageController(IPageService pageService, ITemplateService templateService)
         {
             this.pageService = pageService;
+            this.templateService = templateService;
         }
 
         // GET: /<controller>/
@@ -28,6 +31,8 @@ namespace CmsCore.Admin.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.ParentPages = new SelectList(pageService.GetPages(), "Id", "Title");
+            ViewBag.Templates = new SelectList(templateService.GetTemplates(), "Id", "Name");
             var page = new Page();
             return View(page);
         }
@@ -36,6 +41,10 @@ namespace CmsCore.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                page.AddedBy = "Nex";
+                page.AddedDate = DateTime.Now;
+                page.ModifiedBy = "Nex";
+                page.ModifiedDate = DateTime.Now;
                 pageService.CreatePage(page);
                 pageService.SavePage();
                 return RedirectToAction("Index", "Pages");

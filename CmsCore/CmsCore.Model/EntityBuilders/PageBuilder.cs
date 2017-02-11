@@ -1,4 +1,5 @@
 ﻿using CmsCore.Model.Entities;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CmsCore.Model.EntityBuilders
@@ -13,6 +14,7 @@ namespace CmsCore.Model.EntityBuilders
             entityBuilder.Property(e => e.IsPublished).IsRequired();
             entityBuilder.Property(e => e.SeoTitle).HasMaxLength(200);
             entityBuilder.HasOne(e => e.Template).WithMany(t => t.Pages).HasForeignKey(p => p.TemplateId);
+            entityBuilder.HasOne(e => e.ParentPage).WithMany(p => p.ChildPages).HasForeignKey(p => p.ParentPageId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

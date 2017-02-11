@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,11 +12,16 @@ namespace CmsCore.Model.Entities
         {
             IsPublished = true;
             ViewCount = 0;
+            ChildPages = new HashSet<Page>();
         }
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Body { get; set; }
         public long ViewCount { get; set; }
+
+        public long? ParentPageId { get; set; }
+        public Page ParentPage { get; set; }
+        public virtual ICollection<Page> ChildPages { get; set; }
 
         public string SeoTitle { get; set; }
         public string SeoDescription { get; set; }

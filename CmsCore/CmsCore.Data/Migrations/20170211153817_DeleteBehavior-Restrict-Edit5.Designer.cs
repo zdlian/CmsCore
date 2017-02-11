@@ -8,8 +8,8 @@ using CmsCore.Data;
 namespace CmsCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170211105510_Added-Page-ViewCount-Column")]
-    partial class AddedPageViewCountColumn
+    [Migration("20170211153817_DeleteBehavior-Restrict-Edit5")]
+    partial class DeleteBehaviorRestrictEdit5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -193,6 +193,8 @@ namespace CmsCore.Data.Migrations
 
                     b.Property<DateTime>("ModifiedDate");
 
+                    b.Property<long?>("ParentPageId");
+
                     b.Property<string>("SeoDescription");
 
                     b.Property<string>("SeoKeywords");
@@ -213,6 +215,8 @@ namespace CmsCore.Data.Migrations
                     b.Property<long>("ViewCount");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentPageId");
 
                     b.HasIndex("TemplateId");
 
@@ -493,11 +497,10 @@ namespace CmsCore.Data.Migrations
                 {
                     b.HasOne("CmsCore.Model.Entities.Menu", "Menu")
                         .WithMany("MenuItems")
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("MenuId");
 
                     b.HasOne("CmsCore.Model.Entities.MenuItem", "ParentMenuItem")
-                        .WithMany()
+                        .WithMany("ChildMenuItems")
                         .HasForeignKey("ParentMenuItemId");
                 });
 
@@ -510,6 +513,10 @@ namespace CmsCore.Data.Migrations
 
             modelBuilder.Entity("CmsCore.Model.Entities.Page", b =>
                 {
+                    b.HasOne("CmsCore.Model.Entities.Page", "ParentPage")
+                        .WithMany("ChildPages")
+                        .HasForeignKey("ParentPageId");
+
                     b.HasOne("CmsCore.Model.Entities.Template", "Template")
                         .WithMany("Pages")
                         .HasForeignKey("TemplateId")

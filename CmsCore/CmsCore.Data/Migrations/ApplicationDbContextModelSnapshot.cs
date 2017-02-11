@@ -192,6 +192,8 @@ namespace CmsCore.Data.Migrations
 
                     b.Property<DateTime>("ModifiedDate");
 
+                    b.Property<long?>("ParentPageId");
+
                     b.Property<string>("SeoDescription");
 
                     b.Property<string>("SeoKeywords");
@@ -212,6 +214,8 @@ namespace CmsCore.Data.Migrations
                     b.Property<long>("ViewCount");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentPageId");
 
                     b.HasIndex("TemplateId");
 
@@ -492,11 +496,10 @@ namespace CmsCore.Data.Migrations
                 {
                     b.HasOne("CmsCore.Model.Entities.Menu", "Menu")
                         .WithMany("MenuItems")
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("MenuId");
 
                     b.HasOne("CmsCore.Model.Entities.MenuItem", "ParentMenuItem")
-                        .WithMany()
+                        .WithMany("ChildMenuItems")
                         .HasForeignKey("ParentMenuItemId");
                 });
 
@@ -509,6 +512,10 @@ namespace CmsCore.Data.Migrations
 
             modelBuilder.Entity("CmsCore.Model.Entities.Page", b =>
                 {
+                    b.HasOne("CmsCore.Model.Entities.Page", "ParentPage")
+                        .WithMany("ChildPages")
+                        .HasForeignKey("ParentPageId");
+
                     b.HasOne("CmsCore.Model.Entities.Template", "Template")
                         .WithMany("Pages")
                         .HasForeignKey("TemplateId")

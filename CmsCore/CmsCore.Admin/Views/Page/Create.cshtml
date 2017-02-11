@@ -1,0 +1,132 @@
+﻿@model CmsCore.Model.Entities.Page
+<script src="/Scripts/ckeditor/ckeditor.js"></script>
+<script src="/Scripts/generate-slug.js"> </script>
+<style>
+    textarea {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a asp-controller="Page" asp-action="Index" class="nav-link">Pages</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>New Page</span>
+        </li>
+    </ul>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title" style="border-bottom-width: 1px;margin-bottom: 10px;">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase ">New Page Add</span>
+                </div>
+            </div>
+            
+            <form asp-controller="Page" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <input type="text" asp-for="Title" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Slug"></label>
+                            <input type="text" asp-for="Slug" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Slug"></span>
+                        </div>
+                        <div class="form-body">
+                            <label asp-for="Body"></label>
+                            <p>
+                                <textarea asp-for="Body" class="form-control"></textarea>
+                                <span class="text-danger" asp-validation-for="Body"></span>
+                                <script>
+                                    CKEDITOR.replace('Body');
+                                </script>
+                            </p>
+                            <div id="content2" style="display: none" data-sample="2">
+                                <p>The number of <code>change</code> events:<strong><span id="changes"></span></strong>.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="pageparentdiv" class="postbox">
+                                    <div class="inside">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <select asp-for="ParentPageId"
+                                                        asp-items="(IEnumerable<SelectListItem>)ViewBag.ParentPages" class="form-control">
+                                                    <option value="">Parent Pages</option>
+                                                </select>
+                                                <span class="text-danger" asp-validation-for="ParentPageId"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="pageparentdiv" class="postbox">
+                                    <div class="inside">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <select asp-for="TemplateId"
+                                                        asp-items="(IEnumerable<SelectListItem>)ViewBag.Templates" class="form-control">
+                                                    <option value="">Template Pages</option>
+                                                </select>
+                                                <span class="text-danger" asp-validation-for="TemplateId"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="portlet light bordered">
+                            <div class="portlet-body form">
+                                <fieldset>
+                                    <legend>SEO Özellikleri</legend>
+                                    <div class="form-group">
+                                        <label asp-for="SeoTitle"></label>
+                                        <input type="text" asp-for="SeoTitle" class="form-control" />
+                                        <span class="text-danger" asp-validation-for="SeoTitle"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SeoDescription"></label>
+                                        <textarea asp-for="SeoDescription" class="form-control"></textarea>
+                                        <span class="text-danger" asp-validation-for="SeoDescription"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SeoKeywords"></label>
+                                        <textarea asp-for="SeoKeywords" class="form-control"></textarea>
+                                        <span class="text-danger" asp-validation-for="SeoKeywords"></span>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" tabindex="9" class="btn blue">Kaydet</button>
+                        <button type="button" tabindex="10" class="btn default" asp-controller="Page" asp-action="Index">İptal</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

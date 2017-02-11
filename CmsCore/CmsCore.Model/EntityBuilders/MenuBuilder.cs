@@ -1,4 +1,5 @@
 ﻿using CmsCore.Model.Entities;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CmsCore.Model.EntityBuilders
@@ -12,11 +13,11 @@ namespace CmsCore.Model.EntityBuilders
             entityBuilder
                 .HasOne(e => e.MenuLocation)
                 .WithOne(l => l.Menu)
-                .HasForeignKey<MenuLocation>(m => m.MenuId);
+                .HasForeignKey<MenuLocation>(m => m.MenuId).OnDelete(DeleteBehavior.Restrict);
             entityBuilder
                 .HasMany(I => I.MenuItems)
                 .WithOne(m => m.Menu)
-                .HasForeignKey(s => s.MenuId);
+                .HasForeignKey(s => s.MenuId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
