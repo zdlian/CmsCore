@@ -244,3 +244,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /CmsCore/CmsCore.Web/Properties/PublishProfiles
+/CmsCore/CmsCore.Assets/Properties/PublishProfiles
