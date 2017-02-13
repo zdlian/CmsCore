@@ -27,48 +27,36 @@ namespace CmsCore.Data.Repositories
 
             var allMenuLocations = query;
             IEnumerable<MenuLocation> filteredMenuLocations = allMenuLocations;
-            //if (sortDirection == "asc")
-            //{
-            //    switch (sortColumnIndex)
-            //    {
-            //        case 0:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(p => p.Name);
-            //            break;
-            //        case 1:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(p => p.AddedBy);
-            //            break;
-            //        case 2:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(c => c.MenuLocationLocation.Name);
-            //            break;
-            //        case 3:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(c => c.ModifiedDate);
-            //            break;
-            //        default:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(c => c.Name);
-            //            break;
-            //    }
-            //}
-            //else
-            //{
-            //    switch (sortColumnIndex)
-            //    {
-            //        case 0:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(p => p.Name);
-            //            break;
-            //        case 1:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(p => p.AddedBy);
-            //            break;
-            //        case 2:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(c => c.MenuLocationLocation.Name);
-            //            break;
-            //        case 3:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(c => c.ModifiedDate);
-            //            break;
-            //        default:
-            //            filteredMenuLocations = filteredMenuLocations.OrderByDescending(c => c.Name);
-            //            break;
-            //    }
-            //}
+            if (sortDirection == "asc")
+            {
+                switch (sortColumnIndex)
+                {
+                    case 1:
+                        filteredMenuLocations = filteredMenuLocations.OrderBy(p => p.Id);
+                        break;
+                    case 2:
+                        filteredMenuLocations = filteredMenuLocations.OrderBy(p => p.Name);
+                        break;
+                    default:
+                        filteredMenuLocations = filteredMenuLocations.OrderBy(c => c.Id);
+                        break;
+                }
+            }
+            else
+            {
+                switch (sortColumnIndex)
+                {
+                    case 1:
+                        filteredMenuLocations = filteredMenuLocations.OrderByDescending(p => p.Id);
+                        break;
+                    case 2:
+                        filteredMenuLocations = filteredMenuLocations.OrderByDescending(p => p.Name);
+                        break;
+                    default:
+                        filteredMenuLocations = filteredMenuLocations.OrderByDescending(c => c.Id);
+                        break;
+                }
+            }
             var displayedMenuLocations = filteredMenuLocations.Skip(displayStart);
             if (displayLength > 0)
             {
