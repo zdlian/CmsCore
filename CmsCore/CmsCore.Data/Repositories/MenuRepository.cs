@@ -22,7 +22,7 @@ namespace CmsCore.Data.Repositories
             {
                 if (sSearch != null && sSearch != "")
                 {
-                    //query = query.Where(p => p.Title.Contains(sSearch) || p.AddedBy.Contains(sSearch) || p.ViewCount.ToString().Contains(sSearch) || p.ModifiedDate.ToString().Contains(sSearch));
+                   query = query.Where(p => p.Id.ToString().Contains(sSearch) || p.Name.Contains(sSearch) || p.MenuLocationId.ToString().Contains(sSearch) );
                 }
             }
 
@@ -39,7 +39,7 @@ namespace CmsCore.Data.Repositories
                         filteredMenus = filteredMenus.OrderBy(p => p.Name);
                         break;
                     case 3:
-                        filteredMenus = filteredMenus.OrderBy(c => c.MenuLocation);
+                        filteredMenus = filteredMenus.OrderBy(c => c.MenuLocationId);
                         break;
                     default:
                         filteredMenus = filteredMenus.OrderBy(c => c.Id);
@@ -57,9 +57,8 @@ namespace CmsCore.Data.Repositories
                         filteredMenus = filteredMenus.OrderByDescending(p => p.Name);
                         break;
                     case 3:
-                        filteredMenus = filteredMenus.OrderByDescending(c => c.MenuLocation);
+                        filteredMenus = filteredMenus.OrderByDescending(c => c.MenuLocationId);
                         break;
-
                     default:
                         filteredMenus = filteredMenus.OrderByDescending(c => c.Id);
                         break;

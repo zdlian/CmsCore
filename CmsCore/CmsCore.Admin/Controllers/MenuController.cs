@@ -38,18 +38,18 @@ namespace CmsCore.Admin.Controllers
                 menuService.SaveMenu();
                 return RedirectToAction("Index", "Menu");
             }
-            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name", menu.MenuLocationId);
+            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name", menu.Id);
             return View(menu);
         }
         public IActionResult Edit(long id) {
-            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "MenuLocationId", "MenuLocationName");
+            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name");
             var menu = menuService.GetMenu(id);
             return View(menu);
         }
         [HttpPost]
         public IActionResult Edit(Menu menu) {
             if (ModelState.IsValid){
-                ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "MenuLocationId", "MenuLocationName", menu.MenuLocationId);
+                ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name", menu.Id);
                 menuService.UpdateMenu(menu);
                 menuService.SaveMenu();
                 return RedirectToAction("Index", "Menu");
@@ -76,7 +76,7 @@ namespace CmsCore.Admin.Controllers
                              p.Id.ToString(),
                              p.Id.ToString(),
                              p.Name.ToString(),
-                             (p.MenuLocation==null?" ":p.MenuLocation.Name.ToString()),
+                             (p.MenuLocationId.ToString()),
                              string.Empty
                          };
             return Json(new
