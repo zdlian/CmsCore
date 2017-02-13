@@ -17,7 +17,7 @@ namespace CmsCore.Model.EntityBuilders
                 .HasOne(l => l.Menu)
                 .WithOne(l=>l.MenuLocation)
                 .HasForeignKey<MenuLocation>(m => m.MenuId)
-                .HasForeignKey<Menu>(m => m.MenuLocationId).OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

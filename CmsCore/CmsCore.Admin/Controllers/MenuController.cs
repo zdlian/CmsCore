@@ -34,6 +34,7 @@ namespace CmsCore.Admin.Controllers
         [HttpPost]
         public IActionResult Create(Menu menu) {
             if (ModelState.IsValid){
+                menu.MenuLocation = menuLocationService.GetMenuLocation(menu.MenuLocationId.Value);
                 menuService.CreateMenu(menu);
                 menuService.SaveMenu();
                 return RedirectToAction("Index", "Menu");
@@ -49,11 +50,12 @@ namespace CmsCore.Admin.Controllers
         [HttpPost]
         public IActionResult Edit(Menu menu) {
             if (ModelState.IsValid){
-                ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name", menu.Id);
+                menu.MenuLocation = menuLocationService.GetMenuLocation(menu.MenuLocationId.Value);
                 menuService.UpdateMenu(menu);
                 menuService.SaveMenu();
                 return RedirectToAction("Index", "Menu");
             }
+            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name", menu.Id);
             return View(menu);
         }
         public IActionResult Delete(long id) {

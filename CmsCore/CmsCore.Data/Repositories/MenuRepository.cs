@@ -10,6 +10,7 @@ namespace CmsCore.Data.Repositories
 {
     public class MenuRepository : RepositoryBase<Menu>, IMenuRepository
     {
+       
         public MenuRepository(ApplicationDbContext dbContext)
                 : base(dbContext) { }
         public IEnumerable<Menu> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords)
@@ -22,7 +23,7 @@ namespace CmsCore.Data.Repositories
             {
                 if (sSearch != null && sSearch != "")
                 {
-                   query = query.Where(p => p.Id.ToString().Contains(sSearch) || p.Name.Contains(sSearch) || p.MenuLocationId.ToString().Contains(sSearch) );
+                   query = query.Where(p => p.Id.ToString().Contains(sSearch) || p.Name.Contains(sSearch) || p.MenuLocation.Name.ToString().Contains(sSearch) );
                 }
             }
 
