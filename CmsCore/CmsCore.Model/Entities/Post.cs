@@ -11,11 +11,13 @@ namespace CmsCore.Model.Entities
         {
             IsPublished = true;
             PostCategories = new HashSet<PostCategory>();
+            ViewCount = 0;
         }
        
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Body { get; set; }
+        public long ViewCount { get; set; }
 
         public string SeoTitle { get; set; }
         public string SeoDescription { get; set; }

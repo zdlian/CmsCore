@@ -8,9 +8,10 @@ using CmsCore.Data;
 namespace CmsCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170213130227_Page-Model-Edit")]
+    partial class PageModelEdit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -205,7 +206,7 @@ namespace CmsCore.Data.Migrations
                         .IsRequired()
                         .HasAnnotation("MaxLength", 200);
 
-                    b.Property<long?>("TemplateId");
+                    b.Property<long>("TemplateId");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -520,7 +521,8 @@ namespace CmsCore.Data.Migrations
 
                     b.HasOne("CmsCore.Model.Entities.Template", "Template")
                         .WithMany("Pages")
-                        .HasForeignKey("TemplateId");
+                        .HasForeignKey("TemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.PostCategory", b =>

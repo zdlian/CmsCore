@@ -41,7 +41,8 @@
     "Microsoft.NETCore.App": "1.1.0",
     "CmsCore.Data": "1.0.0-*",
     "CmsCore.Model": "1.0.0-*",
-    "CmsCore.Service": "1.0.0-*"
+    "CmsCore.Service": "1.0.0-*",
+    "ckeditor-full": "4.6.2"
   },
 
   "tools": {

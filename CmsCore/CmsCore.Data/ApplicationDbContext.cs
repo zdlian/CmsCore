@@ -12,6 +12,7 @@ namespace CmsCore.Data
         public DbSet<MenuLocation> MenuLocations { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<PostCategory> PostCategories { get; set; }
+        public DbSet<Post> Post { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
