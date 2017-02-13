@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="js/generate-slug.js" />
 /// <reference path="js/pages/menu-index.js" />
 /// <reference path="js/pages/menuloc-index.js" />
 /// <reference path="js/pages/pages-index.js" />

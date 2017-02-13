@@ -1,0 +1,138 @@
+﻿@model CmsCore.Admin.Models.PageViewModel
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="~/js/generate-slug.js"> </script>
+
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a asp-controller="Page" asp-action="Index">Pages</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Sayfayı Düzenle</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+    </div>
+</div>
+<br />
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title">
+    <small></small>
+</h1>
+<div class="row">
+    <div class="col-md-6 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered" style="width: 1000px;">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-black-sunglo"></i>
+                    <span class="caption-subject bold uppercase">
+                        SAYFAYI DÜZENLE
+                </span>
+            </div>
+
+        </div>
+
+        <div>
+            @using (Html.BeginForm())
+            {
+                <div class="portlet-body form">
+                    <form role="form">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.HiddenFor(model => model.AddedDate)
+                                    @Html.HiddenFor(model => model.AddedBy)
+                                    @Html.HiddenFor(model => model.ModifiedDate)
+                                    @Html.HiddenFor(model => model.ModifiedBy)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Title)
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @tabindex = "1", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, " ", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Slug)
+                                @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @tabindex = "2", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Slug, " ", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <br>
+                                @Html.LabelFor(model => model.Body)
+                                @Html.TextAreaFor(model => model.Body, new { htmlAttributes = new { @tabindex = "3", @cols = "80", @rows = "10" } })
+                                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                                <script>
+                                            CKEDITOR.replace('Body');
+                                </script>
+                                <div id="content2" style="display: none" data-sample="2">
+                                    <p>The number of<code>change</code>events:<strong><span id="changes"></span></strong></p>
+                                    <h3>Mirrored Content</h3>
+                                    <!-- This <div>
+                                    will be used to display the editor content.-->
+                                    <div id="editorcontent2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="pageparentdiv" class="postbox ">
+                                    <div class="inside">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <select asp-for="ParentPageId"
+                                                        asp-items="(IEnumerable<SelectListItem>)ViewBag.ParentPages" class="form-control">
+                                                    <option value="">Parent Pages</option>
+                                                </select>
+                                                <span class="text-danger" asp-validation-for="ParentPageId"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portlet light bordered">
+                            <div class="portlet-body form">
+                                <fieldset>
+                                    <legend>SEO Özellikleri</legend>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SeoTitle)
+                                        @Html.EditorFor(model => model.SeoTitle, new { htmlAttributes = new { @tabindex = "6", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SeoTitle, " ", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SeoDescription)<br />
+                                        @Html.TextAreaFor(model => model.SeoDescription, new { @tabindex = "4", @class = "form-control spinner", @width = "auto" })
+                                        @Html.ValidationMessageFor(model => model.SeoDescription, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SeoKeywords)<br />
+                                        @Html.TextAreaFor(model => model.SeoKeywords, new { @tabindex = "8", @class = "form-control spinner" })
+                                        @Html.ValidationMessageFor(model => model.SeoKeywords, "", new { @class = "text-danger" })
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" tabindex="6" class="btn blue">
+                                Save
+                            </button>
+                            <button type="button" tabindex="8" class="btn default" asp-controller="Page" asp-action="Index">
+                                Cancel
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+</div>

@@ -1,6 +1,6 @@
-﻿@model CmsCore.Model.Entities.Page
-<script src="/Scripts/ckeditor/ckeditor.js"></script>
-<script src="/Scripts/generate-slug.js"> </script>
+﻿@model CmsCore.Admin.Models.PageViewModel
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="~/js/generate-slug.js"> </script>
 <style>
     textarea {
         max-width: 100%;
@@ -30,7 +30,7 @@
                     <span class="caption-subject bold uppercase ">New Page Add</span>
                 </div>
             </div>
-            
+
             <form asp-controller="Page" asp-action="Create" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-12">
@@ -53,9 +53,9 @@
                         <div class="form-body">
                             <label asp-for="Body"></label>
                             <p>
-                                <textarea asp-for="Body" class="form-control"></textarea>
+                                <textarea asp-for="Body"></textarea>
                                 <span class="text-danger" asp-validation-for="Body"></span>
-                                <script>
+                                <script type="text/javascript">
                                     CKEDITOR.replace('Body');
                                 </script>
                             </p>
@@ -63,40 +63,25 @@
                                 <p>The number of <code>change</code> events:<strong><span id="changes"></span></strong>.</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div id="pageparentdiv" class="postbox">
-                                    <div class="inside">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <select asp-for="ParentPageId"
-                                                        asp-items="(IEnumerable<SelectListItem>)ViewBag.ParentPages" class="form-control">
-                                                    <option value="">Parent Pages</option>
-                                                </select>
-                                                <span class="text-danger" asp-validation-for="ParentPageId"></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <select asp-for="ParentPageId"
+                                            asp-items="(IEnumerable<SelectListItem>)ViewBag.ParentPages" class="form-control">
+                                        <option value="">Parent Pages</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="ParentPageId"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <select asp-for="TemplateId"
+                                            asp-items="(IEnumerable<SelectListItem>)ViewBag.Templates" class="form-control">
+                                        <option value="">Template Pages</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="TemplateId"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div id="pageparentdiv" class="postbox">
-                                    <div class="inside">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <select asp-for="TemplateId"
-                                                        asp-items="(IEnumerable<SelectListItem>)ViewBag.Templates" class="form-control">
-                                                    <option value="">Template Pages</option>
-                                                </select>
-                                                <span class="text-danger" asp-validation-for="TemplateId"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                         <br />
                         <div class="portlet light bordered">
                             <div class="portlet-body form">
@@ -118,6 +103,11 @@
                                         <span class="text-danger" asp-validation-for="SeoKeywords"></span>
                                     </div>
                                 </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="checkbox" value="false" asp-for="IsPublished" /> Is Published
                             </div>
                         </div>
                     </div>
