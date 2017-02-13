@@ -28,6 +28,7 @@ namespace CmsCore.Data
             // Add your customizations after calling base.OnModelCreating(builder);
 
             new MenuBuilder(builder.Entity<Menu>());
+            new MenuLocationBuilder(builder.Entity<MenuLocation>());
             new PageBuilder(builder.Entity<Page>());
             new PostBuilder(builder.Entity<Post>());
             new SettingBuilder(builder.Entity<Setting>());

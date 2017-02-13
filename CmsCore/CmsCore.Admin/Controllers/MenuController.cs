@@ -76,7 +76,7 @@ namespace CmsCore.Admin.Controllers
                              p.Id.ToString(),
                              p.Id.ToString(),
                              p.Name.ToString(),
-                             (p.MenuLocationId.ToString()),
+                             (p.MenuLocation.Name.ToString()),
                              string.Empty
                          };
             return Json(new
