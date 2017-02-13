@@ -32,41 +32,36 @@ namespace CmsCore.Data.Repositories
             {
                 switch (sortColumnIndex)
                 {
-                    case 0:
-                        filteredMenus = filteredMenus.OrderByDescending(p => p.Name);
-                        break;
                     case 1:
-                        filteredMenus = filteredMenus.OrderByDescending(p => p.AddedBy);
+                        filteredMenus = filteredMenus.OrderBy(p => p.Id);
                         break;
                     case 2:
-                        filteredMenus = filteredMenus.OrderByDescending(c => c.MenuLocation.Name);
+                        filteredMenus = filteredMenus.OrderBy(p => p.Name);
                         break;
                     case 3:
-                        filteredMenus = filteredMenus.OrderByDescending(c => c.ModifiedDate);
+                        filteredMenus = filteredMenus.OrderBy(c => c.MenuLocation);
                         break;
                     default:
-                        filteredMenus = filteredMenus.OrderByDescending(c => c.Name);
-                        break;
+                        filteredMenus = filteredMenus.OrderBy(c => c.Id);
+                        break;                                         
                 }
             }
             else
             {
                 switch (sortColumnIndex)
                 {
-                    case 0:
-                        filteredMenus = filteredMenus.OrderByDescending(p => p.Name);
-                        break;
                     case 1:
-                        filteredMenus = filteredMenus.OrderByDescending(p => p.AddedBy);
+                        filteredMenus = filteredMenus.OrderByDescending(p => p.Id);
                         break;
                     case 2:
-                        filteredMenus = filteredMenus.OrderByDescending(c => c.MenuLocation.Name);
+                        filteredMenus = filteredMenus.OrderByDescending(p => p.Name);
                         break;
                     case 3:
-                        filteredMenus = filteredMenus.OrderByDescending(c => c.ModifiedDate);
+                        filteredMenus = filteredMenus.OrderByDescending(c => c.MenuLocation);
                         break;
+
                     default:
-                        filteredMenus = filteredMenus.OrderByDescending(c => c.Name);
+                        filteredMenus = filteredMenus.OrderByDescending(c => c.Id);
                         break;
                 }
             }
