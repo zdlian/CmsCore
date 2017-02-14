@@ -1,20 +1,23 @@
-﻿using System;
+﻿using CmsCore.Model.Entities;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CmsCore.Model.Entities
+namespace CmsCore.Admin.Models
 {
-    public class PostCategory:BaseEntity
+    public class PostCategoryViewModel:BaseEntity
     {
-        public PostCategory()
+        public PostCategoryViewModel()
         {
             PostPostCategories = new HashSet<PostPostCategory>();
             ChildCategories = new HashSet<PostCategory>();
         }
 
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Slug { get; set; }
         public string Description { get; set; }
 

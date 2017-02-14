@@ -1,4 +1,5 @@
 ﻿using CmsCore.Model.Entities;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -11,15 +12,11 @@ namespace CmsCore.Model.EntityBuilders
     {
         public PostCategoryBuilder(EntityTypeBuilder<PostCategory> entityBuilder)
         {
-            entityBuilder.HasKey(pc => new { pc.PostId, pc.CategoryId });
+            entityBuilder.HasKey(e => e.Id);
+            entityBuilder.Property(e => e.Name).IsRequired().HasMaxLength(200);
+            entityBuilder.Property(e => e.Slug).IsRequired().HasMaxLength(200);
+            entityBuilder.HasOne(e => e.ParentCategory).WithMany(p => p.ChildCategories).HasForeignKey(p => p.ParentCategoryId).OnDelete(DeleteBehavior.Restrict);
 
-            entityBuilder.HasOne(bc => bc.Post)
-                .WithMany(b => b.PostCategories)
-                .HasForeignKey(bc => bc.PostId);
-
-            entityBuilder.HasOne(bc => bc.Category)
-                .WithMany(c => c.PostCategories)
-                .HasForeignKey(bc => bc.CategoryId);
         }
     }
 }

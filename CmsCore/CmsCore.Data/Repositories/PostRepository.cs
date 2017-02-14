@@ -91,11 +91,11 @@ namespace CmsCore.Data.Repositories
         {
             var post = DbContext.Post.Include("PostCategories").Where(c => c.Id == entity.Id).Single();
 
-            post.PostCategories.Clear();
+            post.PostPostCategories.Clear();
 
-            foreach (var category in entity.PostCategories)
+            foreach (var category in entity.PostPostCategories)
             {
-                post.PostCategories.Add(category);
+                post.PostPostCategories.Add(category);
             }
 
             post.Body = entity.Body;

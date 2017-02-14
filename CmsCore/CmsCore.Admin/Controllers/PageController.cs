@@ -73,8 +73,10 @@ namespace CmsCore.Admin.Controllers
             pageVM.Slug = page.Slug;
             pageVM.Body = page.Body;
             pageVM.IsPublished = page.IsPublished;
-            pageVM.ModifiedDate = DateTime.Now;
-            pageVM.ModifiedBy = User.Identity.Name;
+            pageVM.ModifiedDate = page.ModifiedDate;
+            pageVM.ModifiedBy = page.ModifiedBy;
+            pageVM.AddedBy = page.AddedBy;
+            pageVM.AddedDate = page.AddedDate;
             pageVM.SeoTitle = page.SeoTitle;
             pageVM.SeoDescription = page.SeoDescription;
             pageVM.SeoKeywords = page.SeoKeywords;
@@ -92,8 +94,12 @@ namespace CmsCore.Admin.Controllers
                 page.Slug = pageVM.Slug;
                 page.Body = pageVM.Body;
                 page.IsPublished = pageVM.IsPublished;
+                page.ParentPageId = pageVM.ParentPageId;
+                page.TemplateId = pageVM.TemplateId;
                 page.ModifiedDate = DateTime.Now;
-                page.ModifiedBy = User.Identity.Name;
+                page.ModifiedBy = User.Identity.Name??"Anonim";
+                page.AddedDate = pageVM.AddedDate;
+                page.AddedBy = pageVM.AddedBy;
                 page.SeoTitle = pageVM.SeoTitle;
                 page.SeoDescription = pageVM.SeoDescription;
                 page.SeoKeywords = pageVM.SeoKeywords;
@@ -108,7 +114,7 @@ namespace CmsCore.Admin.Controllers
         {
             pageService.DeletePage(id);
             pageService.SavePage();
-            return RedirectToAction("Index", "Pages");
+            return RedirectToAction("Index", "Page");
         }
 
         public ActionResult Details(int id)
