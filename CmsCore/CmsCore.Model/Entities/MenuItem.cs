@@ -11,16 +11,11 @@ namespace CmsCore.Model.Entities
         public string Name { get; set; }
         public string Url { get; set; }
         public string Target { get; set; }
-
         public long? ParentMenuItemId { get; set; }
-      
+        [ForeignKey("ParentMenuItemId")]
         public virtual MenuItem ParentMenuItem { get; set; }
-
         public virtual ICollection<MenuItem> ChildMenuItems { get; set; }
-
         public long MenuId { get; set; }
-       
         public virtual Menu Menu { get; set; }
-
     }
 }

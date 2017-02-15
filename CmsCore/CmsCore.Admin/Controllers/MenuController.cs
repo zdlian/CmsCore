@@ -26,8 +26,8 @@ namespace CmsCore.Admin.Controllers
             return View();
         }
         public IActionResult Create() {
-            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name");
             var menu = new Menu();
+            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name",menu.MenuLocationId);
             return View(menu);
 
         }
@@ -55,7 +55,7 @@ namespace CmsCore.Admin.Controllers
                 menuService.SaveMenu();
                 return RedirectToAction("Index", "Menu");
             }
-            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name", menu.Id);
+            ViewBag.MenuLocations = new SelectList(menuLocationService.GetMenuLocations(), "Id", "Name", menu.MenuLocationId);
             return View(menu);
         }
         public IActionResult Delete(long id) {
@@ -63,8 +63,7 @@ namespace CmsCore.Admin.Controllers
             menuService.SaveMenu();
             return RedirectToAction("Index", "Menu");
         }
-        public IActionResult AjaxHandler(jQueryDataTableParamModel param)
-        {
+        public IActionResult AjaxHandler(jQueryDataTableParamModel param){
             string sSearch = "";
             if (param.sSearch != null) sSearch = param.sSearch;
             var sortColumnIndex = Convert.ToInt32(Request.Query["iSortCol_0"]);
@@ -74,11 +73,11 @@ namespace CmsCore.Admin.Controllers
             var displayedPages = menuService.Search(sSearch, sortColumnIndex, sortDirection, param.iDisplayStart, param.iDisplayLength, out iTotalRecords, out iTotalDisplayRecords);
 
             var result = from p in displayedPages
-                         select new[] {
+                         select new[]{
                              p.Id.ToString(),
                              p.Id.ToString(),
                              p.Name.ToString(),
-                             (p.MenuLocation.Name.ToString()),
+                            (p.MenuLocationId.ToString()),
                              string.Empty
                          };
             return Json(new
