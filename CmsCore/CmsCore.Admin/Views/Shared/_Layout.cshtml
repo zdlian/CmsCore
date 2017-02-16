@@ -180,7 +180,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item start active open">
-                                    <a href="index.html" class="nav-link">
+                                    <a asp-controller="Home" asp-action="Index" class="nav-link">
                                         <i class="icon-bar-chart"></i>
                                         <span class="title">Dashboard</span>
                                         <span class="selected"></span>
@@ -195,7 +195,7 @@
                         <li class="nav-item">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-book-open"></i>
-                                <span class="title">Page</span>
+                                <span class="title">Pages</span>
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
@@ -207,6 +207,11 @@
                                 <li class="nav-item">
                                     <a asp-controller="Page" asp-action="Create" class="nav-link">
                                         <span class="title">Add Page</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Template" asp-action="Index" class="nav-link">
+                                        <span class="title">Templates</span>
                                     </a>
                                 </li>
                             </ul>
@@ -292,22 +297,22 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item">
-                                    <a asp-controller="Forms" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Form" asp-action="Index" class="nav-link">
                                         <span class="title">All Forms</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Forms" asp-action="Create" class="nav-link">
+                                    <a asp-controller="Form" asp-action="Create" class="nav-link">
                                         <span class="title">Add Forms</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Forms" asp-action="Index" class="nav-link">
-                                        <span class="title">Forms Fields</span>
+                                    <a asp-controller="FormField" asp-action="Index" class="nav-link">
+                                        <span class="title">Form Fields</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Forms" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Feedback" asp-action="Index" class="nav-link">
                                         <span class="title">Feedbacks</span>
                                     </a>
                                 </li>
@@ -321,12 +326,12 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item">
-                                    <a asp-controller="Medias" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Media" asp-action="Index" class="nav-link">
                                         <span class="title">All Media</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Medias" asp-action="Create" class="nav-link">
+                                    <a asp-controller="Media" asp-action="Create" class="nav-link">
                                         <span class="title">Add Media</span>
                                     </a>
                                 </li>
@@ -340,22 +345,17 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item">
-                                    <a asp-controller="Appearances" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Theme" asp-action="Index" class="nav-link">
                                         <span class="title">Themes</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Appearances" asp-action="Create" class="nav-link">
+                                    <a asp-controller="Theme" asp-action="Customize" class="nav-link">
                                         <span class="title">Customize</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Appearances" asp-action="Index" class="nav-link">
-                                        <span class="title">Customize</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-controller="Appearances" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Theme" asp-action="CustomCSS" class="nav-link">
                                         <span class="title">Custom CSS</span>
                                     </a>
                                 </li>
@@ -365,8 +365,23 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Appearances" asp-action="Index" class="nav-link">
-                                        <span class="title">Widges</span>
+                                    <a asp-controller="Menu" asp-action="MenuLocationIndex" class="nav-link">
+                                        <span class="title">Menu Locations</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="MenuItem" asp-action="Index" class="nav-link">
+                                        <span class="title">Menu Items</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="SideBar" asp-action="Index" class="nav-link">
+                                        <span class="title">SideBars</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Widget" asp-action="Index" class="nav-link">
+                                        <span class="title">Widgets</span>
                                     </a>
                                 </li>
                             </ul>
@@ -379,12 +394,12 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item">
-                                    <a asp-controller="Medias" asp-action="Index" class="nav-link">
+                                    <a asp-controller="SEO" asp-action="MetaTags" class="nav-link">
                                         <span class="SEO">Meta Tags</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="SEO" asp-action="Create" class="nav-link">
+                                    <a asp-controller="Redirect" asp-action="Index" class="nav-link">
                                         <span class="title">Redirects</span>
                                     </a>
                                 </li>
