@@ -16,6 +16,7 @@ namespace CmsCore.Data
         public DbSet<Widget> Widgets { get; set; }
         public DbSet<SideBar> SideBars { get; set; }
         public DbSet<Template> Templates { get; set; }
+        public DbSet<TemplateSideBar> TemplateSideBars { get; set; }
         public DbSet<Post> Post { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -35,10 +36,12 @@ namespace CmsCore.Data
             new MenuBuilder(builder.Entity<Menu>());
             new MenuLocationBuilder(builder.Entity<MenuLocation>());
             new PageBuilder(builder.Entity<Page>());
+            new TemplateBuilder(builder.Entity<Template>());
             new PostBuilder(builder.Entity<Post>());
             new SettingBuilder(builder.Entity<Setting>());
             new PostCategoryBuilder(builder.Entity<PostCategory>());
             new PostPostCategoryBuilder(builder.Entity<PostPostCategory>());
+            new TemplateSideBarBuilder(builder.Entity<TemplateSideBar>());
         }
     }
 }

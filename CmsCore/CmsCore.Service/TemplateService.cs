@@ -10,7 +10,7 @@ namespace CmsCore.Service
 {
     public interface ITemplateService
     {
-
+        IEnumerable<Template> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords);
         IEnumerable<Template> GetTemplates();
         Template GetTemplate(long id);
         void CreateTemplate(Template template);
@@ -31,6 +31,11 @@ namespace CmsCore.Service
         }
 
         #region ITemplateService Members
+        public IEnumerable<Template> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords)
+        {
+            var templates = templateRepository.Search(search, sortColumnIndex, sortDirection, displayStart, displayLength, out totalRecords, out totalDisplayRecords);
+            return templates;
+        }
 
         public IEnumerable<Template> GetTemplates()
         {

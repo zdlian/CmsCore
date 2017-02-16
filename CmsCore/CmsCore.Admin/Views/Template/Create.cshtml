@@ -1,0 +1,64 @@
+﻿@model CmsCore.Admin.Models.TemplateViewModel
+@{
+    ViewData["Title"] = "Create Template";
+}
+<style>
+    textarea {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a asp-controller="Template" asp-action="Index" class="nav-link">Templates</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>New Template</span>
+        </li>
+    </ul>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title" style="border-bottom-width: 1px;margin-bottom: 10px;">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase ">New Template</span>
+                </div>
+            </div>
+
+            <form asp-controller="Template" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input type="text" asp-for="Name" class="form-control" tabindex="1" autofocus="autofocus" />
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ViewName"></label>
+                            <input type="text" asp-for="ViewName" class="form-control" tabindex="2" />
+                            <span class="text-danger" asp-validation-for="ViewName"></span>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" tabindex="3" class="btn blue">Kaydet</button>
+                        <a type="button" tabindex="4" class="btn default" asp-controller="Template" asp-action="Index">İptal</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

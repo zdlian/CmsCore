@@ -9,13 +9,13 @@ namespace CmsCore.Model.Entities
     {
         public Template()
         {
-            SideBars = new HashSet<SideBar>();
+            TemplateSideBars = new HashSet<TemplateSideBar>();
             Pages = new HashSet<Page>();
         }
        
         public string Name { get; set; }
         public string ViewName { get; set; }
-        public virtual ICollection<SideBar> SideBars { get; set; }
+        public virtual ICollection<TemplateSideBar> TemplateSideBars { get; set; }
         public virtual ICollection<Page> Pages { get; set; }
     }
 }

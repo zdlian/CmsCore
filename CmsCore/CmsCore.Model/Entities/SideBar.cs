@@ -10,9 +10,11 @@ namespace CmsCore.Model.Entities
         public SideBar()
         {
             Widgets = new HashSet<Widget>();
+            TemplateSideBars = new HashSet<TemplateSideBar>();
         }
         public string Name { get; set; }
 
         public virtual ICollection<Widget> Widgets { get; set; }
+        public virtual ICollection<TemplateSideBar> TemplateSideBars { get; set; }
     }
 }

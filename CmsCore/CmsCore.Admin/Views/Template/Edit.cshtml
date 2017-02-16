@@ -1,0 +1,86 @@
+﻿@model CmsCore.Admin.Models.TemplateViewModel
+@{
+    ViewData["Title"] = "Edit Template: " + Model.Name;
+}
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="~/js/generate-slug.js"></script>
+
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a asp-controller="Template" asp-action="Index">Templates</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Şablonu Düzenle</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+    </div>
+</div>
+<br />
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title">
+    <small></small>
+</h1>
+<div class="row">
+    <div class="col-md-6 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered" style="width: 1000px;">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-black-sunglo"></i>
+                    <span class="caption-subject bold uppercase">
+                        ŞABLONU DÜZENLE
+                </span>
+            </div>
+
+        </div>
+
+        <div>
+            @using (Html.BeginForm())
+            {
+                <div class="portlet-body form">
+                    <form role="form">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.HiddenFor(model => model.AddedDate)
+                                    @Html.HiddenFor(model => model.AddedBy)
+                                    @Html.HiddenFor(model => model.ModifiedDate)
+                                    @Html.HiddenFor(model => model.ModifiedBy)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name)
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @tabindex = "1", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ViewName)
+                                @Html.EditorFor(model => model.ViewName, new { htmlAttributes = new { @tabindex = "2", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ViewName, "", new { @class = "text-danger" })
+                            </div>
+
+                         
+                        </div>
+                      
+                        <div class="form-actions">
+                            <button type="submit" tabindex="3" class="btn blue">
+                                Save
+                            </button>
+                            <a type="button" tabindex="4" class="btn default" asp-controller="Template" asp-action="Index">
+                                Cancel
+                            </a>
+
+                        </div>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,68 @@
+﻿@model CmsCore.Model.Entities.Template
+@{
+    ViewData["Title"] = Model.Name;
+}
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a asp-action="Index" asp-controller="Template">Templates</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Template Details</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body" data-placement="bottom" data-original-title="Change dashboard date range">
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-top:15px">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase">Şablon Detayları</span>
+                </div>
+            </div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ViewName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ViewName)
+                </dd>
+          
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AddedBy)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddedDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AddedDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ModifiedDate)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="form-actions right">
+            <button type="button" class="btn blue" asp-controller="Template" asp-action="Index">Back To Templates</button>
+        </div>
+    </div>
+</div>

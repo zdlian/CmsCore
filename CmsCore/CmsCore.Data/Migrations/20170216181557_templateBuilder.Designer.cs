@@ -8,9 +8,10 @@ using CmsCore.Data;
 namespace CmsCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170216181557_templateBuilder")]
+    partial class templateBuilder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -321,7 +322,11 @@ namespace CmsCore.Data.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<long?>("TemplateId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TemplateId");
 
                     b.ToTable("SideBars");
                 });
@@ -350,19 +355,6 @@ namespace CmsCore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Templates");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.TemplateSideBar", b =>
-                {
-                    b.Property<long>("TemplateId");
-
-                    b.Property<long>("SideBarId");
-
-                    b.HasKey("TemplateId", "SideBarId");
-
-                    b.HasIndex("SideBarId");
-
-                    b.ToTable("TemplateSideBars");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Widget", b =>
@@ -555,17 +547,11 @@ namespace CmsCore.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CmsCore.Model.Entities.TemplateSideBar", b =>
+            modelBuilder.Entity("CmsCore.Model.Entities.SideBar", b =>
                 {
-                    b.HasOne("CmsCore.Model.Entities.SideBar", "SideBar")
-                        .WithMany("TemplateSideBars")
-                        .HasForeignKey("SideBarId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("CmsCore.Model.Entities.Template", "Template")
-                        .WithMany("TemplateSideBars")
-                        .HasForeignKey("TemplateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("SideBars")
+                        .HasForeignKey("TemplateId");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Widget", b =>
