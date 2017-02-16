@@ -1,4 +1,7 @@
 ﻿@model CmsCore.Admin.Models.PageViewModel
+@{
+    ViewData["Title"] = "Create Page";
+}
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script src="~/js/generate-slug.js"> </script>
 <style>
@@ -42,18 +45,18 @@
 
                         <div class="form-group">
                             <label asp-for="Title"></label>
-                            <input type="text" asp-for="Title" class="form-control" />
+                            <input type="text" asp-for="Title" class="form-control" tabindex="1" autofocus="autofocus" onblur="if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Title').val().toLowerCase(),'-'));}" />
                             <span class="text-danger" asp-validation-for="Title"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Slug"></label>
-                            <input type="text" asp-for="Slug" class="form-control" />
+                            <input type="text" asp-for="Slug" class="form-control" tabindex="2"  onblur="if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Title').val().toLowerCase(),'-'));}" />
                             <span class="text-danger" asp-validation-for="Slug"></span>
                         </div>
                         <div class="form-body">
                             <label asp-for="Body"></label>
                             <p>
-                                <textarea asp-for="Body"></textarea>
+                                <textarea asp-for="Body" tabindex="3"></textarea>
                                 <span class="text-danger" asp-validation-for="Body"></span>
                                 <script type="text/javascript">
                                     CKEDITOR.replace('Body');
@@ -66,16 +69,16 @@
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <select asp-for="ParentPageId"
+                                    <select asp-for="ParentPageId" tabindex="4"
                                             asp-items="(IEnumerable<SelectListItem>)ViewBag.ParentPages" class="form-control">
-                                        <option value="">Parent Pages</option>
+                                        <option value="">Parent Page</option>
                                     </select>
                                     <span class="text-danger" asp-validation-for="ParentPageId"></span>
                                 </div>
                                 <div class="col-md-6">
-                                    <select asp-for="TemplateId"
+                                    <select asp-for="TemplateId" tabindex="5"
                                             asp-items="(IEnumerable<SelectListItem>)ViewBag.Templates" class="form-control">
-                                        <option value="">Template Pages</option>
+                                        <option value="">Template</option>
                                     </select>
                                     <span class="text-danger" asp-validation-for="TemplateId"></span>
                                 </div>
@@ -89,17 +92,17 @@
                                     <legend>SEO Özellikleri</legend>
                                     <div class="form-group">
                                         <label asp-for="SeoTitle"></label>
-                                        <input type="text" asp-for="SeoTitle" class="form-control" />
+                                        <input type="text" asp-for="SeoTitle" class="form-control" tabindex="6" />
                                         <span class="text-danger" asp-validation-for="SeoTitle"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="SeoDescription"></label>
-                                        <textarea asp-for="SeoDescription" class="form-control"></textarea>
+                                        <textarea asp-for="SeoDescription" class="form-control" tabindex="7"></textarea>
                                         <span class="text-danger" asp-validation-for="SeoDescription"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="SeoKeywords"></label>
-                                        <textarea asp-for="SeoKeywords" class="form-control"></textarea>
+                                        <textarea asp-for="SeoKeywords" class="form-control" tabindex="8"></textarea>
                                         <span class="text-danger" asp-validation-for="SeoKeywords"></span>
                                     </div>
                                 </fieldset>
@@ -107,13 +110,13 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <input type="checkbox" value="false" asp-for="IsPublished" /> Is Published
+                                <input type="checkbox" asp-for="IsPublished" tabindex="9" /> Is Published
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" tabindex="9" class="btn blue">Kaydet</button>
-                        <button type="button" tabindex="10" class="btn default" asp-controller="Page" asp-action="Index">İptal</button>
+                        <button type="submit" tabindex="10" class="btn blue">Kaydet</button>
+                        <button type="button" tabindex="11" class="btn default" asp-controller="Page" asp-action="Index">İptal</button>
                     </div>
                 </div>
             </form>

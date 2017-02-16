@@ -15,6 +15,7 @@ using CmsCore.Service;
 using CmsCore.Data.Infrastructure;
 using CmsCore.Data.Repositories;
 using CmsCore.Admin.Models;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace CmsCore.Admin
 {
@@ -44,7 +45,7 @@ namespace CmsCore.Admin
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")).ConfigureWarnings(warnings => warnings.Throw(CoreEventId.IncludeIgnoredWarning)));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

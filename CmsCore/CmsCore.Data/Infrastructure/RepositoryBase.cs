@@ -63,7 +63,7 @@ namespace CmsCore.Data.Infrastructure
         {
             foreach (string nav in navigations)
                 dbSet.Include(nav);
-
+            
             return dbSet.Find(id);
         }
 

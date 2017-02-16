@@ -1,6 +1,7 @@
 ﻿@model CmsCore.Model.Entities.Page
-
-
+@{
+    ViewData["Title"] = Model.Title;
+}
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -37,6 +38,26 @@
                 </dt>
                 <dd>
                     @Html.Raw(Model.Body)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ParentPageId)
+                </dt>
+                <dd>
+                    @if (Model.ParentPage != null)
+                    { <a asp-action="Details" asp-route-id="ParentPageId">@Model.ParentPage.Title</a> }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TemplateId)
+                </dt>
+                <dd>
+                    @if (Model.Template != null)
+                    { <a asp-action="Details" asp-controller="Template" asp-route-id="TemplateId">@Model.Template.Name</a> }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsPublished)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsPublished)
                 </dd>
                 <dt>
                     @Html.DisplayNameFor(model => model.AddedBy)

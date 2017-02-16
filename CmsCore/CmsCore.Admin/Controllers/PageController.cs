@@ -48,6 +48,7 @@ namespace CmsCore.Admin.Controllers
                 page.Body = pageVM.Body;
                 page.IsPublished = pageVM.IsPublished;
                 page.ParentPageId = pageVM.ParentPageId;
+                page.TemplateId = pageVM.TemplateId;
                 page.SeoTitle = pageVM.SeoTitle;
                 page.SeoKeywords = pageVM.SeoKeywords;
                 page.SeoDescription = pageVM.SeoDescription;
@@ -59,20 +60,24 @@ namespace CmsCore.Admin.Controllers
                 pageService.SavePage();
                 return RedirectToAction("Index", "Page");
             }
+            ViewBag.ParentPages = new SelectList(pageService.GetPages(), "Id", "Title", pageVM.ParentPageId);
+            ViewBag.Templates = new SelectList(templateService.GetTemplates(), "Id", "Name", pageVM.TemplateId);
             return View(pageVM);
         }
 
         public IActionResult Edit(long id)
         {
             var page = pageService.GetPage(id);
-            ViewBag.ParentPages = new SelectList(pageService.GetPages(), "Id", "Title");
-            ViewBag.Templates = new SelectList(templateService.GetTemplates(), "Id", "Name");
+            ViewBag.ParentPages = new SelectList(pageService.GetPages(), "Id", "Title", page.ParentPageId);
+            ViewBag.Templates = new SelectList(templateService.GetTemplates(), "Id", "Name", page.TemplateId);
             PageViewModel pageVM = new PageViewModel();
             pageVM.Id = page.Id;
             pageVM.Title = page.Title;
             pageVM.Slug = page.Slug;
             pageVM.Body = page.Body;
             pageVM.IsPublished = page.IsPublished;
+            pageVM.ParentPageId = page.ParentPageId;
+            pageVM.TemplateId = page.TemplateId;
             pageVM.ModifiedDate = page.ModifiedDate;
             pageVM.ModifiedBy = page.ModifiedBy;
             pageVM.AddedBy = page.AddedBy;
@@ -88,7 +93,7 @@ namespace CmsCore.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                Page page = new Page();
+                Page page = pageService.GetPage(pageVM.Id);
                 page.Id = pageVM.Id;
                 page.Title = pageVM.Title;
                 page.Slug = pageVM.Slug;
@@ -98,8 +103,6 @@ namespace CmsCore.Admin.Controllers
                 page.TemplateId = pageVM.TemplateId;
                 page.ModifiedDate = DateTime.Now;
                 page.ModifiedBy = User.Identity.Name??"Anonim";
-                page.AddedDate = pageVM.AddedDate;
-                page.AddedBy = pageVM.AddedBy;
                 page.SeoTitle = pageVM.SeoTitle;
                 page.SeoDescription = pageVM.SeoDescription;
                 page.SeoKeywords = pageVM.SeoKeywords;
@@ -107,6 +110,8 @@ namespace CmsCore.Admin.Controllers
                 pageService.SavePage();
                 return RedirectToAction("Index", "Page");
             }
+            ViewBag.ParentPages = new SelectList(pageService.GetPages(), "Id", "Title", pageVM.ParentPageId);
+            ViewBag.Templates = new SelectList(templateService.GetTemplates(), "Id", "Name", pageVM.TemplateId);
             return View(pageVM);
         }
 

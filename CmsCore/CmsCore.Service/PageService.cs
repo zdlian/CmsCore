@@ -42,7 +42,7 @@ namespace CmsCore.Service
   
         public Page GetPage(long id)
         {
-            var page = pagesRepository.GetById(id);
+            var page = pagesRepository.GetById(id, "ParentPage", "Template");
             return page;
         }
 
