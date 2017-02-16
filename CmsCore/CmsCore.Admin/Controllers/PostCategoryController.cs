@@ -28,11 +28,9 @@ namespace CmsCore.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(PostCategoryViewModel postCategoryVM)
-        {
+        public ActionResult Create(PostCategoryViewModel postCategoryVM){
             ViewBag.Category = new SelectList(postCategoryService.GetPostCategories(), "Id", "Name");
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid){
                 var postCategory = new PostCategory();
                 postCategoryService.CreatePostCategory(postCategory);
                 postCategoryService.SavePostCategory();

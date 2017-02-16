@@ -13,6 +13,9 @@ namespace CmsCore.Data
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<PostPostCategory> PostPostCategories { get; set; }
+        public DbSet<Widget> Widgets { get; set; }
+        public DbSet<SideBar> SideBars { get; set; }
+        public DbSet<Template> Templates { get; set; }
         public DbSet<Post> Post { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
