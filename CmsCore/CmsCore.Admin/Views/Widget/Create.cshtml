@@ -1,0 +1,73 @@
+﻿@model WidgetViewModel
+@{
+    ViewBag.Title = "Yeni Menü";
+}
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" /><br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><a href="@Url.Action("Index", "Widget")" class="nav-link">Bileşenler</a><i class="fa fa-circle"></i></li>
+        <li><span>Yeni Bileşen</span></li>
+    </ul>
+</div><br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <h1 class="page-title">Yeni Bileşen</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="portlet-body form">
+                <form role="form" method="post" asp-action="Create" asp-controller="Widget">
+                    <div class="form-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name)
+                            @Html.TextBoxFor(model => model.Name, new { @tabindex = "1", @class = "form-control spinner", autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Action)
+                            @Html.TextBoxFor(model => model.Action, new { @tabindex = "2", @class = "form-control spinner" })
+                            @Html.ValidationMessageFor(model => model.Action, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Params)
+                            @Html.TextBoxFor(model => model.Params, new { @tabindex = "3", @class = "form-control spinner" })
+                            @Html.ValidationMessageFor(model => model.Params, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description)
+                            @Html.TextBoxFor(model => model.Description, new { @tabindex = "4", @class = "form-control spinner" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsTemplate)
+                            @Html.CheckBoxFor(model => model.IsTemplate, new { @tabindex = "5", @class = "form-control spinner" })
+                            @Html.ValidationMessageFor(model => model.IsTemplate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SideBar)
+                            @Html.DropDownList("Widgets", (IEnumerable<SelectListItem>)ViewBag.Widgets, new { @tabindex = "2", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SideBar, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" tabindex="3" class="btn blue">Ekle</button>
+                        <button type="button" tabindex="4" class="btn default" onclick="window.location='@Url.Action("Index","Menu")';">İptal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
+<!-- BEGIN SAMPLE FORM PORTLET-->
+@section scripts {
+
+}
