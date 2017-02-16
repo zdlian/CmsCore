@@ -26,35 +26,42 @@ namespace CmsCore.Admin.Controllers
             return View();
         }
         public IActionResult Create(){
-            
-            ViewBag.ParentMenuItem = new SelectList(menuItemService.GetMenuItems(), "Id", "Name");
-            
+            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name");
+            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name");
             return View();
         }
         [HttpPost]
         public IActionResult Create(MenuItem menuItem){
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid){
                 menuItemService.CreateMenuItem(menuItem);
                 menuItemService.SaveMenuItem();
                 return RedirectToAction("Index", "MenuItem");
             }
-            ViewBag.ParentMenuItem = new SelectList(menuItemService.GetMenuItems(), "Id", "Name", menuItem.Id);
+            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name", menuItem.Id);
+            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name");
             return View(menuItem);
-
-            
         }
         public IActionResult Edit(long id){
-            return View();
+            var menuItem = menuItemService.GetMenuItem(id);
+            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name",menuItem.Id);
+            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name");
+            return View(menuItem);
         }
         [HttpPost]
         public IActionResult Edit(MenuItem menuItem){
-            
+            if (ModelState.IsValid){
+                menuItemService.UpdateMenuItem(menuItem);
+                menuItemService.SaveMenuItem();
+                return RedirectToAction("Index", "MenuItem");
+            }
+            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name", menuItem.Id);
+            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name");
             return View();
         }
         public IActionResult Delete(long id){
-            
-            return RedirectToAction("Index", "Menu");
+            menuItemService.DeleteMenuItem(id);
+            menuItemService.SaveMenuItem();
+            return RedirectToAction("Index", "MenuItem");
         }
         public IActionResult AjaxHandler(jQueryDataTableParamModel param){
             string sSearch = "";

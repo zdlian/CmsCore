@@ -33,18 +33,23 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Url)
-                            @Html.TextBoxFor(model => model.Url, new { @tabindex = "1", @class = "form-control spinner", autofocus = "autofocus" })
+                            @Html.TextBoxFor(model => model.Url, new { @tabindex = "1", @class = "form-control spinner"})
                             @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Target)
-                            @Html.TextBoxFor(model => model.Target, new { @tabindex = "1", @class = "form-control spinner", autofocus = "autofocus" })
+                            @Html.TextBoxFor(model => model.Target, new { @tabindex = "1", @class = "form-control spinner"})
                             @Html.ValidationMessageFor(model => model.Target, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.ParentMenuItemId)
-                            @Html.DropDownList("ParentMenuItemId", (IEnumerable<SelectListItem>)ViewBag.ParentMenuItem, new { @tabindex = "2", @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            @Html.DropDownList("ParentMenuItemId", (IEnumerable<SelectListItem>)ViewBag.ParentMenuItemId, new { @tabindex = "2", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ParentMenuItemId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MenuId)
+                            @Html.DropDownList("MenuId", (IEnumerable<SelectListItem>)ViewBag.MenuId, new { @tabindex = "2", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MenuId, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-actions">

@@ -28,7 +28,7 @@
                     <div class="form-body">
                         <div class="form-group">
                             @Html.LabelFor(model => model.Name)
-                            @Html.TextBoxFor(model => model.Name, new { @tabindex = "1", @class = "form-control spinner", autofocus = "autofocus" })
+                            @Html.TextBoxFor(model => model.Name, new { @tabindex = "1", @class = "form-control spinner" })
                             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                         </div>
                     </div>
