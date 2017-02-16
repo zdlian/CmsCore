@@ -10,7 +10,6 @@ namespace CmsCore.Model.Entities
     {
         public string Name { get; set; }
         public long? MenuId { get; set; }
-      
         public virtual Menu Menu { get; set; }
 
     }

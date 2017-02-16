@@ -1,0 +1,67 @@
+﻿@model Menu
+
+@{
+    ViewBag.Title = "Menü Düzenle";
+}
+<br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="@Url.Action("Index","Menu")">Menüler</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Düzenle</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+
+    </div>
+</div>
+<br />
+<h1 class="page-title">
+    <small></small>
+</h1>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="row">
+    <div class="col-md-6 ">
+      <div class="portlet light bordered">
+          <div class="portlet-title">
+              <div class="caption font-dark">
+                  <i class="icon-settings font-dark"></i>
+                  <span class="caption-subject bold uppercase">Menü Düzenle</span>
+              </div>
+          </div>
+          <div class="portlet-body form">
+              <form role="form">
+                  <div class="form-body">
+                      <div class="form-group">
+                          @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                          @Html.HiddenFor(model => model.Id)
+                          <div class="form-body">
+                              @Html.LabelFor(model => model.Name)
+                              @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @tabindex = "1", @class = "form-control" } })
+                              @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                          </div>
+                          <div class="form-group">
+                              @Html.LabelFor(model => model.MenuLocationId)
+                              @Html.DropDownList("MenuLocationId", (IEnumerable<SelectListItem>)ViewBag.MenuLocations, new { @tabindex = "2", @class = "form-control" })
+                              @Html.ValidationMessageFor(model => model.MenuLocationId, "", new { @class = "text-danger" })
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-actions">
+                      <button type="submit" tabindex="3" class="btn blue">Kaydet</button>
+                      <button type="button" tabindex="4" class="btn default" onclick="window.location='@Url.Action("Index","Menu")';">İptal</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+}
+@section Scripts{
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+}

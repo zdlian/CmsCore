@@ -10,12 +10,14 @@ namespace CmsCore.Model.Entities
         public Post()
         {
             IsPublished = true;
-            PostCategories = new HashSet<PostCategory>();
+            PostPostCategories = new HashSet<PostPostCategory>();
+            ViewCount = 0;
         }
        
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Body { get; set; }
+        public long ViewCount { get; set; }
 
         public string SeoTitle { get; set; }
         public string SeoDescription { get; set; }
@@ -23,6 +25,6 @@ namespace CmsCore.Model.Entities
 
         public bool IsPublished { get; set; }
 
-        public virtual ICollection<PostCategory> PostCategories { get; set; }
+        public virtual ICollection<PostPostCategory> PostPostCategories { get; set; }
     }
 }

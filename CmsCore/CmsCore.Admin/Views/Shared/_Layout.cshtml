@@ -64,8 +64,6 @@
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" />
     </environment>
-
-
 </head>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
         <div class="page-wrapper">
@@ -234,7 +232,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Post" asp-action="Index" class="nav-link">
+                                    <a asp-controller="PostCategory" asp-action="Index" class="nav-link">
                                         <span class="title">Post Categories</span>
                                     </a>
                                 </li>
@@ -363,6 +361,15 @@
                                     <a asp-controller="Menu" asp-action="Index" class="nav-link">
                                         <span class="title">Menus</span>
                                     </a>
+                                <li class="nav-item">
+                                    <a asp-controller="Menu" asp-action="MenuLocationIndex" class="nav-link">
+                                        <span class="title">Menu Locations</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="MenuItem" asp-action="Index" class="nav-link">
+                                        <span class="title">Menu Items</span>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-controller="Menu" asp-action="MenuLocationIndex" class="nav-link">
@@ -460,18 +467,6 @@
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
-                    <div class="page-bar">
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <a href="index.html">Home</a>
-                                <i class="fa fa-circle"></i>
-                            </li>
-                            <li>
-                                <span>Dashboard</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <br />
                     @RenderBody()
                 </div>
             </div>

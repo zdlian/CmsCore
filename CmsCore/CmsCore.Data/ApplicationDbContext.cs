@@ -12,6 +12,8 @@ namespace CmsCore.Data
         public DbSet<MenuLocation> MenuLocations { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<PostCategory> PostCategories { get; set; }
+        public DbSet<PostPostCategory> PostPostCategories { get; set; }
+        public DbSet<Post> Post { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -28,10 +30,12 @@ namespace CmsCore.Data
             // Add your customizations after calling base.OnModelCreating(builder);
 
             new MenuBuilder(builder.Entity<Menu>());
+            new MenuLocationBuilder(builder.Entity<MenuLocation>());
             new PageBuilder(builder.Entity<Page>());
             new PostBuilder(builder.Entity<Post>());
             new SettingBuilder(builder.Entity<Setting>());
             new PostCategoryBuilder(builder.Entity<PostCategory>());
+            new PostPostCategoryBuilder(builder.Entity<PostPostCategory>());
         }
     }
 }

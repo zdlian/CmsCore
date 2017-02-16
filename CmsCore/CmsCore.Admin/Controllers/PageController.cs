@@ -33,48 +33,94 @@ namespace CmsCore.Admin.Controllers
         {
             ViewBag.ParentPages = new SelectList(pageService.GetPages(), "Id", "Title");
             ViewBag.Templates = new SelectList(templateService.GetTemplates(), "Id", "Name");
-            var page = new Page();
-            return View(page);
+            var pageVM = new PageViewModel();
+            return View(pageVM);
         }
         [HttpPost]
-        public IActionResult Create(Page page)
+        public IActionResult Create(PageViewModel pageVM)
         {
+            
             if (ModelState.IsValid)
             {
+                Page page = new Page();
+                page.Title = pageVM.Title;
+                page.Slug = pageVM.Slug;
+                page.Body = pageVM.Body;
+                page.IsPublished = pageVM.IsPublished;
+                page.ParentPageId = pageVM.ParentPageId;
+                page.SeoTitle = pageVM.SeoTitle;
+                page.SeoKeywords = pageVM.SeoKeywords;
+                page.SeoDescription = pageVM.SeoDescription;
                 page.AddedBy = "Nex";
                 page.AddedDate = DateTime.Now;
                 page.ModifiedBy = "Nex";
                 page.ModifiedDate = DateTime.Now;
                 pageService.CreatePage(page);
                 pageService.SavePage();
-                return RedirectToAction("Index", "Pages");
+                return RedirectToAction("Index", "Page");
             }
-            return View(page);
+            return View(pageVM);
         }
 
         public IActionResult Edit(long id)
         {
             var page = pageService.GetPage(id);
-            return View(page);
+            ViewBag.ParentPages = new SelectList(pageService.GetPages(), "Id", "Title");
+            ViewBag.Templates = new SelectList(templateService.GetTemplates(), "Id", "Name");
+            PageViewModel pageVM = new PageViewModel();
+            pageVM.Id = page.Id;
+            pageVM.Title = page.Title;
+            pageVM.Slug = page.Slug;
+            pageVM.Body = page.Body;
+            pageVM.IsPublished = page.IsPublished;
+            pageVM.ModifiedDate = page.ModifiedDate;
+            pageVM.ModifiedBy = page.ModifiedBy;
+            pageVM.AddedBy = page.AddedBy;
+            pageVM.AddedDate = page.AddedDate;
+            pageVM.SeoTitle = page.SeoTitle;
+            pageVM.SeoDescription = page.SeoDescription;
+            pageVM.SeoKeywords = page.SeoKeywords;
+            return View(pageVM);
         }
 
         [HttpPost]
-        public IActionResult Edit(Page page)
+        public IActionResult Edit(PageViewModel pageVM)
         {
             if (ModelState.IsValid)
             {
+                Page page = new Page();
+                page.Id = pageVM.Id;
+                page.Title = pageVM.Title;
+                page.Slug = pageVM.Slug;
+                page.Body = pageVM.Body;
+                page.IsPublished = pageVM.IsPublished;
+                page.ParentPageId = pageVM.ParentPageId;
+                page.TemplateId = pageVM.TemplateId;
+                page.ModifiedDate = DateTime.Now;
+                page.ModifiedBy = User.Identity.Name??"Anonim";
+                page.AddedDate = pageVM.AddedDate;
+                page.AddedBy = pageVM.AddedBy;
+                page.SeoTitle = pageVM.SeoTitle;
+                page.SeoDescription = pageVM.SeoDescription;
+                page.SeoKeywords = pageVM.SeoKeywords;
                 pageService.UpdatePage(page);
                 pageService.SavePage();
-                return RedirectToAction("Index", "Pages");
+                return RedirectToAction("Index", "Page");
             }
-            return View(page);
+            return View(pageVM);
         }
 
         public IActionResult Delete(long id)
         {
             pageService.DeletePage(id);
             pageService.SavePage();
-            return RedirectToAction("Index", "Pages");
+            return RedirectToAction("Index", "Page");
+        }
+
+        public ActionResult Details(int id)
+        {
+            var page = pageService.GetPage(id);
+            return View(page);
         }
 
         public ActionResult AjaxHandler(jQueryDataTableParamModel param)

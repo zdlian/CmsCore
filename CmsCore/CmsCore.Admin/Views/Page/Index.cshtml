@@ -56,8 +56,8 @@
                             <th>Title</th>
                             <th>Added By</th>
                             <th>View Count</th>
-                            <th>Modift Date</th>
-                            <th>Actions</th>
+                            <th>Modify Date</th>
+                            <th>Eylemler</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -72,7 +72,8 @@
     <script src="@(ViewBag.AssetsUrl)global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
     <script src="@(ViewBag.AssetsUrl)global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
     <script src="/js/pages/pages-index.js"></script>
-    <script src="@(ViewBag.AssetsUrl)/pages/scripts/table-datatables-buttons.min.js" type="text/javascript"></script>
+    <script src="@(ViewBag.AssetsUrl)/pages/scripts/table-datatables-buttons.js" type="text/javascript"></script>
+
     <script>
         $(document).ready(function () {
             initTable1();
