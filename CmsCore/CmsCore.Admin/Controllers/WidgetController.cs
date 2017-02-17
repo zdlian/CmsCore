@@ -31,14 +31,15 @@ namespace CmsCore.Admin.Controllers
         public IActionResult Create()
         {
             WidgetViewModel widgetVM = new WidgetViewModel();
-            ViewBag.Widgets = new SelectList(widgetService.GetWidgets(), "Id", "Name", widgetVM.Id);
-            return View(widgetVM);
+            ViewBag.Sections = new SelectList(sectionService.GetSections(), "Id", "Name", widgetVM.Id);
+            return View();
 
         }
         [HttpPost]
         public IActionResult Create(WidgetViewModel widgetVM){
             if (ModelState.IsValid){
                 Widget widget = new Widget();
+                widget.Name = widgetVM.Name;
                 widget.Action = widgetVM.Action;
                 widget.Params = widgetVM.Params;
                 widget.Description = widgetVM.Description;
@@ -56,20 +57,34 @@ namespace CmsCore.Admin.Controllers
             return View(widgetVM);
         }
         public IActionResult Edit(long id){
-            //   ViewBag.Widgets = new SelectList(widgetService.GetWidgets(), "Id", "Name");
+            
             var widget = widgetService.GetWidget(id);
-            return View(widget);
+            WidgetViewModel widgetVM = new WidgetViewModel();
+            widgetVM.Name = widget.Name;
+            widgetVM.Action = widget.Action;
+            widgetVM.Params = widget.Params;
+            widgetVM.Description = widget.Description;
+            widgetVM.IsTemplate = widget.IsTemplate;
+            widgetVM.SectionId = widget.SectionId;
+            ViewBag.Sections = new SelectList(sectionService.GetSections(), "Id", "Name",widget.SectionId);
+            return View(widgetVM);
         }
         [HttpPost]
-        public IActionResult Edit(Widget widget){
+        public IActionResult Edit(WidgetViewModel widgetVM){
             if (ModelState.IsValid){
-                //   widget.Widget = widgetService.GetWidget(widget.WidgetId.Value);
+                Widget widget = widgetService.GetWidget(widgetVM.Id);
+                widget.Name = widgetVM.Name;
+                widget.Action = widgetVM.Action;
+                widget.Params = widgetVM.Params;
+                widget.Description = widgetVM.Description;
+                widget.IsTemplate = widgetVM.IsTemplate;
+                widget.SectionId = widgetVM.SectionId;
                 widgetService.UpdateWidget(widget);
                 widgetService.SaveWidget();
                 return RedirectToAction("Index", "Widget");
             }
-            // ViewBag.Widgets = new SelectList(widgetService.GetWidgets(), "Id", "Name", widget.WidgetId);
-            return View(widget);
+            ViewBag.Sections = new SelectList(sectionService.GetSections(), "Id", "Name", widgetVM.SectionId);
+            return View(widgetVM);
         }
         public IActionResult Delete(long id){
             widgetService.DeleteWidget(id);
@@ -94,7 +109,8 @@ namespace CmsCore.Admin.Controllers
                              p.Params.ToString(),
                              p.Description.ToString(),
                              p.IsTemplate.ToString(),
-                             p.Section.Id.ToString(),
+                             p.SectionId.ToString(),
+
                              string.Empty
                          };
             return Json(new
