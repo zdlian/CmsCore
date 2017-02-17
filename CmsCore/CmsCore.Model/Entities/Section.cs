@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Model.Entities
 {
-    public class SideBar:BaseEntity
+    public class Section:BaseEntity
     {
-        public SideBar()
+        public Section()
         {
             Widgets = new HashSet<Widget>();
-            TemplateSideBars = new HashSet<TemplateSideBar>();
+            TemplateSections = new HashSet<TemplateSection>();
         }
         public string Name { get; set; }
 
         public virtual ICollection<Widget> Widgets { get; set; }
-        public virtual ICollection<TemplateSideBar> TemplateSideBars { get; set; }
+        public virtual ICollection<TemplateSection> TemplateSections { get; set; }
     }
 }

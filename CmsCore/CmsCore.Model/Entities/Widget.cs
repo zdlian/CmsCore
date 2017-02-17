@@ -13,6 +13,6 @@ namespace CmsCore.Model.Entities
         public string Description { get; set; }
         public bool IsTemplate { get; set; }
         public int? SideBarId { get; set; }
-        public virtual SideBar SideBar { get; set; }
+        public virtual Section SideBar { get; set; }
     }
 }

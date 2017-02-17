@@ -28,18 +28,25 @@ namespace CmsCore.Admin.Controllers
         }
         public IActionResult Create()
         {
-            var widget = new Widget();
-           // ViewBag.Widgets = new SelectList(widgetService.GetWidgets(), "Id", "Name", widget.WidgetId);
-            return View(widget);
+            WidgetViewModel widgetVM = new WidgetViewModel();
+            ViewBag.Widgets = new SelectList(widgetService.GetWidgets(), "Id", "Name", widgetVM.Id);
+            return View(widgetVM);
 
         }
         [HttpPost]
-        public IActionResult Create(WidgetViewModel widgetVM)
-        {
-            if (ModelState.IsValid)
-            {
+        public IActionResult Create(WidgetViewModel widgetVM){
+            if (ModelState.IsValid){
                 Widget widget = new Widget();
-           
+                widget.Action = widgetVM.Action;
+                widget.Params = widgetVM.Params;
+                widget.Description = widgetVM.Description;
+                widget.IsTemplate = widgetVM.IsTemplate;
+                widget.SideBarId = widgetVM.SideBarId;
+                widget.AddedBy = "CEVDET";
+                widget.AddedDate = DateTime.Now;
+                widget.ModifiedBy = "CEVDET";
+                widget.ModifiedDate = DateTime.Now;
+
                 widgetService.CreateWidget(widget);
                 widgetService.SaveWidget();
                 return RedirectToAction("Index", "Widget");
