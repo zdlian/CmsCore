@@ -8,8 +8,8 @@ using CmsCore.Data;
 namespace CmsCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170211153817_DeleteBehavior-Restrict-Edit5")]
-    partial class DeleteBehaviorRestrictEdit5
+    [Migration("20170217112508_databaseFix2")]
+    partial class databaseFix2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,34 +67,6 @@ namespace CmsCore.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("CmsCore.Model.Entities.Category", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<long?>("ParentCategoryId");
-
-                    b.Property<string>("Slug");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentCategoryId");
-
-                    b.ToTable("Category");
-                });
-
             modelBuilder.Entity("CmsCore.Model.Entities.Menu", b =>
                 {
                     b.Property<long>("Id")
@@ -128,7 +100,7 @@ namespace CmsCore.Data.Migrations
 
                     b.Property<DateTime>("AddedDate");
 
-                    b.Property<long>("MenuId");
+                    b.Property<long?>("MenuId");
 
                     b.Property<string>("ModifiedBy");
 
@@ -206,7 +178,7 @@ namespace CmsCore.Data.Migrations
                         .IsRequired()
                         .HasAnnotation("MaxLength", 200);
 
-                    b.Property<long>("TemplateId");
+                    b.Property<long?>("TemplateId");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -257,6 +229,8 @@ namespace CmsCore.Data.Migrations
                         .IsRequired()
                         .HasAnnotation("MaxLength", 200);
 
+                    b.Property<long>("ViewCount");
+
                     b.HasKey("Id");
 
                     b.ToTable("Post");
@@ -264,15 +238,47 @@ namespace CmsCore.Data.Migrations
 
             modelBuilder.Entity("CmsCore.Model.Entities.PostCategory", b =>
                 {
-                    b.Property<long>("PostId");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CategoryId");
+                    b.Property<string>("AddedBy");
 
-                    b.HasKey("PostId", "CategoryId");
+                    b.Property<DateTime>("AddedDate");
 
-                    b.HasIndex("CategoryId");
+                    b.Property<string>("Description");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 200);
+
+                    b.Property<long?>("ParentCategoryId");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 200);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("PostCategories");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.PostPostCategory", b =>
+                {
+                    b.Property<long>("PostId");
+
+                    b.Property<long>("PostCategoryId");
+
+                    b.HasKey("PostId", "PostCategoryId");
+
+                    b.HasIndex("PostCategoryId");
+
+                    b.ToTable("PostPostCategories");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Setting", b =>
@@ -316,13 +322,9 @@ namespace CmsCore.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<long?>("TemplateId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TemplateId");
-
-                    b.ToTable("SideBar");
+                    b.ToTable("SideBars");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Template", b =>
@@ -338,13 +340,30 @@ namespace CmsCore.Data.Migrations
 
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 200);
 
-                    b.Property<string>("ViewName");
+                    b.Property<string>("ViewName")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 200);
 
                     b.HasKey("Id");
 
-                    b.ToTable("Template");
+                    b.ToTable("Templates");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.TemplateSideBar", b =>
+                {
+                    b.Property<long>("TemplateId");
+
+                    b.Property<long>("SideBarId");
+
+                    b.HasKey("TemplateId", "SideBarId");
+
+                    b.HasIndex("SideBarId");
+
+                    b.ToTable("TemplateSideBars");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Widget", b =>
@@ -357,6 +376,8 @@ namespace CmsCore.Data.Migrations
                     b.Property<string>("AddedBy");
 
                     b.Property<DateTime>("AddedDate");
+
+                    b.Property<string>("Description");
 
                     b.Property<bool>("IsTemplate");
 
@@ -376,7 +397,7 @@ namespace CmsCore.Data.Migrations
 
                     b.HasIndex("SideBarId1");
 
-                    b.ToTable("Widget");
+                    b.ToTable("Widgets");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -486,13 +507,6 @@ namespace CmsCore.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CmsCore.Model.Entities.Category", b =>
-                {
-                    b.HasOne("CmsCore.Model.Entities.Category", "ParentCategory")
-                        .WithMany()
-                        .HasForeignKey("ParentCategoryId");
-                });
-
             modelBuilder.Entity("CmsCore.Model.Entities.MenuItem", b =>
                 {
                     b.HasOne("CmsCore.Model.Entities.Menu", "Menu")
@@ -519,28 +533,40 @@ namespace CmsCore.Data.Migrations
 
                     b.HasOne("CmsCore.Model.Entities.Template", "Template")
                         .WithMany("Pages")
-                        .HasForeignKey("TemplateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TemplateId");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.PostCategory", b =>
                 {
-                    b.HasOne("CmsCore.Model.Entities.Category", "Category")
-                        .WithMany("PostCategories")
-                        .HasForeignKey("CategoryId")
+                    b.HasOne("CmsCore.Model.Entities.PostCategory", "ParentCategory")
+                        .WithMany("ChildCategories")
+                        .HasForeignKey("ParentCategoryId");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.PostPostCategory", b =>
+                {
+                    b.HasOne("CmsCore.Model.Entities.PostCategory", "PostCategory")
+                        .WithMany("PostPostCategories")
+                        .HasForeignKey("PostCategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CmsCore.Model.Entities.Post", "Post")
-                        .WithMany("PostCategories")
+                        .WithMany("PostPostCategories")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CmsCore.Model.Entities.SideBar", b =>
+            modelBuilder.Entity("CmsCore.Model.Entities.TemplateSideBar", b =>
                 {
-                    b.HasOne("CmsCore.Model.Entities.Template")
-                        .WithMany("SideBars")
-                        .HasForeignKey("TemplateId");
+                    b.HasOne("CmsCore.Model.Entities.SideBar", "SideBar")
+                        .WithMany("TemplateSideBars")
+                        .HasForeignKey("SideBarId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CmsCore.Model.Entities.Template", "Template")
+                        .WithMany("TemplateSideBars")
+                        .HasForeignKey("TemplateId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Widget", b =>

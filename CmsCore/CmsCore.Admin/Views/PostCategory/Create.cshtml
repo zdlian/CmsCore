@@ -1,13 +1,13 @@
 ﻿@model CmsCore.Admin.Models.PostCategoryViewModel
 @{
-    ViewBag.Title = "Yeni Menü";
+    ViewBag.Title = "Yeni Yazı Kategorisi";
 }
 <link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 <link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" /><br />
 <div class="page-bar">
     <ul class="page-breadcrumb">
-        <li><a href="@Url.Action("Index", "Menu")" class="nav-link">Görünüm</a><i class="fa fa-circle"></i></li>
-        <li><span>Yeni Menü</span></li>
+        <li><a href="@Url.Action("Index", "PostCategory")" class="nav-link">Yazı Kategorileri</a><i class="fa fa-circle"></i></li>
+        <li><span>Yeni Yazı Kategorisi</span></li>
     </ul>
 </div><br />
 <div class="row">
@@ -24,7 +24,7 @@
             </div>
             @Html.AntiForgeryToken()
             <div class="portlet-body form">
-                <form role="form" method="post" asp-action="Create" asp-controller="Menu">
+                <form role="form" method="post" asp-action="Create" asp-controller="PostCategory">
                     <div class="form-body">
                         <div class="form-group">
                             @Html.LabelFor(model => model.Name)
@@ -38,18 +38,18 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Description)
-                            @Html.TextBoxFor(model => model.Description, new { @tabindex = "3", @class = "form-control spinner" })
+                            @Html.TextAreaFor(model => model.Description, new { @tabindex = "3", @class = "form-control spinner" })
                             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Name)
-                            @Html.DropDownList("ParentCategoryId", (IEnumerable<SelectListItem>)ViewBag.ParentCategoryId, new { @tabindex = "4", @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            @Html.LabelFor(model => model.ParentCategoryId)
+                            @Html.DropDownListFor(model => model.ParentCategoryId, (IEnumerable<SelectListItem>)ViewBag.PostCategories, "(Yok)", new { @tabindex = "4", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ParentCategoryId, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-actions">
                         <button type="submit" tabindex="3" class="btn blue">Ekle</button>
-                        <button type="button" tabindex="4" class="btn default" onclick="window.location='@Url.Action("Index","Menu")';">İptal</button>
+                        <button type="button" tabindex="4" class="btn default" onclick="window.location='@Url.Action("Index","PostCategory")';">İptal</button>
                     </div>
                 </form>
             </div>

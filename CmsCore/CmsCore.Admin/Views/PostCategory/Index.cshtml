@@ -1,16 +1,17 @@
-﻿@model CmsCore.Admin.Models.PostCategoryViewModel
-
+﻿@{ 
+    ViewData["Title"] = "Tüm Yazı Kategileri";
+}
 <link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 <link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
 <br />
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="@Url.Action("Index", "Category")" class="nav-link">Kategoriler</a>
+            <a href="@Url.Action("Index", "Category")" class="nav-link">Yazı Kategorileri</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>Tüm Kategoriler</span>
+            <span>Tüm Yazı Kategorileri</span>
         </li>
     </ul>
 </div>
@@ -21,7 +22,7 @@
         <div class="portlet light bordered">
             <div class="portlet-title">
                 <h1 class="page-title">
-                    Tüm Kategoriler
+                    Tüm Yazı Kategorileri
                 </h1>
             </div>
             <div class="portlet-body">
@@ -29,8 +30,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="btn-group">
-                                <a href="/PostCategory/Create" id="sample_editable_1_new" class="btn sbold green">
-                                    Yeni Kategori Ekle
+                                <a asp-action="Create" asp-controller="PostCategory" id="sample_editable_1_new" class="btn sbold green">
+                                    Yeni Yazı Kategorisi Ekle
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>

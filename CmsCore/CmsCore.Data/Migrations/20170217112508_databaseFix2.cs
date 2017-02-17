@@ -5,38 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace CmsCore.Data.Migrations
 {
-    public partial class DeleteBehaviorRestrictEdit5 : Migration
+    public partial class databaseFix2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-       
-
-            migrationBuilder.CreateTable(
-                name: "Category",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AddedBy = table.Column<string>(nullable: true),
-                    AddedDate = table.Column<DateTime>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    ModifiedBy = table.Column<string>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    ParentCategoryId = table.Column<long>(nullable: true),
-                    Slug = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Category", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Category_Category_ParentCategoryId",
-                        column: x => x.ParentCategoryId,
-                        principalTable: "Category",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Menus",
                 columns: table => new
@@ -71,11 +43,38 @@ namespace CmsCore.Data.Migrations
                     SeoKeywords = table.Column<string>(nullable: true),
                     SeoTitle = table.Column<string>(maxLength: 200, nullable: true),
                     Slug = table.Column<string>(maxLength: 200, nullable: false),
-                    Title = table.Column<string>(maxLength: 200, nullable: false)
+                    Title = table.Column<string>(maxLength: 200, nullable: false),
+                    ViewCount = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Post", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PostCategories",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AddedBy = table.Column<string>(nullable: true),
+                    AddedDate = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    ParentCategoryId = table.Column<long>(nullable: true),
+                    Slug = table.Column<string>(maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PostCategories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PostCategories_PostCategories_ParentCategoryId",
+                        column: x => x.ParentCategoryId,
+                        principalTable: "PostCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,7 +96,7 @@ namespace CmsCore.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Template",
+                name: "SideBars",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -106,15 +105,32 @@ namespace CmsCore.Data.Migrations
                     AddedDate = table.Column<DateTime>(nullable: false),
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    ViewName = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Template", x => x.Id);
+                    table.PrimaryKey("PK_SideBars", x => x.Id);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Templates",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AddedBy = table.Column<string>(nullable: true),
+                    AddedDate = table.Column<DateTime>(nullable: false),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    ViewName = table.Column<string>(maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Templates", x => x.Id);
+                });
 
+         
             migrationBuilder.CreateTable(
                 name: "MenuItems",
                 columns: table => new
@@ -123,7 +139,7 @@ namespace CmsCore.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AddedBy = table.Column<string>(nullable: true),
                     AddedDate = table.Column<DateTime>(nullable: false),
-                    MenuId = table.Column<long>(nullable: false),
+                    MenuId = table.Column<long>(nullable: true),
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(nullable: true),
@@ -173,27 +189,56 @@ namespace CmsCore.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PostCategories",
+                name: "PostPostCategories",
                 columns: table => new
                 {
                     PostId = table.Column<long>(nullable: false),
-                    CategoryId = table.Column<long>(nullable: false)
+                    PostCategoryId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PostCategories", x => new { x.PostId, x.CategoryId });
+                    table.PrimaryKey("PK_PostPostCategories", x => new { x.PostId, x.PostCategoryId });
                     table.ForeignKey(
-                        name: "FK_PostCategories_Category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
+                        name: "FK_PostPostCategories_PostCategories_PostCategoryId",
+                        column: x => x.PostCategoryId,
+                        principalTable: "PostCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PostCategories_Post_PostId",
+                        name: "FK_PostPostCategories_Post_PostId",
                         column: x => x.PostId,
                         principalTable: "Post",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Widgets",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Action = table.Column<string>(nullable: true),
+                    AddedBy = table.Column<string>(nullable: true),
+                    AddedDate = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    IsTemplate = table.Column<bool>(nullable: false),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Params = table.Column<string>(nullable: true),
+                    SideBarId = table.Column<int>(nullable: true),
+                    SideBarId1 = table.Column<long>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Widgets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Widgets_SideBars_SideBarId1",
+                        column: x => x.SideBarId1,
+                        principalTable: "SideBars",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -213,7 +258,7 @@ namespace CmsCore.Data.Migrations
                     SeoKeywords = table.Column<string>(nullable: true),
                     SeoTitle = table.Column<string>(maxLength: 200, nullable: true),
                     Slug = table.Column<string>(maxLength: 200, nullable: false),
-                    TemplateId = table.Column<long>(nullable: false),
+                    TemplateId = table.Column<long>(nullable: true),
                     Title = table.Column<string>(maxLength: 200, nullable: false),
                     ViewCount = table.Column<long>(nullable: false)
                 },
@@ -227,71 +272,38 @@ namespace CmsCore.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Pages_Template_TemplateId",
+                        name: "FK_Pages_Templates_TemplateId",
                         column: x => x.TemplateId,
-                        principalTable: "Template",
+                        principalTable: "Templates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TemplateSideBars",
+                columns: table => new
+                {
+                    TemplateId = table.Column<long>(nullable: false),
+                    SideBarId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TemplateSideBars", x => new { x.TemplateId, x.SideBarId });
+                    table.ForeignKey(
+                        name: "FK_TemplateSideBars_SideBars_SideBarId",
+                        column: x => x.SideBarId,
+                        principalTable: "SideBars",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TemplateSideBars_Templates_TemplateId",
+                        column: x => x.TemplateId,
+                        principalTable: "Templates",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "SideBar",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AddedBy = table.Column<string>(nullable: true),
-                    AddedDate = table.Column<DateTime>(nullable: false),
-                    ModifiedBy = table.Column<string>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    TemplateId = table.Column<long>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SideBar", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SideBar_Template_TemplateId",
-                        column: x => x.TemplateId,
-                        principalTable: "Template",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Widget",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Action = table.Column<string>(nullable: true),
-                    AddedBy = table.Column<string>(nullable: true),
-                    AddedDate = table.Column<DateTime>(nullable: false),
-                    IsTemplate = table.Column<bool>(nullable: false),
-                    ModifiedBy = table.Column<string>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Params = table.Column<string>(nullable: true),
-                    SideBarId = table.Column<int>(nullable: true),
-                    SideBarId1 = table.Column<long>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Widget", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Widget_SideBar_SideBarId1",
-                        column: x => x.SideBarId1,
-                        principalTable: "SideBar",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-         
-            migrationBuilder.CreateIndex(
-                name: "IX_Category_ParentCategoryId",
-                table: "Category",
-                column: "ParentCategoryId");
-
+            
             migrationBuilder.CreateIndex(
                 name: "IX_MenuItems_MenuId",
                 table: "MenuItems",
@@ -319,21 +331,26 @@ namespace CmsCore.Data.Migrations
                 column: "TemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PostCategories_CategoryId",
+                name: "IX_PostCategories_ParentCategoryId",
                 table: "PostCategories",
-                column: "CategoryId");
+                column: "ParentCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SideBar_TemplateId",
-                table: "SideBar",
-                column: "TemplateId");
+                name: "IX_PostPostCategories_PostCategoryId",
+                table: "PostPostCategories",
+                column: "PostCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Widget_SideBarId1",
-                table: "Widget",
+                name: "IX_TemplateSideBars_SideBarId",
+                table: "TemplateSideBars",
+                column: "SideBarId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Widgets_SideBarId1",
+                table: "Widgets",
                 column: "SideBarId1");
 
-
+            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -348,13 +365,16 @@ namespace CmsCore.Data.Migrations
                 name: "Pages");
 
             migrationBuilder.DropTable(
-                name: "PostCategories");
+                name: "PostPostCategories");
 
             migrationBuilder.DropTable(
                 name: "Setting");
 
             migrationBuilder.DropTable(
-                name: "Widget");
+                name: "TemplateSideBars");
+
+            migrationBuilder.DropTable(
+                name: "Widgets");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -375,22 +395,22 @@ namespace CmsCore.Data.Migrations
                 name: "Menus");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "PostCategories");
 
             migrationBuilder.DropTable(
                 name: "Post");
 
             migrationBuilder.DropTable(
-                name: "SideBar");
+                name: "Templates");
+
+            migrationBuilder.DropTable(
+                name: "SideBars");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Template");
         }
     }
 }
