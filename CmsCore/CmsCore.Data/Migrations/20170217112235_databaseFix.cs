@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CmsCore.Data.Migrations
 {
-    public partial class PageViewModelAdded : Migration
+    public partial class databaseFix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -13,11 +13,11 @@ namespace CmsCore.Service
         IEnumerable<PostCategory> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords);
         IEnumerable<PostCategory> GetPostCategories();
         IEnumerable<PostCategory> GetParentCategories();
-        PostCategory GetPostCategory(int id);
+        PostCategory GetPostCategory(long id);
         PostCategory GetPostCategoryBySlug(string slug);
         void CreatePostCategory(PostCategory postCategory);
         void UpdatePostCategory(PostCategory postCategory);
-        void DeletePostCategory(PostCategory postCategory);
+        void DeletePostCategory(long id);
         void SavePostCategory();
     }
 
@@ -42,7 +42,7 @@ namespace CmsCore.Service
             var postCategories = postCategoryRepository.GetAll();
             return postCategories;
         }
-        public PostCategory GetPostCategory(int id)
+        public PostCategory GetPostCategory(long id)
         {
             var postCategory = postCategoryRepository.GetById(id);
             return postCategory;
@@ -55,9 +55,9 @@ namespace CmsCore.Service
         {
             postCategoryRepository.Update(postCategory);
         }
-        public void DeletePostCategory(PostCategory postCategory)
+        public void DeletePostCategory(long id)
         {
-            postCategoryRepository.Delete(postCategory);
+            postCategoryRepository.Delete(pc => pc.Id == id);
         }
         public void SavePostCategory()
         {

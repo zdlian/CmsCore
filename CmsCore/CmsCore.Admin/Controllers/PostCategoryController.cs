@@ -24,42 +24,42 @@ namespace CmsCore.Admin.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Category = new SelectList(postCategoryService.GetPostCategories(), "Id", "Name");
-            return View();
+            var postCategoryVM = new PostCategoryViewModel();
+            ViewBag.PostCategories = new SelectList(postCategoryService.GetPostCategories(), "Id", "Name");
+            return View(postCategoryVM);
         }
         [HttpPost]
         public ActionResult Create(PostCategoryViewModel postCategoryVM){
-            ViewBag.Category = new SelectList(postCategoryService.GetPostCategories(), "Id", "Name");
+            
             if (ModelState.IsValid){
                 var postCategory = new PostCategory();
+                postCategory.Name = postCategoryVM.Name;
+                postCategory.Slug = postCategoryVM.Slug;
+                postCategory.Description = postCategoryVM.Description;
+                postCategory.ParentCategoryId = postCategoryVM.ParentCategoryId;
                 postCategoryService.CreatePostCategory(postCategory);
                 postCategoryService.SavePostCategory();
                 return RedirectToAction("Index");
             }
+            ViewBag.PostCategories = new SelectList(postCategoryService.GetPostCategories(), "Id", "Name", postCategoryVM.ParentCategoryId);
             return View(postCategoryVM);
         }
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(long id)
         {
-            if (id.HasValue)
+            var postCategory = postCategoryService.GetPostCategory(id);
+            if (postCategory != null)
             {
-                var postCategory = postCategoryService.GetPostCategory(id.Value);
-                if (postCategory != null)
-                {
-                    //var categoryViewModel = Mapper.Map<Category, CategoryViewModel>(category);
-
-                    PostCategoryViewModel pvm = new PostCategoryViewModel();
-                    pvm.Id = postCategory.Id;
-                    pvm.Name = postCategory.Name;
-                    pvm.Slug = postCategory.Slug;
-                    pvm.Description = postCategory.Description;
-                    pvm.ParentCategoryId = postCategory.ParentCategoryId;
-                    pvm.AddedBy = postCategory.AddedBy;
-                    pvm.AddedDate = postCategory.AddedDate;
-                    pvm.ModifiedBy = postCategory.ModifiedBy;
-                    pvm.ModifiedDate = postCategory.ModifiedDate;
-                    return View(pvm);
-                }
+                    
+                PostCategoryViewModel pvm = new PostCategoryViewModel();
+                pvm.Id = postCategory.Id;
+                pvm.Name = postCategory.Name;
+                pvm.Slug = postCategory.Slug;
+                pvm.Description = postCategory.Description;
+                pvm.ParentCategoryId = postCategory.ParentCategoryId;
+                ViewBag.PostCategories = new SelectList(postCategoryService.GetPostCategories(), "Id", "Name", postCategory.ParentCategoryId);
+                return View(pvm);
             }
+         
             return RedirectToAction("Index");
         }
         [HttpPost]
@@ -68,36 +68,23 @@ namespace CmsCore.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                PostCategory pc = new PostCategory();
-                pc.Id = pvm.Id;
+                PostCategory pc = postCategoryService.GetPostCategory(pvm.Id);
                 pc.Name = pvm.Name;
                 pc.Slug = pvm.Slug;
                 pc.Description = pvm.Description;
                 pc.ParentCategoryId = pvm.ParentCategoryId;
-                pc.AddedBy = pvm.AddedBy;
-                pc.AddedDate = pvm.AddedDate;
-                pc.ModifiedBy = pvm.ModifiedBy;
-                pc.ModifiedDate = pvm.ModifiedDate;
                 postCategoryService.UpdatePostCategory(pc);
                 postCategoryService.SavePostCategory();
                 return RedirectToAction("Index");
             }
-            //ViewBag.ParentCategories = new SelectList(postCategoryService.GetCategories(), "CategoryId", "CategoryName", categoryForm.ParentCategoryId);
+            ViewBag.PostCategories = new SelectList(postCategoryService.GetPostCategories(), "Id", "Name", pvm.ParentCategoryId);
             return View(pvm);
         }
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(long id)
         {
-            if (id.HasValue)
-            {
-                var category = postCategoryService.GetPostCategory(id.Value);
-                if (category != null)
-                {
-                    postCategoryService.DeletePostCategory(category);
-                    postCategoryService.SavePostCategory();
-                    return RedirectToAction("Index");
-                }
-            }
-            return RedirectToAction("Index");
+            postCategoryService.DeletePostCategory(id);
+            postCategoryService.SavePostCategory();
+            return RedirectToAction("Index");      
         }
 
         public ActionResult AjaxHandler(jQueryDataTableParamModel param)
@@ -109,7 +96,7 @@ namespace CmsCore.Admin.Controllers
             int iTotalRecords;
             int iTotalDisplayRecords;
             var displayedCategories = postCategoryService.Search(sSearch, sortColumnIndex, sortDirection, param.iDisplayStart, param.iDisplayLength, out iTotalRecords, out iTotalDisplayRecords);
-            var result = from c in displayedCategories select new[] { c.Id.ToString(), c.Id.ToString(), c.Name, c.Slug, c.Description.ToString(), string.Empty }; // Post Count alanı vardı Description'a çevirdim
+            var result = from c in displayedCategories select new[] { c.Id.ToString(), c.Id.ToString(), c.Name, c.Slug, c.PostPostCategories.Count().ToString(), string.Empty }; // Post Count alanı vardı Description'a çevirdim
             return Json(new
             {
                 sEcho = param.sEcho,
