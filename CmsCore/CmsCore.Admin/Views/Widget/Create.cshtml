@@ -52,9 +52,9 @@
                             @Html.ValidationMessageFor(model => model.IsTemplate, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.SideBar)
+                            @Html.LabelFor(model => model.Section)
                             @Html.DropDownList("Widgets", (IEnumerable<SelectListItem>)ViewBag.Widgets, new { @tabindex = "2", @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.SideBar, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Section, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-actions">

@@ -13,7 +13,7 @@ namespace CmsCore.Admin.Models
         public string Params { get; set; }
         public string Description { get; set; }
         public bool IsTemplate { get; set; }
-        public int? SideBarId { get; set; }
-        public virtual Section SideBar { get; set; }
+        public int? SectionId { get; set; }
+        public virtual Section Section { get; set; }
     }
 }

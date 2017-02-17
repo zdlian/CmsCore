@@ -18,7 +18,7 @@ namespace CmsCore.Data.Repositories
             search = search.Trim();
             var searchWords = search.Split(' ');
 
-            var query = this.DbContext.Widgets.Include(m=>m.SideBar).AsQueryable();
+            var query = this.DbContext.Widgets.Include(m=>m.Section).AsQueryable();
             foreach (string sSearch in searchWords)
             {
                 if (sSearch != null && sSearch != "")
@@ -52,7 +52,7 @@ namespace CmsCore.Data.Repositories
                         filteredWidgets = filteredWidgets.OrderBy(p => p.IsTemplate);
                         break;
                     case 7:
-                        filteredWidgets = filteredWidgets.OrderBy(p => p.SideBar.Name);
+                        filteredWidgets = filteredWidgets.OrderBy(p => p.Section.Name);
                         break;
                     default:
                         filteredWidgets = filteredWidgets.OrderBy(c => c.Id);
@@ -82,7 +82,7 @@ namespace CmsCore.Data.Repositories
                         filteredWidgets = filteredWidgets.OrderByDescending(p => p.IsTemplate);
                         break;                                   
                     case 7:                                        
-                        filteredWidgets = filteredWidgets.OrderByDescending(p => p.SideBar.Name);
+                        filteredWidgets = filteredWidgets.OrderByDescending(p => p.Section.Name);
                         break;                                  
                     default:                                       
                         filteredWidgets = filteredWidgets.OrderByDescending(c => c.Id);

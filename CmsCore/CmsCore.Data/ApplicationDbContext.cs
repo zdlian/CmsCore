@@ -14,7 +14,7 @@ namespace CmsCore.Data
         public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<PostPostCategory> PostPostCategories { get; set; }
         public DbSet<Widget> Widgets { get; set; }
-        public DbSet<Section> SideBars { get; set; }
+        public DbSet<Section> Sections { get; set; }
         public DbSet<Template> Templates { get; set; }
         public DbSet<TemplateSection> TemplatSections { get; set; }
         public DbSet<Post> Post { get; set; }
