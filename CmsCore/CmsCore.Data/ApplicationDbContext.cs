@@ -14,9 +14,9 @@ namespace CmsCore.Data
         public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<PostPostCategory> PostPostCategories { get; set; }
         public DbSet<Widget> Widgets { get; set; }
-        public DbSet<SideBar> SideBars { get; set; }
+        public DbSet<Section> SideBars { get; set; }
         public DbSet<Template> Templates { get; set; }
-        public DbSet<TemplateSideBar> TemplateSideBars { get; set; }
+        public DbSet<TemplateSection> TemplatSections { get; set; }
         public DbSet<Post> Post { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -41,7 +41,7 @@ namespace CmsCore.Data
             new SettingBuilder(builder.Entity<Setting>());
             new PostCategoryBuilder(builder.Entity<PostCategory>());
             new PostPostCategoryBuilder(builder.Entity<PostPostCategory>());
-            new TemplateSideBarBuilder(builder.Entity<TemplateSideBar>());
+            new TemplateSectionBuilder(builder.Entity<TemplateSection>());
         }
     }
 }

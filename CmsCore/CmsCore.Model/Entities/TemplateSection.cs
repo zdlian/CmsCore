@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Model.Entities
 {
-    public class TemplateSideBar
+    public class TemplateSection
     {
         public long TemplateId { get; set; }
         public virtual Template Template { get; set; }
 
-        public long SideBarId { get; set; }
-        public virtual SideBar SideBar { get; set; }
+        public long SectionId { get; set; }
+        public virtual Section Section { get; set; }
     }
 }
