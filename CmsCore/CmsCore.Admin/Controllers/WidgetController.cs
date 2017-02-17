@@ -15,10 +15,12 @@ namespace CmsCore.Admin.Controllers
     public class WidgetController : BaseController
     {
         private readonly IWidgetService widgetService;
+        private readonly ISectionService sectionService;
 
-        public WidgetController(IWidgetService widgetService)
+        public WidgetController(IWidgetService widgetService, ISectionService sectionService)
         {
             this.widgetService = widgetService;
+            this.sectionService = sectionService;
 
         }
         // GET: /<controller>/
@@ -34,10 +36,8 @@ namespace CmsCore.Admin.Controllers
 
         }
         [HttpPost]
-        public IActionResult Create(WidgetViewModel widgetVM)
-        {
-            if (ModelState.IsValid)
-            {
+        public IActionResult Create(WidgetViewModel widgetVM){
+            if (ModelState.IsValid){
                 Widget widget = new Widget();
                 widget.Action = widgetVM.Action;
                 widget.Params = widgetVM.Params;
@@ -48,25 +48,21 @@ namespace CmsCore.Admin.Controllers
                 widget.AddedDate = DateTime.Now;
                 widget.ModifiedBy = "CEVDET";
                 widget.ModifiedDate = DateTime.Now;
-
                 widgetService.CreateWidget(widget);
                 widgetService.SaveWidget();
                 return RedirectToAction("Index", "Widget");
             }
-            ViewBag.Widgets = new SelectList(widgetService.GetWidgets(), "Id", "Name", widgetVM.Id);
+            ViewBag.Sections = new SelectList(sectionService.GetSections(), "Id", "Name", widgetVM.Id);
             return View(widgetVM);
         }
-        public IActionResult Edit(long id)
-        {
+        public IActionResult Edit(long id){
             //   ViewBag.Widgets = new SelectList(widgetService.GetWidgets(), "Id", "Name");
             var widget = widgetService.GetWidget(id);
             return View(widget);
         }
         [HttpPost]
-        public IActionResult Edit(Widget widget)
-        {
-            if (ModelState.IsValid)
-            {
+        public IActionResult Edit(Widget widget){
+            if (ModelState.IsValid){
                 //   widget.Widget = widgetService.GetWidget(widget.WidgetId.Value);
                 widgetService.UpdateWidget(widget);
                 widgetService.SaveWidget();
@@ -75,14 +71,12 @@ namespace CmsCore.Admin.Controllers
             // ViewBag.Widgets = new SelectList(widgetService.GetWidgets(), "Id", "Name", widget.WidgetId);
             return View(widget);
         }
-        public IActionResult Delete(long id)
-        {
+        public IActionResult Delete(long id){
             widgetService.DeleteWidget(id);
             widgetService.SaveWidget();
             return RedirectToAction("Index", "Widget");
         }
-        public IActionResult AjaxHandler(jQueryDataTableParamModel param)
-        {
+        public IActionResult AjaxHandler(jQueryDataTableParamModel param){
             string sSearch = "";
             if (param.sSearch != null) sSearch = param.sSearch;
             var sortColumnIndex = Convert.ToInt32(Request.Query["iSortCol_0"]);

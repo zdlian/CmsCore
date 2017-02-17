@@ -1,0 +1,49 @@
+﻿@model SectionViewModel
+@{
+    ViewBag.Title = "Yeni Bölüm";
+}
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" /><br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><a href="@Url.Action("Index", "Section")" class="nav-link">Bölümler</a><i class="fa fa-circle"></i></li>
+        <li><span>Yeni Bölüm</span></li>
+    </ul>
+</div><br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <h1 class="page-title">Yeni Bölüm</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="portlet-body form">
+                <form role="form" method="post" asp-action="Create" asp-controller="Section">
+                    <div class="form-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name)
+                            @Html.TextBoxFor(model => model.Name, new { @tabindex = "1", @class = "form-control spinner", autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" tabindex="3" class="btn blue">Ekle</button>
+                        <button type="button" tabindex="4" class="btn default" onclick="window.location='@Url.Action("Index","MenuItem")';">İptal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
+<!-- BEGIN SAMPLE FORM PORTLET-->
+@section scripts {
+
+}

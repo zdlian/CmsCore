@@ -74,6 +74,7 @@ namespace CmsCore.Admin
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<IMenuItemRepository, MenuItemRepository>();
             services.AddTransient<IWidgetRepository, WidgetRepository>();
+            services.AddTransient<ISectionRepository, SectionRepository>();
 
             // services
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -86,6 +87,7 @@ namespace CmsCore.Admin
             services.AddTransient<IPostCategoryService, PostCategoryService>();
             services.AddTransient<IMenuItemService, MenuItemService>();
             services.AddTransient<IWidgetService, WidgetService>();
+            services.AddTransient<ISectionService, SectionService>();
 
         }
 
