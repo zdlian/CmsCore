@@ -18,6 +18,7 @@ namespace CmsCore.Data
         public DbSet<Template> Templates { get; set; }
         public DbSet<TemplateSection> TemplatSections { get; set; }
         public DbSet<Post> Post { get; set; }
+        public DbSet<Setting> Settings { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -42,6 +43,7 @@ namespace CmsCore.Data
             new PostCategoryBuilder(builder.Entity<PostCategory>());
             new PostPostCategoryBuilder(builder.Entity<PostPostCategory>());
             new TemplateSectionBuilder(builder.Entity<TemplateSection>());
+            
         }
     }
 }
