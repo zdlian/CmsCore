@@ -5,6 +5,7 @@
 /// <reference path="js/pages/menuLoc-index.js" />
 /// <reference path="js/pages/pages-index.js" />
 /// <reference path="js/pages/postcategory-index.js" />
+/// <reference path="js/pages/redirect-index.js" />
 /// <reference path="js/pages/section-index.js" />
 /// <reference path="js/pages/templates-index.js" />
 /// <reference path="js/pages/widget-index.js" />
