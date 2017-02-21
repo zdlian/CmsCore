@@ -16,7 +16,7 @@ namespace CmsCore.Data
         public DbSet<Widget> Widgets { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Template> Templates { get; set; }
-        public DbSet<TemplateSection> TemplatSections { get; set; }
+        public DbSet<TemplateSection> TemplateSections { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Redirect> Redirects { get; set; }
