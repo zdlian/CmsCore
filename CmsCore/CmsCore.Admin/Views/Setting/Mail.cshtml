@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CmsCore.Model.Entities.Setting>
+
+@{
+    ViewBag.Title = "E-Posta Ayarları";
+}
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="@Url.Action("Mail", "Setting")" class="nav-link">Ayarlar</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li><span>E-Posta Ayarları</span></li>
+    </ul>
+</div>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="portlet light bordered">
+                <div class="portlet-title"><h1 class="page-title">E-Posta Ayarları</h1></div>
+                <div class="portlet-body form">
+                    <form role="form">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <div class="theme-option">
+                                    <span>Kullanıcı Adı</span><br />
+                                    <input type="text" name="SmtpUserName" value="@Model.FirstOrDefault(m => m.Name == "SmtpUserName").Value">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="theme-option">
+                                    <span>Şifre</span><br />
+                                    <input type="text" name="SmtpPassword" value="@Model.FirstOrDefault(m => m.Name == "SmtpPassword").Value">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="theme-option">
+                                    <span>Host</span><br />
+                                    <input type="text" name="SmtpHost" value="@Model.FirstOrDefault(m => m.Name == "SmtpHost").Value">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="theme-option">
+                                    <span>Port</span><br />
+                                    <input type="text" name="SmtpPort" value="@Model.FirstOrDefault(m => m.Name == "SmtpPort").Value">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="theme-option">
+                                    <span>SSL</span><br />
+                                    <input type="checkbox" name="SmtpUseSSL" @if (Model.FirstOrDefault(m => m.Name == "SmtpUseSSL").Value == "on") { <text>checked </text>} value="on">@Model.FirstOrDefault(m => m.Name == "SmtpUseSSL").Value
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <button type="submit"class="btn blue ">Kaydet</button>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+   @* @Scripts.Render("~/bundles/jqueryval")*@
+}

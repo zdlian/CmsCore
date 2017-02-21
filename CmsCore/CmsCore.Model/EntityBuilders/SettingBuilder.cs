@@ -13,7 +13,7 @@ namespace CmsCore.Model.EntityBuilders
         {
             entityBuilder.HasKey(s => s.Id);
             entityBuilder.Property(s => s.Name).IsRequired().HasMaxLength(200);
-            entityBuilder.Property(s => s.Value).IsRequired().HasMaxLength(200);
+
         }
     }
 }
