@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Model.EntityBuilders
 {
-    public class PostCategoryBuilder
+    public class LinkCategoryBuilder
     {
-        public PostCategoryBuilder(EntityTypeBuilder<PostCategory> entityBuilder)
+        public LinkCategoryBuilder(EntityTypeBuilder<LinkCategory> entityBuilder)
         {
             entityBuilder.HasKey(e => e.Id);
             entityBuilder.Property(e => e.Name).IsRequired().HasMaxLength(200);

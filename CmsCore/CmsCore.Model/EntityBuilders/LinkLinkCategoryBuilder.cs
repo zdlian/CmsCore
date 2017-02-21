@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Model.EntityBuilders
 {
-    public class PostPostCategoryBuilder
+    public class LinkLinkCategoryBuilder
     {
-        public PostPostCategoryBuilder(EntityTypeBuilder<PostPostCategory> entityBuilder)
+        public LinkLinkCategoryBuilder(EntityTypeBuilder<LinkLinkCategory> entityBuilder)
         {
-            entityBuilder.HasKey(pc => new { pc.PostId, pc.PostCategoryId });
+            entityBuilder.HasKey(pc => new { pc.LinkId, pc.LinkCategoryId });
 
-            entityBuilder.HasOne(bc => bc.Post)
-                .WithMany(b => b.PostPostCategories)
-                .HasForeignKey(bc => bc.PostId);
+            entityBuilder.HasOne(bc => bc.Link)
+                .WithMany(b => b.LinkLinkCategories)
+                .HasForeignKey(bc => bc.LinkId);
 
-            entityBuilder.HasOne(bc => bc.PostCategory)
-                .WithMany(c => c.PostPostCategories)
-                .HasForeignKey(bc => bc.PostCategoryId);
+            entityBuilder.HasOne(bc => bc.LinkCategory)
+                .WithMany(c => c.LinkLinkCategories)
+                .HasForeignKey(bc => bc.LinkCategoryId);
         }
     }
 }
