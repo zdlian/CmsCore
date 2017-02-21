@@ -20,7 +20,7 @@ namespace CmsCore.Model.Entities
         public long ViewCount { get; set; }
 
         public long? ParentPageId { get; set; }
-        public Page ParentPage { get; set; }
+        public virtual Page ParentPage { get; set; }
         public virtual ICollection<Page> ChildPages { get; set; }
 
         public string SeoTitle { get; set; }

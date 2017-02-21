@@ -1,0 +1,141 @@
+﻿@model CmsCore.Admin.Models.ProductViewModel
+@{
+    ViewData["Title"] = "Yeni Ürün";
+}
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="~/js/generate-slug.js"> </script>
+<style>
+    textarea {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><a asp-controller="Product" asp-action="Index" class="nav-link">Ürünler</a><i class="fa fa-circle"></i></li>
+        <li><span>Yeni Ürün</span></li>
+    </ul>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title" style="border-bottom-width: 1px;margin-bottom: 10px;">
+                <div class="caption font-dark"><i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase ">Yeni Ürün Ekle</span>
+                </div>
+            </div>
+            <form asp-controller="Product" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <input type="text" asp-for="Title" class="form-control" tabindex="1" autofocus="autofocus" onblur="if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Title').val().toLowerCase(),'-'));}" />
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Slug"></label>
+                            <input type="text" asp-for="Slug" class="form-control" tabindex="2"  onblur="if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Title').val().toLowerCase(),'-'));}" />
+                            <span class="text-danger" asp-validation-for="Slug"></span>
+                        </div>
+                        <div class="form-body">
+                            <label asp-for="Body"></label>
+                            <p>
+                                <textarea asp-for="Body" tabindex="3"></textarea>
+                                <span class="text-danger" asp-validation-for="Body"></span>
+                                <script type="text/javascript">CKEDITOR.replace('Body'); </script>
+                            </p>
+                            <div id="content2" style="display: none" data-sample="2">
+                                <p>The number of <code>change</code> events:<strong><span id="changes"></span></strong>.</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Code"></label>
+                            <input type="text" asp-for="Code" class="form-control" tabindex="2"/>
+                            <span class="text-danger" asp-validation-for="Code"></span>
+                        </div>
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Photo"></label>
+                                        <input type="text" asp-for="Photo" class="form-control" tabindex="2" />
+                                        <span class="text-danger" asp-validation-for="Photo"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Price"></label>
+                                        <input type="number" asp-for="Price" class="form-control" tabindex="2" min="0" />
+                                        <span class="text-danger" asp-validation-for="Price"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="OldPrice"></label>
+                                        <input type="number" asp-for="OldPrice" class="form-control" tabindex="2" min="0" />
+                                        <span class="text-danger" asp-validation-for="OldPrice"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <select asp-for="ParentProductId" tabindex="4" asp-items="(IEnumerable<SelectListItem>)ViewBag.ParentProducts" class="form-control">
+                                        <option value="">ÜstSayfa</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="ParentProductId"></span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                      
+                        <br />
+                        <div class="portlet light bordered">
+                            <div class="portlet-body form">
+                                <fieldset>
+                                    <legend>SEO Özellikleri</legend>
+                                    <div class="form-group">
+                                        <label asp-for="SeoTitle"></label>
+                                        <input type="text" asp-for="SeoTitle" class="form-control" tabindex="5" />
+                                        <span class="text-danger" asp-validation-for="SeoTitle"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SeoDescription"></label>
+                                        <textarea asp-for="SeoDescription" class="form-control" tabindex="6"></textarea>
+                                        <span class="text-danger" asp-validation-for="SeoDescription"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SeoKeywords"></label>
+                                        <textarea asp-for="SeoKeywords" class="form-control" tabindex="7"></textarea>
+                                        <span class="text-danger" asp-validation-for="SeoKeywords"></span>
+                                    </div>
+                                    
+                                        <div class="form-group">
+                                            <input type="checkbox" asp-for="IsAvailable" tabindex="8" /> Is Available<br/>
+                                            <input type="checkbox" asp-for="IsNew" tabindex="9" /> Is New<br />
+                                            <input type="checkbox" asp-for="IsPublished" tabindex="10" /> Is Published<br />
+                                        </div>
+                                   
+                                </fieldset>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" tabindex="11" class="btn blue">Kaydet</button>
+                        <a type="button" tabindex="12" class="btn default" asp-controller="Product" asp-action="Index">İptal</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

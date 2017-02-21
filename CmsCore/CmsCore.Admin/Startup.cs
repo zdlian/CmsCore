@@ -77,6 +77,7 @@ namespace CmsCore.Admin
             services.AddTransient<ISectionRepository, SectionRepository>();
             services.AddTransient<ISettingRepository, SettingRepository>();
             services.AddTransient<IRedirectRepository, RedirectRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
 
             // services
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -92,6 +93,7 @@ namespace CmsCore.Admin
             services.AddTransient<ISectionService, SectionService>();
             services.AddTransient<ISettingService, SettingService>();
             services.AddTransient<IRedirectService, RedirectService>();
+            services.AddTransient<IProductService, ProductService>();
 
         }
 
