@@ -8,9 +8,10 @@ using CmsCore.Data;
 namespace CmsCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170217165712_PostModule")]
+    partial class PostModule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -278,36 +279,6 @@ namespace CmsCore.Data.Migrations
                     b.ToTable("PostPostCategories");
                 });
 
-            modelBuilder.Entity("CmsCore.Model.Entities.Redirect", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 200);
-
-                    b.Property<string>("NewUrl")
-                        .HasAnnotation("MaxLength", 200);
-
-                    b.Property<string>("OldUrl")
-                        .HasAnnotation("MaxLength", 200);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Redirects");
-                });
-
             modelBuilder.Entity("CmsCore.Model.Entities.Section", b =>
                 {
                     b.Property<long>("Id")
@@ -345,11 +316,13 @@ namespace CmsCore.Data.Migrations
                         .IsRequired()
                         .HasAnnotation("MaxLength", 200);
 
-                    b.Property<string>("Value");
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 200);
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings");
+                    b.ToTable("Setting");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Template", b =>

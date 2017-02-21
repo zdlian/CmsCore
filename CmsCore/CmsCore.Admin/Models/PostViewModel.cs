@@ -7,26 +7,31 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Admin.Models
 {
-    public class PostCategoryViewModel:BaseEntity
+    public class PostViewModel:BaseEntity
     {
-        public PostCategoryViewModel()
+        public PostViewModel()
         {
+            IsPublished = true;
+            ViewCount = 0;
             PostPostCategories = new HashSet<PostPostCategory>();
-            ChildCategories = new HashSet<PostCategory>();
         }
-
         [Required]
         [MaxLength(200)]
-        public string Name { get; set; }
+        public string Title { get; set; }
         [Required]
         [MaxLength(200)]
         public string Slug { get; set; }
-        public string Description { get; set; }
+        public string Body { get; set; }
+        public long ViewCount { get; set; }
 
-        public long? ParentCategoryId { get; set; }
-        public virtual PostCategory ParentCategory { get; set; }
-        public virtual ICollection<PostCategory> ChildCategories { get; set; }
+        [MaxLength(200)]
+        public string SeoTitle { get; set; }
+        public string SeoDescription { get; set; }
+        public string SeoKeywords { get; set; }
+
+        public bool IsPublished { get; set; }
 
         public virtual ICollection<PostPostCategory> PostPostCategories { get; set; }
+        public long[] PostCategoryId { get; set; }
     }
 }

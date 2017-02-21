@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CmsCore.Web</title>
+
+
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <!-- Temps Files-->
+        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400italic,700,900,300">
+        <link type="text/css" rel="stylesheet" href="~/assets/font/font-icon/font-awesome-4.4.0/css/font-awesome.css">
+        <link type="text/css" rel="stylesheet" href="~/assets/font/font-icon/font-svg/css/Glyphter.css">
+        <!-- LIBRARY CSS-->
+        <link type="text/css" rel="stylesheet" href="~/assets/libs/animate/animate.css">
+        <link type="text/css" rel="stylesheet" href="~/assets/libs/bootstrap-3.3.5/css/bootstrap.css">
+        <link type="text/css" rel="stylesheet" href="~/assets/libs/owl-carousel-2.0/assets/owl.carousel.css">
+        <link type="text/css" rel="stylesheet" href="~/assets/libs/selectbox/css/jquery.selectbox.css">
+        <link type="text/css" rel="stylesheet" href="~/assets/libs/fancybox/css/jquery.fancybox.css">
+        <link type="text/css" rel="stylesheet" href="~/assets/libs/fancybox/css/jquery.fancybox-buttons.css">
+        <link type="text/css" rel="stylesheet" href="~/assets/libs/media-element/build/mediaelementplayer.min.css">
+      
+        <!-- STYLE CSS    -->
+        <link type="text/css" rel="stylesheet" href="~/assets/css/color-4.css" id="color-skins">
+        <!--link(type="text/css", rel='stylesheet', href='#', id="color-skins")-->
+        <script src="~/assets/libs/jquery/jquery-2.1.4.min.js"></script>
+        <script src="~/assets/libs/js-cookie/js.cookie.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body style="margin:0px;padding:0px">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">CmsCore.Web</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Hakkımızda</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">İletişim</a></li>
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </div>*@
+
+    <header style="margin:0px;padding:0px">
+        <div class="header-topbar">
+            <div class="container">
+                <div class="topbar-left pull-left">
+                    <div class="email"><a href="#"><i class="topbar-icon fa fa-envelope-o"></i><span>hello.shinway@gmail.com</span></a></div>
+                    <div class="hotline"><a href="#"><i class="topbar-icon fa fa-phone"></i><span>+84 909 015 345</span></a></div>
+                </div>
+                <div class="topbar-right pull-right">
+                    <div class="socials"><a href="#" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" class="google"><i class="fa fa-google-plus"></i></a><a href="#" class="twitter"><i class="fa fa-twitter"></i></a><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a><a href="#" class="blog"><i class="fa fa-rss"></i></a><a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="header-main homepage-01">
+            <div class="container">
+                <div class="header-main-wrapper">
+                    <div class="navbar-heade">
+                        <div class="logo pull-left"><a href="index.html" class="header-logo"><img src="~/images/Bilgikolejilogo.svg" alt="" /></a></div>
+                        <button type="button" data-toggle="collapse" data-target=".navigation" class="navbar-toggle edugate-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    </div>
+                    <nav class="navigation collapse navbar-collapse pull-right">
+                        <ul class="nav-links nav navbar-nav">
+                            @*<li class="dropdown active">
+                                <a href="javascript:void(0)" class="main-menu">Anasayfa<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="index.html" class="link-page">Home page 01</a></li>
+                                    <li><a href="homepage-02.html" class="link-page">Home page 02</a></li>
+                                    <li><a href="homepage-03.html" class="link-page">Home page 03</a></li>
+                                </ul>
+                            </li>*@
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Hakkımızda<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="courses.html" class="link-page">Kurumsal</a></li>
+                                    <li><a href="courses-detail.html" class="link-page">Vizyon</a></li>
+                                    <li><a href="events.html" class="link-page">Misyon</a></li>
+                                    <li><a href="event-detail.html" class="link-page">Kurullar</a></li>
+                                    <li><a href="courses-detail.html" class="link-page">Yönetim Kurulu</a></li>
+                                    <li><a href="courses-detail.html" class="link-page">Okul Aile Konseyleri</a></li>
+                                    <li><a href="courses-detail.html" class="link-page">Okul Öğrenci Konseyleri</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Farkımız<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="gallery-3column.html" class="link-page">Dil Eğitimleri</a></li>
+                                    <li><a href="gallery-4column.html" class="link-page">Bilişim Eğitimleri</a></li>
+                                    <li><a href="gallery-masonry.html" class="link-page">Kişisel Gelişim</a></li>
+                                    <li><a href="gallery-masonry.html" class="link-page">Eğitim Felsefemiz</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Eğitim Modeli<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li class="dropdown-submenu"><a href="categories.html" data-toggle="dropdown" class="dropdown dropdown-menu-right" >Anaokulu</a>                                   
+                                        <ul class="dropdown-menu">
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="dropdown-toggle" >Kişilik Yönelimi</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Aile Akademisi</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Kendimi Tanıyorum</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Hayatı Sevgiyle Tanıyalım</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Eğitim Programları</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Eğitim Materyalleri</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Etkinlik Programları</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Akademik Takvim</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Yemek Listeleri</a>
+                                            </li>
+                                        </ul>                                    
+                                    </li>                                                                   
+                                    <li class="dropdown-submenu"><a href="profile-teacher.html" data-toggle="dropdown" class="link-page">İlkokul</a>
+                                        <ul class="dropdown-menu">
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Kişilik Yönelimi</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Aile Akademisi</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Kendimi Tanıyorum</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">İngilizce Çocuk Oyuncağı</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Sanata Merhaba</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Öğrenci Kulüpleri</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Eğitim Programları</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Eğitim Materyalleri</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Etkinlik Programları</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Akademik Takvim</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Yemek Listeleri</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu"><a href="about-us.html" data-toggle="dropdown" class="link-page">Ortaokul</a>
+                                        <ul class="dropdown-menu">
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Kişilik Yönelimi</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Aile Akademisi</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Kendimi Tanıyorum</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Bilişim Çocuk</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">İngilizce Çocuk Oyuncağı</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Bir İnsan'ım Ben</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Sanata Merhaba</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Öğrenci Kulüpleri</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Eğitim Programları</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Eğitim Materyalleri</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Etkinlik Programları</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Akademik Takvim</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Yemek Listesi</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu"><a href="login.html" data-toggle="dropdown" class="link-page">Lise</a>
+                                        <ul class="dropdown-menu">
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Mesleki Yönelim / Bireysel Beceriler</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Kendimi Tanıyorum</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Aile Akademisi</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Bilişim Çocuk</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">İngilizce Çocuk Oyuncağı</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Bir İnsan'ım Ben</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Genç CEO'lar</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Hayat Üniversitesi</a>
+                                            </li>
+                                            <li style="color:dodgerblue">
+                                                <a href="categories.html" class="link-page">Öğrenci Kulüperi</a>
+                                            </li>
+                                           
+                                        </ul>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Okul Konsepti<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="news.html" class="link-page">Bahçe</a></li>
+                                    <li><a href="news-grid.html" class="link-page">İngilizce</a></li>
+                                    <li><a href="news-grid-nonsidebar.html" class="link-page">Bilişim</a></li>
+                                    <li><a href="news-masonry.html" class="link-page">Spor Salonu</a></li>
+                                    <li><a href="news-detail.html" class="link-page">Sanat Odaları</a></li>
+                                    <li><a href="gallery-masonry.html" class="link-page">Yemekhane</a></li>
+                                    <li><a href="gallery-masonry.html" class="link-page">Kütüphane</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Akademik Takvim<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="news.html" class="link-page">Anasınıfı</a></li>
+                                    <li><a href="news-grid.html" class="link-page">İlkokul</a></li>
+                                    <li><a href="news-grid-nonsidebar.html" class="link-page">Ortaokul</a></li>
+                                    <li><a href="news-masonry.html" class="link-page">Lise</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Etkinlikler<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="news.html" class="link-page">Önemli Günler</a></li>
+                                    <li><a href="news-grid.html" class="link-page">Okul içi Etkinlikler</a></li>
+                                    <li><a href="news-grid-nonsidebar.html" class="link-page">Okullar Arası Etkinlikler</a></li>
+                                    <li><a href="news-masonry.html" class="link-page">Sportif Faaliyetler</a></li>
+                                    <li><a href="news-detail.html" class="link-page">Sanatsal Faaliyetler</a></li>
+                                    <li><a href="gallery-masonry.html" class="link-page">Kod Saati</a></li>
+                                    <li><a href="gallery-masonry.html" class="link-page">Öğrenci Meclisi</a></li>
+                                </ul>
+                            </li>
+                            @*<li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Basın<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="news.html" class="link-page">news list</a></li>
+                                    <li><a href="news-grid.html" class="link-page">news grid</a></li>
+                                    <li><a href="news-grid-nonsidebar.html" class="link-page">news grid nonsidebar</a></li>
+                                    <li><a href="news-masonry.html" class="link-page">news masonry</a></li>
+                                    <li><a href="news-detail.html" class="link-page">news detail</a></li>
+                                </ul>
+                            </li>*@
+                            @*<li><a href="contact.html" class="main-menu">İletişim</a></li>*@
+                            <li class="button-search"><p class="main-menu"><i class="fa fa-search"></i></p></li>
+                            <div class="nav-search hide">
+                                <form>
+                                    <input type="text" placeholder="Search" class="searchbox" />
+                                    <button type="submit" class="searchbutton fa fa-search"></button>
+                                </form>
+                            </div>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        @RenderBody()
+     
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-top-wrapper">
+                    <div class="footer-top-left">
+                        <p class="footer-top-focus">BECOME AN INSTRUCTOR</p>
+
+                        <p class="footer-top-text">Join thousand of instructors and earn money hassle free!</p>
+                    </div>
+                    <div class="footer-top-right">
+                        <button onclick="window.location.href='contact.html'" class="btn btn-blue btn-bold"><span>GET STARTED NOW</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-main-wrapper">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="col-md-3 col-sm-6 col-xs-6 sd380">
+                                <div class="edugate-widget widget">
+                                    <div class="title-widget">EDUGATE</div>
+                                    <div class="content-widget">
+                                        <p>Edugate is a great start for an education personnel or organization to start the online business with 1 Click.</p>
+
+                                        <div class="info-list">
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-envelope-o"></i><a href="#">hello@edugate.com</a></li>
+                                                <li><i class="fa fa-phone"></i><a href="#">P: 3333 222 1111</a></li>
+                                                <li>
+                                                    <i class="fa fa-map-marker"></i><a href="#">
+                                                        <p>99 Barnard St - Suite 111</p>
+
+                                                        <p>United States - GA 22222</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6 sd380">
+                                <div class="useful-link-widget widget">
+                                    <div class="title-widget">USEFUL LINKS</div>
+                                    <div class="content-widget">
+                                        <div class="useful-link-list">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <ul class="list-unstyled">
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Teachers</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Courses</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Support</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Why Edugate</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Social Media</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Site Map</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <ul class="list-unstyled">
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Company</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Latest Courses</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Partners</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Blog Post</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Help Topic</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Policies</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="col-md-3 col-sm-6 col-xs-6 sd380">
+                                <div class="gallery-widget widget">
+                                    <div class="title-widget">GALLERY</div>
+                                    <div class="content-widget">
+                                        <div class="gallery-list">
+                                            <a href="#" class="thumb"><img src="~/assets/images/gallery/gallery-01.jpg" alt="" class="img-responsive" /></a><a href="#" class="thumb"><img src="~/assets/images/gallery/gallery-02.jpg" alt="" class="img-responsive" /></a><a href="#" class="thumb"><img src="~/assets/images/gallery/gallery-03.jpg" alt="" class="img-responsive" /></a><a href="#" class="thumb"><img src="~/assets/images/gallery/gallery-04.jpg" alt="" class="img-responsive" /></a><a href="#" class="thumb"><img src="~/assets/images/gallery/gallery-05.jpg" alt="" class="img-responsive" /></a><a href="#" class="thumb"><img src="~/assets/images/gallery/gallery-06.jpg" alt="" class="img-responsive" /></a><a href="#" class="thumb"><img src="~/assets/images/gallery/gallery-07.jpg" alt="" class="img-responsive" /></a><a href="#" class="thumb">
+                                                <img src="~/assets/images/gallery/gallery-08.jpg"
+                                                     alt="" class="img-responsive" />
+                                            </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <a href="#" class="view-more">View more&nbsp;<i class="fa fa-angle-double-right mls"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6 sd380">
+                                <div class="mailing-widget widget">
+                                    <div class="title-widget">MAILING</div>
+                                    <div class="content-wiget">
+                                        <p>Sign up for our mailing list to get latest updates and offers.</p>
+
+                                        <form action="index.html">
+                                            <div class="input-group"><input type="text" placeholder="Email address" class="form-control form-email-widget" /><span class="input-group-btn"><input type="submit" value="✓" class="btn btn-email" /></span></div>
+                                        </form>
+                                        <p>We respect your privacy</p>
+
+                                        <div class="socials"><a href="#" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" class="google"><i class="fa fa-google-plus"></i></a><a href="#" class="twitter"><i class="fa fa-twitter"></i></a><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a><a href="#" class="blog"><i class="fa fa-rss"></i></a><a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hyperlink">
+                    <div class="pull-left hyper-left">
+                        <ul class="list-inline">
+                            <li><a href="index.html">HOME</a></li>
+                            <li><a href="courses.html">COURSES</a></li>
+                            <li><a href="about-us.html">ABOUT</a></li>
+                            <li><a href="categories.html">PAGES</a></li>
+                            <li><a href="news.html">NEWS</a></li>
+                            <li><a href="contact.html">CONTACT</a></li>
+                        </ul>
+                    </div>
+                    <div class="pull-right hyper-right"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <!-- Temp Scripts-->
+        <script src="~/assets/libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+        <script src="~/assets/libs/smooth-scroll/jquery-smoothscroll.js"></script>
+        <script src="~/assets/libs/owl-carousel-2.0/owl.carousel.min.js"></script>
+        <script src="~/assets/libs/appear/jquery.appear.js"></script>
+        <script src="~/assets/libs/count-to/jquery.countTo.js"></script>
+        <script src="~/assets/libs/wow-js/wow.min.js"></script>
+        <script src="~/assets/libs/selectbox/js/jquery.selectbox-0.2.min.js"></script>
+        <script src="~/assets/libs/fancybox/js/jquery.fancybox.js"></script>
+        <script src="~/assets/libs/fancybox/js/jquery.fancybox-buttons.js"></script>
+        <!-- MAIN JS-->
+        <script src="~/assets/js/main.js"></script>
+        <!-- LOADING SCRIPTS FOR PAGE-->
+        <script src="~/assets/libs/isotope/isotope.pkgd.min.js"></script>
+        <script src="~/assets/libs/isotope/fit-columns.js"></script>
+        <script src="~/assets/js/pages/homepage.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

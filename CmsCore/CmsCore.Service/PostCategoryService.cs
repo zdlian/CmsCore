@@ -10,6 +10,7 @@ namespace CmsCore.Service
 {
     public interface IPostCategoryService
     {
+        IEnumerable<PostCategory> GetParentPostCategories();
         IEnumerable<PostCategory> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords);
         IEnumerable<PostCategory> GetPostCategories();
         IEnumerable<PostCategory> GetParentCategories();
@@ -39,7 +40,13 @@ namespace CmsCore.Service
         }
         public IEnumerable<PostCategory> GetPostCategories()
         {
-            var postCategories = postCategoryRepository.GetAll();
+            var postCategories = postCategoryRepository.GetAll("ChildCategories");
+            return postCategories;
+
+        }
+        public IEnumerable<PostCategory> GetParentPostCategories()
+        {
+            var postCategories = postCategoryRepository.GetMany(c => c.ParentCategoryId == null, "ChildCategories");
             return postCategories;
         }
         public PostCategory GetPostCategory(long id)
