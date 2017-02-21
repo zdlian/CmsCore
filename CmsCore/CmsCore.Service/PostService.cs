@@ -12,11 +12,11 @@ namespace CmsCore.Service
     {
         IEnumerable<Post> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords);
         IEnumerable<Post> GetPosts();
-        Post GetPost(int id);
+        Post GetPost(long id);
 
         void CreatePost(Post post);
         void UpdatePost(Post post);
-        void DeletePost(Post post);
+        void DeletePost(long id);
         Post GetPostBySlug(string Slug);
         void SavePost();
     }
@@ -41,7 +41,7 @@ namespace CmsCore.Service
             return posts;
         }
 
-        public Post GetPost(int id)
+        public Post GetPost(long id)
         {
             var post = postRepository.GetById(id);
             return post;
@@ -56,9 +56,9 @@ namespace CmsCore.Service
         {
             postRepository.Update(post);
         }
-        public void DeletePost(Post post)
+        public void DeletePost(long id)
         {
-            postRepository.Delete(post);
+            postRepository.Delete(p => p.Id == id);
         }
 
         public Post GetPostBySlug(string Slug)

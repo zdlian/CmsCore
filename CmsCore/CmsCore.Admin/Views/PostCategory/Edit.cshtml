@@ -52,14 +52,14 @@
                             <div class="form-body">
 
                                 @Html.LabelFor(model => model.Name)
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @tabindex = "1", @class = "form-control spinner" } })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @tabindex = "1", @class = "form-control spinner", onblur = "if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Name').val().toLowerCase(),'-'));}" } })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
                             
                             <div class="form-body">
 
                                 @Html.LabelFor(model => model.Slug)
-                                @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @tabindex = "2", @class = "form-control spinner" } })
+                                @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @tabindex = "2", @class = "form-control spinner", onblur = "if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Name').val().toLowerCase(),'-'));}" } })
                                 @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-body">
@@ -71,7 +71,7 @@
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.ParentCategoryId)
-                                @Html.DropDownListFor(model => model.ParentCategoryId, (IEnumerable<SelectListItem>)ViewBag.PostCategories, "(Yok)", new { @tabindex = "4", @class = "form-control" })*@
+                                @Html.DropDownListFor(model => model.ParentCategoryId, (IEnumerable<SelectListItem>)ViewBag.PostCategories, "(Yok)", new { @tabindex = "4", @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.ParentCategoryId, "", new { @class = "text-danger" })
 
                             </div>

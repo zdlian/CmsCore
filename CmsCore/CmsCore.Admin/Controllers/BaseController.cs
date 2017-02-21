@@ -30,5 +30,7 @@ namespace CmsCore.Admin.Controllers
             ViewBag.UploadPath = this.UploadPath;
             base.OnActionExecuting(filterContext);
         }
+
+        
     }
 }

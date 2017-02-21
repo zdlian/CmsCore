@@ -10,12 +10,19 @@ namespace CmsCore.Model.Entities
         public Product()
         {
             IsPublished = true;
+            IsNew = false;
+            IsAvailable = true;
             ViewCount = 0;
             ChildProducts = new HashSet<Product>();
+            ProductProductCategories = new HashSet<ProductProductCategory>();
         }
         public string Title { get; set; }
         public string Slug { get; set; }
+        public string Code { get; set; }
+        public string Photo { get; set; }
         public string Body { get; set; }
+        public decimal Price { get; set; }
+        public decimal OldPrice { get; set; }
 
         public long? ParentProductId { get; set; }
         public Product ParentProduct { get; set; }
@@ -25,7 +32,10 @@ namespace CmsCore.Model.Entities
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
 
+        public bool IsAvailable { get; set; }
+        public bool IsNew { get; set; }
         public bool IsPublished { get; set; }
         public long ViewCount { get; set; }
+        public virtual ICollection<ProductProductCategory> ProductProductCategories { get; set; }
     }
 }

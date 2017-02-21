@@ -18,7 +18,7 @@ namespace CmsCore.Data.Repositories
         {
             search = search.Trim();
             var searchWords = search.Split(' ');
-            var query = DbContext.Post.AsQueryable();
+            var query = DbContext.Posts.AsQueryable();
             foreach (string sSearch in searchWords)
             {
                 if (sSearch != null && sSearch != "")
@@ -89,7 +89,7 @@ namespace CmsCore.Data.Repositories
 
         public override void Update(Post entity)
         {
-            var post = DbContext.Post.Include("PostCategories").Where(c => c.Id == entity.Id).Single();
+            var post = DbContext.Posts.Include("PostPostCategories").Where(c => c.Id == entity.Id).Single();
 
             post.PostPostCategories.Clear();
 
@@ -113,7 +113,7 @@ namespace CmsCore.Data.Repositories
         }
         public Post GetPostBySlug(string slug)
         {
-            var post = DbContext.Post.Where(p => p.Slug == slug).FirstOrDefault();
+            var post = DbContext.Posts.Where(p => p.Slug == slug).FirstOrDefault();
             return post;
         }
     }

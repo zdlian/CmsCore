@@ -1,0 +1,152 @@
+﻿@model CmsCore.Admin.Models.PostViewModel
+@{
+    ViewData["Title"] = "Create Post";
+}
+<link href="@(ViewBag.AssetsUrl)/global/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css">
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="~/js/generate-slug.js"> </script>
+<style>
+    textarea {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a asp-controller="Post" asp-action="Index" class="nav-link">Posts</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>New Post</span>
+        </li>
+    </ul>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title" style="border-bottom-width: 1px;margin-bottom: 10px;">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase ">New Post Add</span>
+                </div>
+            </div>
+
+            <form asp-controller="Post" asp-action="Create" method="post" enctype="multipart/form-data" onsubmit="generateHiddenFieldsForTree('categoriesTree');">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <input type="text" asp-for="Title" class="form-control" tabindex="1" autofocus="autofocus" onblur="if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Title').val().toLowerCase(),'-'));}" />
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Slug"></label>
+                            <input type="text" asp-for="Slug" class="form-control" tabindex="2"  onblur="if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Title').val().toLowerCase(),'-'));}" />
+                            <span class="text-danger" asp-validation-for="Slug"></span>
+                        </div>
+                        <div class="form-body">
+                            <label asp-for="Body"></label>
+                            <p>
+                                <textarea asp-for="Body" tabindex="3"></textarea>
+                                <span class="text-danger" asp-validation-for="Body"></span>
+                                <script type="text/javascript">
+                                    CKEDITOR.replace('Body');
+                                </script>
+                            </p>
+                            <div id="content2" style="display: none" data-sample="2">
+                                <p>The number of <code>change</code> events:<strong><span id="changes"></span></strong>.</p>
+                            </div>
+                        </div>
+
+                            <div class="form-group">
+                                @Html.Label("Kategoriler")<br />
+
+                                <div id="categoriesTree" class="tree-demo"> </div>
+                                @if (Model.PostCategoryId == null) { Model.PostCategoryId = new long[0]; }
+                                @foreach (var item in Model.PostCategoryId)
+                                {
+                                    <input type="hidden" name="PostCategoryId" value="@item" />
+                                }
+                            </div>
+                               
+                          
+                        
+
+                      
+                        <br />
+                        <div class="portlet light bordered">
+                            <div class="portlet-body form">
+                                <fieldset>
+                                    <legend>SEO Özellikleri</legend>
+                                    <div class="form-group">
+                                        <label asp-for="SeoTitle"></label>
+                                        <input type="text" asp-for="SeoTitle" class="form-control" tabindex="6" />
+                                        <span class="text-danger" asp-validation-for="SeoTitle"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SeoDescription"></label>
+                                        <textarea asp-for="SeoDescription" class="form-control" tabindex="7"></textarea>
+                                        <span class="text-danger" asp-validation-for="SeoDescription"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SeoKeywords"></label>
+                                        <textarea asp-for="SeoKeywords" class="form-control" tabindex="8"></textarea>
+                                        <span class="text-danger" asp-validation-for="SeoKeywords"></span>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="checkbox" asp-for="IsPublished" tabindex="9" /> Is Published
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" tabindex="10" class="btn blue">Kaydet</button>
+                        <a type="button" tabindex="11" class="btn default" asp-controller="Post" asp-action="Index">İptal</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts {
+<script src="@(ViewBag.AssetsUrl)/global/plugins/jstree/dist/jstree.min.js" type="text/javascript"></script>
+<script>
+    var LoadCategoriesTree = function () {
+        $('#categoriesTree').jstree({
+            'plugins': ["wholerow", "checkbox"],
+            'core': {
+                "themes": {
+                    "responsive": false,
+                    "icons": false
+                },
+
+                'data': [
+                  @Html.Raw(CmsCore.Admin.Controllers.PostController.RenderPostCategories((IEnumerable<CmsCore.Model.Entities.PostCategory>)ViewBag.PostCategories,(long[])Model.PostCategoryId))
+                ]
+            }
+
+        });
+    }
+    LoadCategoriesTree();
+    function generateHiddenFieldsForTree(treeId) {
+        $.tree.plugins.checkbox.get_checked($.tree.reference("#" + treeId)).each(function () {
+            var checkedId = this.id;
+            $("<input>").attr("type", "hidden").attr("name", checkedId).val("true").appendTo("#" + treeId);
+        });
+    }
+    
+</script>
+}

@@ -83,7 +83,7 @@ namespace CmsCore.Admin
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IMenuLocationService, MenuLocationService>();
             services.AddTransient<ITemplateService, TemplateService>();
-            services.AddTransient<IPostCategoryService, PostCategoryService>();
+            services.AddTransient<IPostService, PostService>();
             services.AddTransient<IPostCategoryService, PostCategoryService>();
             services.AddTransient<IMenuItemService, MenuItemService>();
             services.AddTransient<IWidgetService, WidgetService>();
