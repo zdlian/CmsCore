@@ -52,22 +52,25 @@ namespace CmsCore.Admin.Controllers
         }
         public IActionResult Edit(long id)
         {
-            //   ViewBag.Sections = new SelectList(sectionService.GetSections(), "Id", "Name");
             var section = sectionService.GetSection(id);
-            return View(section);
+            SectionViewModel sectionVM = new SectionViewModel();
+            sectionVM.Id = section.Id;
+            sectionVM.Name = section.Name;
+            return View(sectionVM);
         }
         [HttpPost]
-        public IActionResult Edit(Section section)
+        public IActionResult Edit(SectionViewModel sectionVM)
         {
             if (ModelState.IsValid)
             {
-                //   section.Section = sectionService.GetSection(section.SectionId.Value);
-                sectionService.UpdateSection(section);
+                Section sec = sectionService.GetSection(sectionVM.Id);
+                sectionService.UpdateSection(sec);
+                sec.Name = sectionVM.Name;
                 sectionService.SaveSection();
                 return RedirectToAction("Index", "Section");
             }
-            // ViewBag.Sections = new SelectList(sectionService.GetSections(), "Id", "Name", section.SectionId);
-            return View(section);
+            
+            return View(sectionVM);
         }
         public IActionResult Delete(long id)
         {

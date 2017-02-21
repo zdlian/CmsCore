@@ -1,9 +1,9 @@
 ﻿var initTable1 = function () {
 
-    var table = $('#allSectionTable');
+    var table = $('#redirectTable');
     // begin first table
     table.dataTable({
-      
+    
 
         // Internationalisation. For more info refer to http://datatables.net/manual/i18n
         "language": {
@@ -40,7 +40,7 @@
         ],
         "bServerSide": true,
         "bProcessing": true,
-        "sAjaxSource": "/Section/AjaxHandler",
+        "sAjaxSource": "/Redirect/AjaxHandler",
         "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
 
         "lengthMenu": [
@@ -61,11 +61,11 @@
             }, {
                 'orderable': false,
                 'searchable': false,
-                'targets': [3],
+                'targets': [5],
                 'render': function (data, type, row) {
                     return '<div class="btn-group"><button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Eylemler<i class="fa fa-angle-down"></i></button>'
-                        + '<ul class="dropdown-menu" role="menu"><li><a href="/Section/Edit/' + row[0] + '"><i class="icon-note"></i> Düzenle</a></li><li>'
-                        + '<a href="/Section/Delete/' + row[0] + '" onclick="if (!confirm(\'Bu kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.\')) return false;"><i class="icon-ban"></i> Sil</a></li></ul></div>';
+                        + '<ul class="dropdown-menu" role="menu"><li><a href="/Redirect/Edit/' + row[0] + '"><i class="icon-note"></i> Düzenle</a></li><li>'
+                        + '<a href="/Redirect/Delete/' + row[0] + '" onclick="if (!confirm(\'Bu kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.\')) return false;"><i class="icon-ban"></i> Sil</a></li></ul></div>';
                 }
             }
         ],
@@ -76,7 +76,7 @@
             ] // set first column as a default sort by asc
     });
 
-    var tableWrapper = jQuery('#allSectionTable_wrapper');
+    var tableWrapper = jQuery('#redirectTable_wrapper');
 
     table.find('.group-checkable').change(function () {
         var set = jQuery(this).attr("data-set");

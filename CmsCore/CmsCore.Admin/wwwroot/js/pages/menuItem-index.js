@@ -3,7 +3,7 @@
     var table = $('#allMenuItemTable');
     // begin first table
     table.dataTable({
-        "responsive": true,
+      
 
         // Internationalisation. For more info refer to http://datatables.net/manual/i18n
         "language": {

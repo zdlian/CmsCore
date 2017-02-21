@@ -17,6 +17,9 @@ namespace CmsCore.Data
         public DbSet<Section> Sections { get; set; }
         public DbSet<Template> Templates { get; set; }
         public DbSet<TemplateSection> TemplatSections { get; set; }
+        
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<Redirect> Redirects { get; set; }
         public DbSet<Post> Posts { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -42,6 +45,8 @@ namespace CmsCore.Data
             new PostCategoryBuilder(builder.Entity<PostCategory>());
             new PostPostCategoryBuilder(builder.Entity<PostPostCategory>());
             new TemplateSectionBuilder(builder.Entity<TemplateSection>());
+            new RedirectBuilder(builder.Entity<Redirect>());
+            
         }
     }
 }

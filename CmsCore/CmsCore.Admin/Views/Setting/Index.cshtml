@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CmsCore.Model.Entities.Setting>
+
+@{
+    ViewBag.Title = "Genel Ayarlar";
+}
+<style>
+    .theme-option > textarea {
+        width: 100%;
+    }
+</style>
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="@Url.Action("Index", "Setting")" class="nav-link">Ayarlar</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li><span>Genel Ayarlar</span></li>
+    </ul>
+</div>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Index", "Setting", null, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <h1 class="page-title">Genel Ayarlar</h1>
+                </div>
+                <div class="portlet-body form">
+                    <form role="form">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <div class="theme-option">
+                                    <span>Header Script:</span><br />
+                                    <textarea name="HeaderScript">@Model.FirstOrDefault(m => m.Name == "HeaderScript").Value</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="theme-option">
+                                    <span>Google Analytics Kodu:</span><br />
+                                    <textarea name="GoogleAnalytics">@Model.FirstOrDefault(m => m.Name == "GoogleAnalytics").Value</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="theme-option">
+                                    <span>Footer Script:</span><br />
+                                    <textarea name="FooterScript">@Model.FirstOrDefault(m => m.Name == "FooterScript").Value</textarea>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <button type="submit" success="true" class="btn blue ">Kaydet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+   @* @Scripts.Render("~/bundles/jqueryval")*@
+}

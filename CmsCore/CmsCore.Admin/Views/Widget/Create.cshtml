@@ -1,6 +1,6 @@
 ﻿@model WidgetViewModel
 @{
-    ViewBag.Title = "Yeni Menü";
+    ViewBag.Title = "Yeni Bileşen";
 }
 <link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 <link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" /><br />
@@ -53,13 +53,13 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.Section)
-                            @Html.DropDownList("Sections", (IEnumerable<SelectListItem>)ViewBag.Sections, new { @tabindex = "6", @class = "form-control" })
+                            @Html.DropDownList("SectionId", (IEnumerable<SelectListItem>)ViewBag.Sections, new { @tabindex = "6", @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.Section, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-actions">
                         <button type="submit" tabindex="3" class="btn blue">Ekle</button>
-                        <button type="button" tabindex="4" class="btn default" onclick="window.location='@Url.Action("Index","Menu")';">İptal</button>
+                        <button type="button" tabindex="4" class="btn default" onclick="window.location='@Url.Action("Index","Widget")';">İptal</button>
                     </div>
                 </form>
             </div>
