@@ -22,6 +22,9 @@ namespace CmsCore.Data
         public DbSet<Redirect> Redirects { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Link> Links { get; set; }
+        public DbSet<LinkCategory> LinkCategories { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -48,6 +51,8 @@ namespace CmsCore.Data
             new TemplateSectionBuilder(builder.Entity<TemplateSection>());
             new RedirectBuilder(builder.Entity<Redirect>());
             new ProductProductCategoryBuilder(builder.Entity<ProductProductCategory>());
+            new LinkBuilder(builder.Entity<Link>());
+            new LinkCategoryBuilder(builder.Entity<LinkCategory>());
             
         }
     }

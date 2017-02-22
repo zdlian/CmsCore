@@ -1,5 +1,5 @@
 ﻿@{ 
-    ViewData["Title"] = "Tüm Yazı Kategorileri";
+    ViewData["Title"] = "Product Categories";
 }
 <link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 <link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
@@ -7,11 +7,11 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="@Url.Action("Index", "PostCategory")" class="nav-link">Yazı Kategorileri</a>
+            <a href="@Url.Action("Index", "ProductCategory")" class="nav-link">Product Categories</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>Tüm Yazı Kategorileri</span>
+            <span>Product Categories</span>
         </li>
     </ul>
 </div>
@@ -21,18 +21,15 @@
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <div class="portlet light bordered">
             <div class="portlet-title">
-                <h1 class="page-title">
-                    Tüm Yazı Kategorileri
-                </h1>
+                <h1 class="page-title">All Product Categories</h1>
             </div>
             <div class="portlet-body">
                 <div class="table-toolbar">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="btn-group">
-                                <a asp-action="Create" asp-controller="PostCategory" id="sample_editable_1_new" class="btn sbold green">
-                                    Yeni Yazı Kategorisi Ekle
-                                    <i class="fa fa-plus"></i>
+                                <a asp-action="Create" asp-controller="ProductCategory" id="sample_editable_1_new" class="btn sbold green">
+                                    New Product Category <i class="fa fa-plus"></i>
                                 </a>
                             </div>
                         </div>
@@ -68,7 +65,7 @@
     <script src="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
     <script src="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
     <script src="@(ViewBag.AssetsUrl)/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-    <script src="~/js/pages/postcategory-index.js"></script>
+    <script src="~/js/pages/product-category-index.js"></script>
     <script src="@(ViewBag.AssetsUrl)/pages/scripts/table-datatables-buttons.min.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {

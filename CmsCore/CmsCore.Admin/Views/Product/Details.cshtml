@@ -42,6 +42,42 @@
                     { <a asp-action="Details" asp-route-id="ParentPageId">@Model.ParentProduct.Title</a> }
                 </dd>
                 <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Photo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Photo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OldPrice)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OldPrice)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsAvailable)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsAvailable)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsNew)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsNew)
+                </dd>
+                <dt>
                     @Html.DisplayNameFor(model => model.IsPublished)
                 </dt>
                 <dd>
@@ -64,6 +100,12 @@
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.ModifiedDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ViewCount)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ViewCount)
                 </dd>
 
             </dl>
@@ -95,7 +137,7 @@
             </dl>
         </div>
         <div class="form-actions right">
-            <button type="button" class="btn blue" asp-controller="Product" asp-action="Index">Ürünler Listesi</button>
+            <a type="button" class="btn blue" href=@Url.Action("Index","Product")>Back To List</a>
         </div>
     </div>
 </div>

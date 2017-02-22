@@ -1,0 +1,82 @@
+﻿@model LinkViewModel
+
+@{
+    ViewBag.Title = "Edit Link";
+}
+<br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="@Url.Action("Index","Link")">Links</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Edit</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+
+    </div>
+</div>
+<br />
+<h1 class="page-title">
+    <small></small>
+</h1>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="icon-settings font-dark"></i>
+                        <span class="caption-subject bold uppercase">Edit Link</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form role="form">
+                        <div class="form-body">
+                            <div class="form-group">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
+                                <div class="form-body">
+                                    @Html.LabelFor(model => model.Name)
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @tabindex = "1", @class = "form-control",autofocus="autofocus" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-body">
+                                    @Html.LabelFor(model => model.Url)
+                                    @Html.EditorFor(model => model.Url , new { htmlAttributes = new { @tabindex = "2", @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Url , "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-body">
+                                    @Html.LabelFor(model => model.Description)
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @tabindex = "3", @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description , "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-body">
+                                    @Html.LabelFor(model => model.Target)
+                                    @Html.EditorFor(model => model.Target, new { htmlAttributes = new { @tabindex = "4", @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Target  , "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-body">
+                                    @Html.LabelFor(model => model.IsVisible)
+                                    @Html.CheckBoxFor(model => model.IsVisible, new { htmlAttributes = new { @tabindex = "5", @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.IsVisible, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" tabindex="6" class="btn blue">Save</button>
+                            <button type="button" tabindex="7" class="btn default" onclick="window.location='@Url.Action("Index","Link")';">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts{
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+}

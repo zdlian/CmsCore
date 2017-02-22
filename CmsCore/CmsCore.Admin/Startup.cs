@@ -78,6 +78,9 @@ namespace CmsCore.Admin
             services.AddTransient<ISettingRepository, SettingRepository>();
             services.AddTransient<IRedirectRepository, RedirectRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddTransient<ILinkRepository, LinkRepository>();
+            services.AddTransient<ILinkCategoryRepository, LinkCategoryRepository>();
 
             // services
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -94,7 +97,9 @@ namespace CmsCore.Admin
             services.AddTransient<ISettingService, SettingService>();
             services.AddTransient<IRedirectService, RedirectService>();
             services.AddTransient<IProductService, ProductService>();
-
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<ILinkService, LinkService>();
+            services.AddTransient<ILinkCategoryService, LinkCategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

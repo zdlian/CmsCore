@@ -1,0 +1,64 @@
+﻿@model CmsCore.Admin.Models.LinkCategoryViewModel
+@{
+    ViewBag.Title = "New Link Category";
+}
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" /><br />
+<script src="~/js/generate-slug.js"></script>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><a href="@Url.Action("Index", "LinkCategory")" class="nav-link">Link Categories</a><i class="fa fa-circle"></i></li>
+        <li><span>Yeni Yazı Kategorisi</span></li>
+    </ul>
+</div><br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <h1 class="page-title">Create</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="portlet-body form">
+                <form role="form" method="post" asp-action="Create" asp-controller="LinkCategory">
+                    <div class="form-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name)
+                            @Html.TextBoxFor(model => model.Name, new { @tabindex = "1", @class = "form-control spinner", autofocus = "autofocus", onblur = "if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Name').val().toLowerCase(),'-'));}" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Slug)
+                            @Html.TextBoxFor(model => model.Slug, new { @tabindex = "2", @class = "form-control spinner", onblur = "if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Name').val().toLowerCase(),'-'));}" })
+                            @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description)
+                            @Html.TextAreaFor(model => model.Description, new { @tabindex = "3", @class = "form-control spinner",style="max-width:100%" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ParentCategoryId)
+                            @Html.DropDownListFor(model => model.ParentCategoryId, (IEnumerable<SelectListItem>)ViewBag.LinkCategories, "(Yok)", new { @tabindex = "4", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ParentCategoryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" tabindex="5" class="btn blue">Add</button>
+                        <button type="button" tabindex="6" class="btn default" onclick="window.location='@Url.Action("Index","LinkCategory")';">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
+<!-- BEGIN SAMPLE FORM PORTLET-->
+@section scripts {
+
+}
