@@ -15,8 +15,8 @@ namespace CmsCore.Admin.Controllers
         public IActionResult Create() {
             return View();
         }
-        public IActionResult Create(MediaViewModel fileVM, HttpPostedFileBase upload) {
-            return View();
-        }
+        //public IActionResult Create(MediaViewModel fileVM, HttpPostedFileBase upload) {
+        //    return View();
+        //}
     }
 }
