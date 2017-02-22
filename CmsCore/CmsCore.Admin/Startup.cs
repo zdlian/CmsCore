@@ -81,6 +81,8 @@ namespace CmsCore.Admin
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<ILinkRepository, LinkRepository>();
             services.AddTransient<ILinkCategoryRepository, LinkCategoryRepository>();
+            services.AddTransient<IMediaRepository, MediaRepository>();
+
 
             // services
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -100,6 +102,8 @@ namespace CmsCore.Admin
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<ILinkService, LinkService>();
             services.AddTransient<ILinkCategoryService, LinkCategoryService>();
+            services.AddTransient<IMediaService, MediaService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

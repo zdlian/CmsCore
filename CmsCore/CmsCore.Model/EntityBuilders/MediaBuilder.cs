@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Model.EntityBuilders
 {
-    public class SettingBuilder
+    public class MediaBuilder
     {
-        public SettingBuilder(EntityTypeBuilder<Setting> entityBuilder)
+        public MediaBuilder(EntityTypeBuilder<Media> entityBuilder)
         {
-            entityBuilder.HasKey(s => s.Id);
-            entityBuilder.Property(s => s.Name).HasMaxLength(200);
-
+            entityBuilder.HasKey(x=>x.Id);
+            entityBuilder.Property(e=>e.Title).IsRequired().HasMaxLength(50);
         }
     }
 }

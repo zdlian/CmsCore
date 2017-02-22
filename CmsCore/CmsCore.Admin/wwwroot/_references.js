@@ -2,6 +2,7 @@
 /// <reference path="js/generate-slug.js" />
 /// <reference path="js/pages/link-category-index.js" />
 /// <reference path="js/pages/link-index.js" />
+/// <reference path="js/pages/media-index.js" />
 /// <reference path="js/pages/menuItem-index.js" />
 /// <reference path="js/pages/menu-index.js" />
 /// <reference path="js/pages/menuLoc-index.js" />

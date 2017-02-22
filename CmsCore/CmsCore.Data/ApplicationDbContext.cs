@@ -25,6 +25,7 @@ namespace CmsCore.Data
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Link> Links { get; set; }
         public DbSet<LinkCategory> LinkCategories { get; set; }
+        public DbSet<Media> Medias { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -53,6 +54,8 @@ namespace CmsCore.Data
             new ProductProductCategoryBuilder(builder.Entity<ProductProductCategory>());
             new LinkBuilder(builder.Entity<Link>());
             new LinkCategoryBuilder(builder.Entity<LinkCategory>());
+            new MediaBuilder(builder.Entity<Media>());
+
             
         }
     }
