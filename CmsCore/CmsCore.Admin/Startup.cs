@@ -57,7 +57,7 @@ namespace CmsCore.Admin
             services.Configure<AppSettings>(mySetting =>
             {
                 mySetting.AssetsUrl = "http://assets.bilgikoleji.com/";
-                mySetting.UploadPath = "C:\\Users\\NEX\\Source\\Repos\\CmsCore\\CmsCore\\CmsCore.Assets\\wwwroot\\uploads";
+                mySetting.UploadPath = "C:\\Users\\Admin\\Source\\Repos\\CmsCore\\CmsCore\\CmsCore.Assets\\wwwroot\\uploads";
             });
 
             services.AddMvc();

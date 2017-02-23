@@ -7,6 +7,7 @@ using CmsCore.Admin.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Options;
 
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CmsCore.Admin.Controllers
@@ -16,10 +17,11 @@ namespace CmsCore.Admin.Controllers
        
         protected string AssetsUrl;
         protected string UploadPath;
-        
+      
+
         public BaseController()
         {
-                    
+            
         }   
         
         public override void OnActionExecuting(ActionExecutingContext filterContext)
