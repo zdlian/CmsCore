@@ -1,0 +1,49 @@
+﻿@model CmsCore.Model.Entities.Language
+@{
+    ViewData["Title"] = Model.Name;
+}
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><a asp-action="Index" asp-controller="Product">Languages</a><i class="fa fa-circle"></i></li>
+        <li><span>Language Details</span></li>
+    </ul>
+    <div class="page-toolbar">
+        <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body" data-placement="bottom" data-original-title="Change dashboard date range">
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-top:15px">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase">Language Details</span>
+                </div>
+            </div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NativeName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NativeName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Culture)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Culture)
+                </dd>
+            </dl>
+        <div class="form-actions right">
+            <a type="button" class="btn blue" href=@Url.Action("Index","Language")>Back To List</a>
+        </div>
+    </div>
+</div>
+    </div>

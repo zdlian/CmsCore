@@ -25,6 +25,7 @@ namespace CmsCore.Data
         public DbSet<Link> Links { get; set; }
         public DbSet<LinkCategory> LinkCategories { get; set; }
         public DbSet<Media> Medias { get; set; }
+        public DbSet<Language> Languages { get; set; }
 
         public DbSet<Form> Forms { get; set; }
         public DbSet<FormField> FormFields { get; set; }
@@ -57,6 +58,7 @@ namespace CmsCore.Data
             new LinkBuilder(builder.Entity<Link>());
             new LinkCategoryBuilder(builder.Entity<LinkCategory>());
             new MediaBuilder(builder.Entity<Media>());
+            new LanguageBuilder(builder.Entity<Language>());
 
             
         }
