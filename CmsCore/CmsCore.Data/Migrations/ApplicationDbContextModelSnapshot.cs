@@ -66,6 +66,74 @@ namespace CmsCore.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("CmsCore.Model.Entities.Form", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AddedBy");
+
+                    b.Property<DateTime>("AddedDate");
+
+                    b.Property<string>("ClosingDescription");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("EmailBcc");
+
+                    b.Property<string>("EmailCc");
+
+                    b.Property<string>("EmailTo");
+
+                    b.Property<string>("FormName");
+
+                    b.Property<string>("GoogleAnalyticsCode");
+
+                    b.Property<bool>("IsPublished");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Forms");
+                });
+
+            modelBuilder.Entity("CmsCore.Model.Entities.FormField", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AddedBy");
+
+                    b.Property<DateTime>("AddedDate");
+
+                    b.Property<int>("FieldType");
+
+                    b.Property<int?>("FormId");
+
+                    b.Property<long?>("FormId1");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Position");
+
+                    b.Property<bool>("Required");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FormId1");
+
+                    b.ToTable("FormFields");
+                });
+
             modelBuilder.Entity("CmsCore.Model.Entities.Language", b =>
                 {
                     b.Property<long>("Id")
@@ -206,74 +274,6 @@ namespace CmsCore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Medias");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.Form", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("ClosingDescription");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("EmailBcc");
-
-                    b.Property<string>("EmailCc");
-
-                    b.Property<string>("EmailTo");
-
-                    b.Property<string>("FormName");
-
-                    b.Property<string>("GoogleAnalyticsCode");
-
-                    b.Property<bool>("IsPublished");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Forms");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.FormField", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<int>("FieldType");
-
-                    b.Property<int?>("FormId");
-
-                    b.Property<long?>("FormId1");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("Position");
-
-                    b.Property<bool>("Required");
-
-                    b.Property<string>("Value");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FormId1");
-
-                    b.ToTable("FormFields");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Menu", b =>
@@ -832,6 +832,13 @@ namespace CmsCore.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CmsCore.Model.Entities.FormField", b =>
+                {
+                    b.HasOne("CmsCore.Model.Entities.Form", "Form")
+                        .WithMany("FormFields")
+                        .HasForeignKey("FormId1");
+                });
+
             modelBuilder.Entity("CmsCore.Model.Entities.LinkCategory", b =>
                 {
                     b.HasOne("CmsCore.Model.Entities.LinkCategory", "ParentCategory")
@@ -850,13 +857,6 @@ namespace CmsCore.Data.Migrations
                         .WithMany("LinkLinkCategories")
                         .HasForeignKey("LinkId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.FormField", b =>
-                {
-                    b.HasOne("CmsCore.Model.Entities.Form", "Form")
-                        .WithMany("FormFields")
-                        .HasForeignKey("FormId1");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.MenuItem", b =>

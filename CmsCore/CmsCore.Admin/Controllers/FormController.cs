@@ -40,12 +40,9 @@ namespace CmsCore.Admin.Controllers
                 frm.ClosingDescription = form.ClosingDescription;
                 frm.EmailTo = form.EmailTo;
                 frm.EmailCc = form.EmailCc;
-                frm.EmailBcc = form.EmailBcc;           
-                
+                frm.EmailBcc = form.EmailBcc;  
                 frm.GoogleAnalyticsCode = form.GoogleAnalyticsCode;
                 frm.IsPublished = form.IsPublished;
-                
-
                 formService.CreateForm(frm);
                 formService.SaveForm();
                 return RedirectToAction("Index");
@@ -56,7 +53,6 @@ namespace CmsCore.Admin.Controllers
         }
         public ActionResult Details(long id)
         {
-     
             var frm = formService.GetForm(id);
             if (frm != null)
             {
@@ -156,7 +152,11 @@ namespace CmsCore.Admin.Controllers
             int iTotalDisplayRecords;
             var displayedForms = formService.Search(sSearch, sortColumnIndex, sortDirection, param.iDisplayStart, param.iDisplayLength, out iTotalRecords, out iTotalDisplayRecords);
             var result = from c in displayedForms
-                         select new[] { c.Id.ToString(), c.Id.ToString(), c.FormName.ToString(), string.Empty };
+                         select new[] {
+                             c.Id.ToString(),
+                             c.Id.ToString(),
+                             c.FormName.ToString(),
+                             string.Empty };
             return Json(new
             {
                 sEcho = param.sEcho,
