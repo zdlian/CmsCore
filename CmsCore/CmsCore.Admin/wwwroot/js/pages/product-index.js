@@ -1,6 +1,6 @@
 ﻿var initTable1 = function () {
 
-    var table = $('#allCategoryTable');
+    var table = $('#productTable');
     // begin first table
     table.dataTable({
 
@@ -12,18 +12,18 @@
             },
             "emptyTable": "Kayıt Bulunamadı",
             "info": "Gösterilen _START_ ile _END_ arasında toplam _TOTAL_ kayıt ",
-            "infoEmpty": "Kayıt bulunamadı",
+            "infoEmpty": "Herhangi bir kayıt bulunamadı.",
             "infoFiltered": "(filtered1 from _MAX_ total records)",
-            "lengthMenu": "Göster : _MENU_",
-            "search": "Ara:",
-            "zeroRecords": "Arama kriterinizle eşleşen kayıt yok",
+            "lengthMenu": "Show _MENU_",
+            "search": "Search:",
+            "zeroRecords": "Eşleşen bir sonuç bulunamadı.",
             "paginate": {
-                "previous": "Önceki",
-                "next": "Sonraki",
-                "last": "Son",
-                "first": "İlk"
-            },
-            "sProcessing": "Yükleniyor..."
+                "previous": "Prev",
+                "next": "Next",
+                "last": "Last Page",
+                "first": "First Page",
+                "proccessing": "Loading"
+            }
         },
 
         // Or you can use remote translation file
@@ -38,7 +38,7 @@
         buttons: [{
             extend: 'collection',
             className: 'btn green  btn-outline dropdown-toggle',
-            text: 'Araçlar',
+            text: 'Tools',
             buttons: [
               { extend: "excel", className: "fa fa-file-excel-o" },
               { extend: "pdf", className: "fa fa-file-pdf-o" },
@@ -46,39 +46,40 @@
             ]
         }
         ],
-        "bServerSide": true,
-        "bProcessing": true,
-        "sAjaxSource": "/PostCategory/AjaxHandler",
+
         "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+        "bProccessing": true,
+        "sAjaxSource": "/Product/AjaxHandler",
+
 
         "lengthMenu": [
             [5, 15, 20, -1],
-            [5, 15, 20, "Tümü"] // change per page values here
+            [5, 15, 20, "All"] // change per page values here
         ],
         // set the initial value
         "pageLength": 5,
         "pagingType": "bootstrap_full_number",
         "columnDefs": [
-            {  // set default column settings
+          {  // set default column settings
+              'orderable': false,
+              'searchable': false,
+              'targets': [0],
+              'render': function (data, type, row) {
+                  return '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline"><input type="checkbox" class="checkboxes" value="1" /><span></span></label>';
+              }
+          },
+
+            {
                 'orderable': false,
                 'searchable': false,
-                'targets': [0],
+                'targets': [5],
                 'render': function (data, type, row) {
-                    return '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline"><input type="checkbox" class="checkboxes" value="1" /><span></span></label>';
+                    return '<div class="btn-group"><button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Eylemler<i class="fa fa-angle-down"></i></button>'
+                        + '<ul class="dropdown-menu" role="menu"><li><a href="/Product/Edit/' + row[0] + '"><i class="icon-note"></i> Düzenle</a></li><li><a href="/Product/Details/' + row[0] + '"><i class="icon-list"></i> Detaylar</a></li><li>'
+                      + '<a href="/Product/Delete/' + row[0] + '" onclick="if (!confirm(\'Bu kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.\')) return false;"><i class="icon-ban"></i> Sil</a></li></ul></div>';
                 }
-            },
-             {
-                 'orderable': false,
-                 'searchable': false,
-                 'targets': [5],
-                 'render': function (data, type, row) {
-                     return '<div class="btn-group"><button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Eylemler<i class="fa fa-angle-down"></i></button>'
-                        + '<ul class="dropdown-menu" role="menu"><li><a href="/PostCategory/Edit/' + row[0] + '"><i class="icon-note"></i> Düzenle</a></li><li>'
-                        + '<a href="/PostCategory/Delete/' + row[0] + '" onclick="if (!confirm(\'Bu kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.\')) return false;"><i class="icon-ban"></i> Sil</a></li></ul></div>';
-                 }
 
-             }
-
+            }
 
         ],
         "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
@@ -87,7 +88,7 @@
         ] // set first column as a default sort by asc
     });
 
-    var tableWrapper = jQuery('#linkTable_wrapper');
+    var tableWrapper = jQuery('#productTable_wrapper');
 
     table.find('.group-checkable').change(function () {
         var set = jQuery(this).attr("data-set");

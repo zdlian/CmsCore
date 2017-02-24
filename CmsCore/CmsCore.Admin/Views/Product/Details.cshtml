@@ -1,0 +1,143 @@
+﻿@model CmsCore.Model.Entities.Product
+@{
+    ViewData["Title"] = Model.Title;
+}
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><a asp-action="Index" asp-controller="Product">Ürünler</a><i class="fa fa-circle"></i></li>
+        <li><span>Ürün Detayları</span></li>
+    </ul>
+    <div class="page-toolbar">
+        <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body" data-placement="bottom" data-original-title="Change dashboard date range">
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-top:15px">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase">Ürün Detayları</span>
+                </div>
+            </div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Body)
+                </dt>
+                <dd>
+                    @Html.Raw(Model.Body)
+                </dd>
+                <dt>
+                    
+                </dt>
+                <dd>
+                    @if (Model.ParentProduct != null)
+                    { <a asp-action="Details" asp-route-id="ParentPageId">@Model.ParentProduct.Title</a> }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Photo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Photo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OldPrice)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.OldPrice)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsAvailable)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsAvailable)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsNew)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsNew)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsPublished)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsPublished)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AddedBy)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddedDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AddedDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ModifiedDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ViewCount)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ViewCount)
+                </dd>
+
+            </dl>
+
+            <div>
+                <span class="caption-subject bold uppercase">SEO Detayları</span>
+            </div>
+
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SeoTitle)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SeoTitle)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SeoDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SeoDescription)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SeoKeywords)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SeoKeywords)
+                </dd>
+            </dl>
+        </div>
+        <div class="form-actions right">
+            <a type="button" class="btn blue" href=@Url.Action("Index","Product")>Back To List</a>
+        </div>
+    </div>
+</div>

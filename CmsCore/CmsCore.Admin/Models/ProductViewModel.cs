@@ -1,13 +1,14 @@
-﻿using System;
+﻿using CmsCore.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CmsCore.Model.Entities
+namespace CmsCore.Admin.Models
 {
-    public class Product:BaseEntity
+    public class ProductViewModel:BaseEntity
     {
-        public Product()
+        public ProductViewModel()
         {
             IsPublished = true;
             IsNew = false;

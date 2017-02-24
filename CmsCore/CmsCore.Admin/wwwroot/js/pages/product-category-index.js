@@ -38,7 +38,7 @@
         buttons: [{
             extend: 'collection',
             className: 'btn green  btn-outline dropdown-toggle',
-            text: 'Araçlar',
+            text: 'Tools',
             buttons: [
               { extend: "excel", className: "fa fa-file-excel-o" },
               { extend: "pdf", className: "fa fa-file-pdf-o" },
@@ -48,7 +48,7 @@
         ],
         "bServerSide": true,
         "bProcessing": true,
-        "sAjaxSource": "/PostCategory/AjaxHandler",
+        "sAjaxSource": "/ProductCategory/AjaxHandler",
         "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
 
         "lengthMenu": [
@@ -73,8 +73,8 @@
                  'targets': [5],
                  'render': function (data, type, row) {
                      return '<div class="btn-group"><button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Eylemler<i class="fa fa-angle-down"></i></button>'
-                        + '<ul class="dropdown-menu" role="menu"><li><a href="/PostCategory/Edit/' + row[0] + '"><i class="icon-note"></i> Düzenle</a></li><li>'
-                        + '<a href="/PostCategory/Delete/' + row[0] + '" onclick="if (!confirm(\'Bu kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.\')) return false;"><i class="icon-ban"></i> Sil</a></li></ul></div>';
+                        + '<ul class="dropdown-menu" role="menu"><li><a href="/ProductCategory/Edit/' + row[0] + '"><i class="icon-note"></i> Düzenle</a></li><li>'
+                        + '<a href="/ProductCategory/Delete/' + row[0] + '" onclick="if (!confirm(\'Bu kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.\')) return false;"><i class="icon-ban"></i> Sil</a></li></ul></div>';
                  }
 
              }
@@ -87,7 +87,7 @@
         ] // set first column as a default sort by asc
     });
 
-    var tableWrapper = jQuery('#linkTable_wrapper');
+    var tableWrapper = jQuery('#allCategoryTable_wrapper');
 
     table.find('.group-checkable').change(function () {
         var set = jQuery(this).attr("data-set");

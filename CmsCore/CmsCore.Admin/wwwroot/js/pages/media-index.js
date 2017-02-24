@@ -1,8 +1,9 @@
 ﻿var initTable1 = function () {
 
-    var table = $('#allCategoryTable');
+    var table = $('#mediaTable');
     // begin first table
     table.dataTable({
+    
 
         // Internationalisation. For more info refer to http://datatables.net/manual/i18n
         "language": {
@@ -12,33 +13,24 @@
             },
             "emptyTable": "Kayıt Bulunamadı",
             "info": "Gösterilen _START_ ile _END_ arasında toplam _TOTAL_ kayıt ",
-            "infoEmpty": "Kayıt bulunamadı",
-            "infoFiltered": "(filtered1 from _MAX_ total records)",
+            "infoEmpty": "Kayıt Bulunamadı",
+            "infoFiltered": "(Toplam _MAX_ Kayıt Arasından)",
             "lengthMenu": "Göster : _MENU_",
             "search": "Ara:",
-            "zeroRecords": "Arama kriterinizle eşleşen kayıt yok",
+            "zeroRecords": "Eşleşen kayıt bulunmamaktadır",
             "paginate": {
-                "previous": "Önceki",
-                "next": "Sonraki",
-                "last": "Son",
-                "first": "İlk"
+                "previous": "Previous",
+                "next": "Next",
+                "last": "Last",
+                "first": "First"
             },
-            "sProcessing": "Yükleniyor..."
+            "sProcessing": "Loading..."
         },
 
-        // Or you can use remote translation file
-        //"language": {
-        //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
-        //},
-
-        // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-        // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
-        // So when dropdowns used the scrollable div should be removed. 
-        //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
         buttons: [{
             extend: 'collection',
             className: 'btn green  btn-outline dropdown-toggle',
-            text: 'Araçlar',
+            text: 'Tools',
             buttons: [
               { extend: "excel", className: "fa fa-file-excel-o" },
               { extend: "pdf", className: "fa fa-file-pdf-o" },
@@ -48,7 +40,7 @@
         ],
         "bServerSide": true,
         "bProcessing": true,
-        "sAjaxSource": "/PostCategory/AjaxHandler",
+        "sAjaxSource": "/Media/AjaxHandler",
         "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
 
         "lengthMenu": [
@@ -66,28 +58,25 @@
                 'render': function (data, type, row) {
                     return '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline"><input type="checkbox" class="checkboxes" value="1" /><span></span></label>';
                 }
-            },
-             {
-                 'orderable': false,
-                 'searchable': false,
-                 'targets': [5],
-                 'render': function (data, type, row) {
-                     return '<div class="btn-group"><button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Eylemler<i class="fa fa-angle-down"></i></button>'
-                        + '<ul class="dropdown-menu" role="menu"><li><a href="/PostCategory/Edit/' + row[0] + '"><i class="icon-note"></i> Düzenle</a></li><li>'
-                        + '<a href="/PostCategory/Delete/' + row[0] + '" onclick="if (!confirm(\'Bu kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.\')) return false;"><i class="icon-ban"></i> Sil</a></li></ul></div>';
-                 }
-
-             }
-
-
+            }, {
+                'orderable': false,
+                'searchable': false,
+                'targets': [4],
+                'render': function (data, type, row) {
+                    return '<div class="btn-group"><button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Eylemler<i class="fa fa-angle-down"></i></button>'
+                        + '<ul class="dropdown-menu" role="menu"><li><a href="/Media/Edit/' + row[0] + '"><i class="icon-note"></i> Düzenle</a></li>'
+                        + '<li><a href="/Media/Delete/' + row[0] + '" onclick="if (!confirm(\'Bu kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.\')) return false;"><i class="icon-ban"></i> Sil</a></li></ul></div>';
+                }
+            }
         ],
-        "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
-        "order": [
+        "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
+        "order":
+            [
             [1, "asc"]
-        ] // set first column as a default sort by asc
+            ] // set first column as a default sort by asc
     });
 
-    var tableWrapper = jQuery('#linkTable_wrapper');
+    var tableWrapper = jQuery('#mediaTable_wrapper');
 
     table.find('.group-checkable').change(function () {
         var set = jQuery(this).attr("data-set");
@@ -96,7 +85,8 @@
             if (checked) {
                 $(this).prop("checked", true);
                 $(this).parents('tr').addClass("active");
-            } else {
+            }
+            else {
                 $(this).prop("checked", false);
                 $(this).parents('tr').removeClass("active");
             }

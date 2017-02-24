@@ -57,7 +57,7 @@ namespace CmsCore.Admin
             services.Configure<AppSettings>(mySetting =>
             {
                 mySetting.AssetsUrl = "http://assets.bilgikoleji.com/";
-                mySetting.UploadPath = "C:\\Users\\NEX\\Source\\Repos\\CmsCore\\CmsCore\\CmsCore.Assets\\wwwroot\\uploads";
+                mySetting.UploadPath = "C:\\Users\\Admin\\Source\\Repos\\CmsCore\\CmsCore\\CmsCore.Assets\\wwwroot\\uploads";
             });
 
             services.AddMvc();
@@ -77,6 +77,12 @@ namespace CmsCore.Admin
             services.AddTransient<ISectionRepository, SectionRepository>();
             services.AddTransient<ISettingRepository, SettingRepository>();
             services.AddTransient<IRedirectRepository, RedirectRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddTransient<ILinkRepository, LinkRepository>();
+            services.AddTransient<ILinkCategoryRepository, LinkCategoryRepository>();
+            services.AddTransient<IMediaRepository, MediaRepository>();
+
 
             // services
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -92,6 +98,11 @@ namespace CmsCore.Admin
             services.AddTransient<ISectionService, SectionService>();
             services.AddTransient<ISettingService, SettingService>();
             services.AddTransient<IRedirectService, RedirectService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<ILinkService, LinkService>();
+            services.AddTransient<ILinkCategoryService, LinkCategoryService>();
+            services.AddTransient<IMediaService, MediaService>();
 
         }
 

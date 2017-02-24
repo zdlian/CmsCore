@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CmsCore.Model.Entities
 {
-    public class LinkLinkCategory
+    public class LinkLinkCategory:BaseEntity
     {
         public long LinkId { get; set; }
         public virtual Link Link { get; set; }

@@ -8,9 +8,10 @@ using CmsCore.Data;
 namespace CmsCore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170221151303_products2")]
+    partial class products2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -64,192 +65,6 @@ namespace CmsCore.Data.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.Link", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool>("IsVisible");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 200);
-
-                    b.Property<string>("Target");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 200);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Links");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.LinkCategory", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 200);
-
-                    b.Property<long?>("ParentCategoryId");
-
-                    b.Property<string>("Slug")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 200);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentCategoryId");
-
-                    b.ToTable("LinkCategories");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.LinkLinkCategory", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<long>("LinkCategoryId");
-
-                    b.Property<long>("LinkId");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LinkCategoryId");
-
-                    b.HasIndex("LinkId");
-
-                    b.ToTable("LinkLinkCategory");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.Media", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("FileName");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<decimal>("Size");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Medias");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.Form", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<string>("ClosingDescription");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("EmailBcc");
-
-                    b.Property<string>("EmailCc");
-
-                    b.Property<string>("EmailTo");
-
-                    b.Property<string>("FormName");
-
-                    b.Property<string>("GoogleAnalyticsCode");
-
-                    b.Property<bool>("IsPublished");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Forms");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.FormField", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AddedBy");
-
-                    b.Property<DateTime>("AddedDate");
-
-                    b.Property<int>("FieldType");
-
-                    b.Property<int?>("FormId");
-
-                    b.Property<long?>("FormId1");
-
-                    b.Property<string>("ModifiedBy");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("Position");
-
-                    b.Property<bool>("Required");
-
-                    b.Property<string>("Value");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FormId1");
-
-                    b.ToTable("FormFields");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.Menu", b =>
@@ -539,7 +354,7 @@ namespace CmsCore.Data.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("ProductCategories");
+                    b.ToTable("ProductCategory");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.ProductProductCategory", b =>
@@ -619,6 +434,7 @@ namespace CmsCore.Data.Migrations
                     b.Property<DateTime>("ModifiedDate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasAnnotation("MaxLength", 200);
 
                     b.Property<string>("Value");
@@ -806,33 +622,6 @@ namespace CmsCore.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.LinkCategory", b =>
-                {
-                    b.HasOne("CmsCore.Model.Entities.LinkCategory", "ParentCategory")
-                        .WithMany("ChildCategories")
-                        .HasForeignKey("ParentCategoryId");
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.LinkLinkCategory", b =>
-                {
-                    b.HasOne("CmsCore.Model.Entities.LinkCategory", "LinkCategory")
-                        .WithMany("LinkLinkCategories")
-                        .HasForeignKey("LinkCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CmsCore.Model.Entities.Link", "Link")
-                        .WithMany("LinkLinkCategories")
-                        .HasForeignKey("LinkId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CmsCore.Model.Entities.FormField", b =>
-                {
-                    b.HasOne("CmsCore.Model.Entities.Form", "Form")
-                        .WithMany("FormFields")
-                        .HasForeignKey("FormId1");
                 });
 
             modelBuilder.Entity("CmsCore.Model.Entities.MenuItem", b =>

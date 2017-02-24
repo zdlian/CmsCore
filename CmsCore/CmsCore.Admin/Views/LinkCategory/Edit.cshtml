@@ -1,0 +1,76 @@
+﻿@model CmsCore.Admin.Models.LinkCategoryViewModel
+@{ 
+    ViewData["Title"] = "Edit Link Category: " + Model.Name;
+}
+<style>
+    textarea {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="@(ViewBag.AssetsUrl)/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="~/js/generate-slug.js"></script>
+<br />
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><a href="@Url.Action("Index", "LinkCategory")" class="nav-link">Link Categories</a><i class="fa fa-circle"></i></li>
+        <li><span>Edit</span></li>
+    </ul>
+
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <h1 class="page-title">Edit</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="portlet-body form">
+                    <form role="form">
+                        <div class="form-group">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="form-body">
+                                @Html.LabelFor(model => model.Name)
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @tabindex = "1", @class = "form-control spinner", onblur = "if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Name').val().toLowerCase(),'-'));}" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-body">
+                                @Html.LabelFor(model => model.Slug)
+                                @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @tabindex = "2", @class = "form-control spinner", onblur = "if ($('#Slug').val() == '') {$('#Slug').val(slug($('#Name').val().toLowerCase(),'-'));}" } })
+                                @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-body">
+                                @Html.LabelFor(model => model.Description)
+                                @Html.TextAreaFor(model => model.Description, new { @tabindex = "3", @class = "form-control spinner" })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ParentCategoryId)
+                                @Html.DropDownListFor(model => model.ParentCategoryId, (IEnumerable<SelectListItem>)ViewBag.LinkCategories, "(Yok)", new { @tabindex = "4", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ParentCategoryId, "", new { @class = "text-danger" })
+
+                            </div>
+
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn blue">Save</button>
+                            <button type="button" class="btn default" onclick="window.location='@Url.Action("Index","LinkCategory")';">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
