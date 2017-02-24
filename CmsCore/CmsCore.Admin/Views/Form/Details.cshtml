@@ -1,0 +1,171 @@
+﻿@using CmsCore.Admin.Helpers;
+@model FormViewModel
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>@ViewBag.Title</title>
+<br />
+<style>
+    textarea {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+<script>
+    webshims.setOptions('forms-ext', {types: 'date'});
+webshims.polyfill('forms forms-ext');
+</script>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="@Url.Action("Index","Form")">Formlar</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Form Detayları</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase">Form Detayları</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="portlet light bordered">
+
+                        <!--İLAN VERİLİŞ TARİHİ O AN ALINACAK-->
+
+
+
+                        <div class="portlet-body form">
+                            <text><strong>Form İsmi:</strong></text>@Html.DisplayFor(model => model.FormName)<br />
+                            <text><strong>E-posta to:</strong></text>@Html.DisplayFor(model => model.EmailTo)<br />
+                            <text><strong>E-posta cc:</strong></text>@Html.DisplayFor(model => model.EmailCc)<br />
+                            <text><strong>E-posta bcc:</strong></text>@Html.DisplayFor(model => model.EmailBcc)<br />
+                            <text><strong>Form Mesajı:</strong></text>@Html.Raw(Model.Description)
+                            <text><strong>Form Kapanış Mesajı:</strong></text>@Html.Raw(Model.ClosingDescription)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="portlet light bordered">
+                        <div class="portlet-body form">
+                            <select id="orderbox" size=@ViewBag.FormFields.Count>
+                                @foreach (FormField item in ViewBag.FormFields)
+                                {
+                                 <option value="@item.Position">@item.Name</option>   
+                            }
+                            </select><button onclick="listbox_move('orderbox','up');">Yukarı</button><button onclick="listbox_move('orderbox','down');">Aşağı</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+        </div>
+    </div>
+<br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption font-dark">
+                                <i class="icon-settings font-dark"></i>
+                                <span class="caption-subject bold uppercase"> Form Önizlemesi</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                                @using (Html.BeginForm("Create", "FeedBack", null, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
+                                {
+                                    <fieldset>
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        
+                                        <div class="col-md-12 ">
+                                            <!-- BEGIN SAMPLE FORM PORTLET-->
+                                            @Html.HiddenFor(model => model.Id)
+                                            @Html.HiddenFor(model => model.FormName)
+                                            @Html.HiddenFor(model => model.EmailTo)
+                                            @Html.HiddenFor(model => model.EmailCc)
+                                            @Html.HiddenFor(model => model.EmailBcc)
+                                            @Html.HiddenFor(model => model.GoogleAnalyticsCode)
+                                            @Html.HiddenFor(model => model.FormFields)
+                                            @Html.HiddenFor(model=>Model.Description)
+                                            @Html.HiddenFor(model=>Model.ClosingDescription)
+                                            <div class="form-body">
+
+                                                <div class="form-group">
+                                                    <h1>@Html.DisplayFor(model => model.FormName)</h1><br />
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.Raw(Model.Description)
+                                                </div>
+
+                                                @foreach (FormField item in ViewBag.FormFields)
+                                                {
+                                                    <div class="form-group">
+                                                        @Html.FieldTypeFor(item, false, false)
+                                                    </div>
+                                                }
+
+                                            </div>
+                                        </div>
+                                        <input type="submit" />
+                                    </fieldset>
+                                }
+                            
+                        </div>
+
+                        <!-- END SAMPLE FORM PORTLET-->
+                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                    </div>
+
+                        </div>
+                    </div>
+<script>
+    function listbox_move(orderbox, direction) {
+
+        var listbox = document.getElementById(orderbox);
+        var selIndex = listbox.selectedIndex;
+        var formId= @Model.FormId;
+        if(-1 == selIndex) {
+            alert("Please select an option to move.");
+            return;
+        }
+
+        var increment = -1;
+        if(direction == 'up')
+            increment = -1;
+        else
+            increment = 1;
+
+
+        var selText = listbox.options[selIndex].text;
+        var selValue1 = listbox.options[selIndex].value;
+        var selValue2 = listbox.options[selIndex+ increment].value;
+        listbox.options[selIndex].text = listbox.options[selIndex + increment].text
+        listbox.options[selIndex + increment].text = selText;
+        listbox.selectedIndex = selIndex + increment;
+        $.post("/FormField/UpdateFormFieldPosition", {
+            position1:selValue1, text1:selText, position2:selValue2, text2:listbox.options[selIndex].text, Id:formId
+        }, function (data) {
+
+        }
+    )}
+
+</script>
+
+
