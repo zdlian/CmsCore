@@ -82,6 +82,7 @@ namespace CmsCore.Admin
             services.AddTransient<ILinkRepository, LinkRepository>();
             services.AddTransient<ILinkCategoryRepository, LinkCategoryRepository>();
             services.AddTransient<IMediaRepository, MediaRepository>();
+            services.AddTransient<ILanguageRepository, LanguageRepository>();
 
 
             // services
@@ -103,6 +104,7 @@ namespace CmsCore.Admin
             services.AddTransient<ILinkService, LinkService>();
             services.AddTransient<ILinkCategoryService, LinkCategoryService>();
             services.AddTransient<IMediaService, MediaService>();
+            services.AddTransient<ILanguageService, LanguageService>();
 
         }
 
