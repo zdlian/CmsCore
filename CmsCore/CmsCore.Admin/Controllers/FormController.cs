@@ -16,23 +16,18 @@ namespace CmsCore.Admin.Controllers
     {
         private readonly IFormService formService;
         private readonly IFormFieldService formFieldService;
-        public FormController(IFormService formService, IFormFieldService formFieldService)
-        {
+        public FormController(IFormService formService, IFormFieldService formFieldService){
             this.formService = formService;
             this.formFieldService = formFieldService;
         }
         // GET: Form
-        public ActionResult Create()
-        {
+        public ActionResult Create(){
             var form = new FormViewModel();
             return View(form);
         }
-
         [HttpPost]
-        public ActionResult Create(FormViewModel form)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Create(FormViewModel form){
+            if (ModelState.IsValid){
                 var frm = new Form();
                 frm.Id = form.Id;
                 frm.FormName = form.FormName;
@@ -46,16 +41,12 @@ namespace CmsCore.Admin.Controllers
                 formService.CreateForm(frm);
                 formService.SaveForm();
                 return RedirectToAction("Index");
-
             }
             return View(form);
-
         }
-        public ActionResult Details(long id)
-        {
+        public ActionResult Details(long id){
             var frm = formService.GetForm(id);
-            if (frm != null)
-            {
+            if (frm != null){
                 ViewBag.FormFields = new List<FormField>(formService.GetFormFieldsByFormId(id));
                 var formViewModel = new FormViewModel();
                 formViewModel.Id = frm.Id;
@@ -75,17 +66,13 @@ namespace CmsCore.Admin.Controllers
                 return View(formViewModel);
             }
             return RedirectToAction("Index");
-      
         }
-        public ActionResult Index()
-        {
+        public ActionResult Index(){
             return View();
         }
-        public ActionResult Edit(long id)
-        {
+        public ActionResult Edit(long id) {
             var frm = formService.GetForm(id);
-            if (frm != null)
-            {
+            if (frm != null){
                 var formViewModel = new FormViewModel();
                 formViewModel.Id = frm.Id;
                 formViewModel.FormName = frm.FormName;
@@ -107,14 +94,10 @@ namespace CmsCore.Admin.Controllers
             }   
             return RedirectToAction("Index");
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(FormViewModel form)
-        {
-            
-            if (ModelState.IsValid)
-            {
+        public ActionResult Edit(FormViewModel form) {
+            if (ModelState.IsValid){
                 var frm = formService.GetForm(form.Id);
                 frm.Id = form.Id;
                 frm.FormName = form.FormName;
@@ -123,7 +106,6 @@ namespace CmsCore.Admin.Controllers
                 frm.EmailTo = form.EmailTo;
                 frm.EmailCc = form.EmailCc;
                 frm.EmailBcc = form.EmailBcc;
-
                 frm.GoogleAnalyticsCode = form.GoogleAnalyticsCode;
                 frm.IsPublished = form.IsPublished;
                 formService.UpdateForm(frm);
