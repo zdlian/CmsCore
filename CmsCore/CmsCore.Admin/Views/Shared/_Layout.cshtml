@@ -207,11 +207,6 @@
                                         <span class="title">Add Page</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a asp-controller="Template" asp-action="Index" class="nav-link">
-                                        <span class="title">Templates</span>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -242,7 +237,7 @@
                         <li class="nav-item">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-book-open"></i>
-                                <span class="title">Product</span>
+                                <span class="title">Products</span>
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
@@ -382,6 +377,11 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a asp-controller="Template" asp-action="Index" class="nav-link">
+                                        <span class="title">Templates</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a asp-controller="Section" asp-action="Index" class="nav-link">
                                         <span class="title">Section</span>
                                     </a>
@@ -402,7 +402,7 @@
                             <ul class="sub-menu">
                                 <li class="nav-item">
                                     <a asp-controller="SEO" asp-action="MetaTags" class="nav-link">
-                                        <span class="SEO">Meta Tags</span>
+                                        <span class="title">Meta Tags</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -421,7 +421,7 @@
                             <ul class="sub-menu">
                                 <li class="nav-item">
                                     <a asp-controller="Users" asp-action="Index" class="nav-link">
-                                        <span class="SEO">All Users</span>
+                                        <span class="title">All Users</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -440,17 +440,12 @@
                             <ul class="sub-menu">
                                 <li class="nav-item">
                                     <a asp-controller="Setting" asp-action="Index" class="nav-link">
-                                        <span class="SEO">Genel Ayarlar</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-controller="Redirect" asp-action="Index" class="nav-link">
-                                        <span class="title">Yönlendirmeler</span>
+                                        <span class="title">Genel Ayarlar</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-controller="Setting" asp-action="Mail" class="nav-link">
-                                        <span class="title">E-Posta</span>
+                                        <span class="title">E-Posta Ayarları</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -459,12 +454,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Settings" asp-action="Index" class="nav-link">
-                                        <span class="title">Cultures</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-controller="Settings" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Resource" asp-action="Index" class="nav-link">
                                         <span class="title">Resources</span>
                                     </a>
                                 </li>

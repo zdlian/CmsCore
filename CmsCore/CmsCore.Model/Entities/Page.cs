@@ -31,5 +31,9 @@ namespace CmsCore.Model.Entities
 
         public long? TemplateId { get; set; }
         public virtual Template Template { get; set; }
+
+        public long? LanguageId { get; set; }
+        public virtual Language Language { get; set; }
+        // public virtual ICollection<Translation> Translations { get; set; }
     }
 }
