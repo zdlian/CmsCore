@@ -18,6 +18,7 @@ namespace CmsCore.Model.EntityBuilders
                 .HasMany(I => I.MenuItems)
                 .WithOne(m => m.Menu)
                 .HasForeignKey(s => s.MenuId).OnDelete(DeleteBehavior.Restrict);
+            entityBuilder.HasOne(p => p.Language).WithMany(l => l.Menus).HasForeignKey(p => p.LanguageId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

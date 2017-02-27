@@ -8,31 +8,31 @@ namespace CmsCore.Model.Entities
 {
     public enum FieldType
     {
-        [Display(Name = @"Ad Soyad")]
+        //[Display(Name = @"Ad Soyad")]
         fullName = 1,
-        [Display(Name = @"Telefon")]
+        //[Display(Name = @"Telefon")]
         telephone = 2,
-        [Display(Name = @"E-Posta")]
+        //[Display(Name = @"E-Posta")]
         email = 3,
-        [Display(Name = @"Metin Kutusu")]
+        //[Display(Name = @"Metin Kutusu")]
         smallText = 4,
-        [Display(Name = @"Metin Alanı")]
+        //[Display(Name = @"Metin Alanı")]
         largeText = 5,
-        [Display(Name = @"Tek Seçim")]
+        //[Display(Name = @"Tek Seçim")]
         singleChoice = 6,
-        [Display(Name = @"Çoklu Seçim")]
+        //[Display(Name = @"Çoklu Seçim")]
         multipleChoice = 7,
-        [Display(Name = @"Dosya Yükleme")]
+        //[Display(Name = @"Dosya Yükleme")]
         file = 8,
-        [Display(Name = @"Seçenek Düğmeleri")]
+        //[Display(Name = @"Seçenek Düğmeleri")]
         radioButtons = 9,
-        [Display(Name = @"Takvim")]
+        //[Display(Name = @"Takvim")]
         datePicker = 10,
-        [Display(Name = @"Web Sitesi")]
+        //[Display(Name = @"Web Sitesi")]
         urlWebSite = 11,
-        [Display(Name = @"Sayı Değer")]
+        //[Display(Name = @"Sayı Değer")]
         numberValue = 12,
-        [Display(Name = @"Zaman Değer")]
+        //[Display(Name = @"Zaman Değer")]
         timeValue = 13
         
         

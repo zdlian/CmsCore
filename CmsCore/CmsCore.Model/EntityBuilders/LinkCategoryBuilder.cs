@@ -16,7 +16,7 @@ namespace CmsCore.Model.EntityBuilders
             entityBuilder.Property(e => e.Name).IsRequired().HasMaxLength(200);
             entityBuilder.Property(e => e.Slug).IsRequired().HasMaxLength(200);
             entityBuilder.HasOne(e => e.ParentCategory).WithMany(p => p.ChildCategories).HasForeignKey(p => p.ParentCategoryId).OnDelete(DeleteBehavior.Restrict);
-
+            entityBuilder.HasOne(p => p.Language).WithMany(l => l.LinkCategories).HasForeignKey(p => p.LanguageId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

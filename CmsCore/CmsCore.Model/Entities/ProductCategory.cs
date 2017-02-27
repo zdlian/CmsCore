@@ -12,6 +12,7 @@ namespace CmsCore.Model.Entities
         {
             ProductProductCategories = new HashSet<ProductProductCategory>();
             ChildCategories = new HashSet<ProductCategory>();
+            LanguageId = 1;
         }
 
         public string Name { get; set; }
@@ -23,5 +24,8 @@ namespace CmsCore.Model.Entities
         public virtual ICollection<ProductCategory> ChildCategories { get; set; }
 
         public virtual ICollection<ProductProductCategory> ProductProductCategories { get; set; }
+        public long LanguageId { get; set; }
+        public virtual Language Language { get; set; }
+        
     }
 }

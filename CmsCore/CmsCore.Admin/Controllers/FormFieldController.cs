@@ -13,15 +13,18 @@ namespace CmsCore.Admin.Controllers
     {
         private readonly IFormService formService;
         private readonly IFormFieldService formFieldService;
-        public FormFieldController(FormService formService, FormFieldService formFieldService)
+        public FormFieldController(IFormService formService, IFormFieldService formFieldService)
         {
             this.formService = formService;
             this.formFieldService = formFieldService;
         }
         public IActionResult Create(long id)
         {
-
-            return View();
+            FormFieldViewModel formFieldVM = new FormFieldViewModel();
+            formFieldVM.FormId = id;
+            ViewBag.Forms = new SelectList(formService.GetForms(), "Id", "FormName");
+            ViewBag.FormFieldId = new SelectList(formFieldService.GetFormFields(), "Id", "Description");
+            return View(formFieldVM);
         }
         [HttpPost]
         public IActionResult Create(FormFieldViewModel formField)
@@ -42,15 +45,19 @@ namespace CmsCore.Admin.Controllers
         }
         public IActionResult Edit(long id)
         {
-            return View();
+            var formField = formFieldService.GetFormField(id);
+            FormFieldViewModel formFieldVM = new FormFieldViewModel();
+            formFieldVM.Id = formField.Id;
+            formFieldVM.Name = formField.Name;
+            return View(formFieldVM);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(FormFieldViewModel formField)
         {
-            ViewBag.Forms = new SelectList(formService.GetForms(), "FormId", "FormName");
-            ViewBag.FormFieldId = new SelectList(formFieldService.GetFormFields(), "FormFieldId", "Description");
+            ViewBag.Forms = new SelectList(formService.GetForms(), "Id", "FormName");
+            ViewBag.FormFieldId = new SelectList(formFieldService.GetFormFields(), "Id", "Description");
 
 
             return View(formField);

@@ -13,6 +13,8 @@ namespace CmsCore.Model.Entities
             IsPublished = true;
             ViewCount = 0;
             ChildPages = new HashSet<Page>();
+            LanguageId = 1;
+            Translations = new HashSet<Page>();
         }
         public string Title { get; set; }
         public string Slug { get; set; }
@@ -32,8 +34,8 @@ namespace CmsCore.Model.Entities
         public long? TemplateId { get; set; }
         public virtual Template Template { get; set; }
 
-        public long? LanguageId { get; set; }
+        public long LanguageId { get; set; }
         public virtual Language Language { get; set; }
-        // public virtual ICollection<Translation> Translations { get; set; }
+        public virtual ICollection<Page> Translations { get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace CmsCore.Admin.Controllers
         [HttpPost]
         public IActionResult Create(PostViewModel postVM)
         {
-            
+
             if (ModelState.IsValid)
             {
                 Post post = new Post();
@@ -51,9 +51,12 @@ namespace CmsCore.Admin.Controllers
                 post.SeoKeywords = postVM.SeoKeywords;
                 post.SeoDescription = postVM.SeoDescription;
                 post.PostPostCategories.Clear();
-                foreach (var item in postVM.PostCategoryId)
-                {
-                    post.PostPostCategories.Add(new PostPostCategory { PostId = postVM.Id, PostCategoryId = item });
+                if (postVM.PostCategoryId != null)
+                { 
+                    foreach (var item in postVM.PostCategoryId)
+                    {
+                        post.PostPostCategories.Add(new PostPostCategory { PostId = postVM.Id, PostCategoryId = item });
+                    }
                 }
                 postService.CreatePost(post);
                 postService.SavePost();

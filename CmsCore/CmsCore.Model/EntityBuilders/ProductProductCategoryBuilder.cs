@@ -15,11 +15,11 @@ namespace CmsCore.Model.EntityBuilders
 
             entityBuilder.HasOne(bc => bc.Product)
                 .WithMany(b => b.ProductProductCategories)
-                .HasForeignKey(bc => bc.ProductId);
+                .HasForeignKey(bc => bc.ProductId).OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
 
             entityBuilder.HasOne(bc => bc.ProductCategory)
                 .WithMany(c => c.ProductProductCategories)
-                .HasForeignKey(bc => bc.ProductCategoryId);
+                .HasForeignKey(bc => bc.ProductCategoryId).OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
         }
     }
 }

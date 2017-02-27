@@ -12,6 +12,7 @@ namespace CmsCore.Model.Entities
         {
             PostPostCategories = new HashSet<PostPostCategory>();
             ChildCategories = new HashSet<PostCategory>();
+            LanguageId = 1;
         }
 
         public string Name { get; set; }
@@ -23,5 +24,8 @@ namespace CmsCore.Model.Entities
         public virtual ICollection<PostCategory> ChildCategories { get; set; }
 
         public virtual ICollection<PostPostCategory> PostPostCategories { get; set; }
+        public long LanguageId { get; set; }
+        public virtual Language Language { get; set; }
+        
     }
 }

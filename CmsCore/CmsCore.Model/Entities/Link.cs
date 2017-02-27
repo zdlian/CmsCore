@@ -11,6 +11,8 @@ namespace CmsCore.Model.Entities
         {
             IsVisible = true;
             LinkLinkCategories = new HashSet<LinkLinkCategory>();
+            LanguageId = 1;
+            Translations = new HashSet<Link>();
         }
 
         public string Name { get; set; }
@@ -19,5 +21,8 @@ namespace CmsCore.Model.Entities
         public string Description { get; set; }
         public string Target { get; set; }
         public virtual ICollection<LinkLinkCategory> LinkLinkCategories { get; set; }
+        public long LanguageId { get; set; }
+        public virtual Language Language { get; set; }
+        public virtual ICollection<Link> Translations { get; set; }
     }
 }

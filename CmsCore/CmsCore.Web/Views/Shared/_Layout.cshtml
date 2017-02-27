@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CmsCore.Web</title>
+    <title>@ViewData["Title"]</title>
 
 
 
@@ -36,35 +36,13 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body style="margin:0px;padding:0px">
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">CmsCore.Web</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Hakkımızda</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">İletişim</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
-        </div>
-    </div>*@
-
-    <header style="margin:0px;padding:0px">
+<body style="margin:0px; padding:0px;">
+     <header>
         <div class="header-topbar">
             <div class="container">
                 <div class="topbar-left pull-left">
-                    <div class="email"><a href="#"><i class="topbar-icon fa fa-envelope-o"></i><span>hello.shinway@gmail.com</span></a></div>
-                    <div class="hotline"><a href="#"><i class="topbar-icon fa fa-phone"></i><span>+84 909 015 345</span></a></div>
+                    <div class="email"><a href="mailto:bilgi@bilgikoleji.com"><i class="topbar-icon fa fa-envelope-o"></i><span>bilgi@bilgikoleji.com</span></a></div>
+                    <div class="hotline"><a href="tel:4441525"><i class="topbar-icon fa fa-phone"></i><span>444 15 25</span></a></div>
                 </div>
                 <div class="topbar-right pull-right">
                     <div class="socials"><a href="#" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" class="google"><i class="fa fa-google-plus"></i></a><a href="#" class="twitter"><i class="fa fa-twitter"></i></a><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a><a href="#" class="blog"><i class="fa fa-rss"></i></a><a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></div>
@@ -75,12 +53,13 @@
         <div class="header-main homepage-01">
             <div class="container">
                 <div class="header-main-wrapper">
-                    <div class="navbar-heade">
+                    <div class="navbar-header">
                         <div class="logo pull-left"><a href="index.html" class="header-logo"><img src="~/images/Bilgikolejilogo.svg" alt="" /></a></div>
                         <button type="button" data-toggle="collapse" data-target=".navigation" class="navbar-toggle edugate-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     </div>
                     <nav class="navigation collapse navbar-collapse pull-right">
-                        <ul class="nav-links nav navbar-nav">
+                        @await Component.InvokeAsync("Menu", new { MenuLocation = "Primary"})
+                        <!--<ul class="nav-links nav navbar-nav">
                             @*<li class="dropdown active">
                                 <a href="javascript:void(0)" class="main-menu">Anasayfa<span class="fa fa-angle-down icons-dropdown"></span></a>
                                 <ul class="dropdown-menu edugate-dropdown-menu-1">
@@ -307,13 +286,7 @@
                             </li>*@
                             @*<li><a href="contact.html" class="main-menu">İletişim</a></li>*@
                             <li class="button-search"><p class="main-menu"><i class="fa fa-search"></i></p></li>
-                            <div class="nav-search hide">
-                                <form>
-                                    <input type="text" placeholder="Search" class="searchbox" />
-                                    <button type="submit" class="searchbutton fa fa-search"></button>
-                                </form>
-                            </div>
-                        </ul>
+                        </ul>-->
                     </nav>
                 </div>
             </div>

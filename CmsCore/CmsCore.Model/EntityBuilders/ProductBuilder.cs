@@ -14,10 +14,11 @@ namespace CmsCore.Model.EntityBuilders
         public ProductBuilder(EntityTypeBuilder<Product> entityBuilder)
         {
             entityBuilder.HasKey(p => p.Id);
-            entityBuilder.Property(p => p.Title).HasMaxLength(200);
-            entityBuilder.Property(p => p.Slug).HasMaxLength(200);
+            entityBuilder.Property(p => p.Title).HasMaxLength(200).IsRequired();
+            entityBuilder.Property(p => p.Slug).HasMaxLength(200).IsRequired();
             entityBuilder.Property(p => p.SeoTitle).HasMaxLength(200);
             entityBuilder.HasOne(e => e.ParentProduct).WithMany(p => p.ChildProducts).HasForeignKey(p => p.ParentProductId).OnDelete(DeleteBehavior.Restrict);
+            entityBuilder.HasOne(p => p.Language).WithMany(l => l.Products).HasForeignKey(p => p.LanguageId).OnDelete(DeleteBehavior.Restrict);
         }
 
     }

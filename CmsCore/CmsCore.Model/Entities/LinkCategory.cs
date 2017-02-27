@@ -11,6 +11,7 @@ namespace CmsCore.Model.Entities
         public LinkCategory()
         {
             LinkLinkCategories = new HashSet<LinkLinkCategory>();
+            LanguageId = 1;
             ChildCategories = new HashSet<LinkCategory>();
         }
 
@@ -23,5 +24,8 @@ namespace CmsCore.Model.Entities
         public virtual ICollection<LinkCategory> ChildCategories { get; set; }
 
         public virtual ICollection<LinkLinkCategory> LinkLinkCategories { get; set; }
+        public long LanguageId { get; set; }
+        public virtual Language Language { get; set; }
+        
     }
 }

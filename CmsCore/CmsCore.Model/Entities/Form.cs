@@ -11,6 +11,8 @@ namespace CmsCore.Model.Entities
         {
             IsPublished = true;
             FormFields = new HashSet<FormField>();
+            LanguageId = 1;
+            Translations = new HashSet<Form>();
         }
         public string FormName { get; set; }
 
@@ -29,5 +31,9 @@ namespace CmsCore.Model.Entities
         public virtual ICollection<FormField> FormFields { get; set; }
 
         public bool IsPublished { get; set; }
+
+        public long LanguageId { get; set; }
+        public virtual Language Language { get; set; }
+        public virtual ICollection<Form> Translations { get; set; }
     }
 }

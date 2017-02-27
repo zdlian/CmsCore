@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MenuItem>
+<ul class="nav-links nav navbar-nav">
+@foreach (var item in Model)
+{
+
+    <li @(item.ChildMenuItems != null && item.ChildMenuItems.Count() > 0 ? "class='dropdown'" : "")>
+        <a href="@item.Url" class="main-menu" @(item.Target != null || item.Target != "" ? "target='" + item.Target + "'" : "") >Hakkımızda@(item.ChildMenuItems != null && item.ChildMenuItems.Count() > 0 ? "<span class='fa fa - angle - down icons - dropdown'></span>" : "")</a>
+        @if (item.ChildMenuItems != null && item.ChildMenuItems.Count() > 0)
+        {
+            <ul class="dropdown-menu edugate-dropdown-menu-1">
+                @foreach (var a in item.ChildMenuItems)
+                {
+                        <li><a href="@item.Url" class="link-page" @(item.Target != null || item.Target != "" ? "target='" + item.Target + "'" : "")>@item.Name</a></li>
+                }
+
+                    </ul>
+        }
+</li>
+}
+    <div class="nav-search hide">
+        <form>
+            <input type="text" placeholder="Search" class="searchbox" />
+            <button type="submit" class="searchbutton fa fa-search"></button>
+        </form>
+    </div>
+</ul>

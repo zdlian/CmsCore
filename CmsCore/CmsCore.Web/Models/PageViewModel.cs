@@ -1,25 +1,29 @@
-﻿using System;
+﻿using CmsCore.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CmsCore.Model.Entities
+namespace CmsCore.Web.Models
 {
-    public class Post:BaseEntity
+    public class PageViewModel : BaseEntity
     {
-        public Post()
+        public PageViewModel()
         {
             IsPublished = true;
-            PostPostCategories = new HashSet<PostPostCategory>();
             ViewCount = 0;
-            LanguageId = 1;
-            Translations = new HashSet<Post>();
+            ChildPages = new HashSet<PageViewModel>();
         }
-       
+        
         public string Title { get; set; }
+      
         public string Slug { get; set; }
         public string Body { get; set; }
         public long ViewCount { get; set; }
+
+        public long? ParentPageId { get; set; }
+        public PageViewModel ParentPage { get; set; }
+        public virtual ICollection<PageViewModel> ChildPages { get; set; }
 
         public string SeoTitle { get; set; }
         public string SeoDescription { get; set; }
@@ -27,9 +31,10 @@ namespace CmsCore.Model.Entities
 
         public bool IsPublished { get; set; }
 
-        public virtual ICollection<PostPostCategory> PostPostCategories { get; set; }
+        public long? TemplateId { get; set; }
+        public virtual Template Template { get; set; }
+
         public long LanguageId { get; set; }
         public virtual Language Language { get; set; }
-        public virtual ICollection<Post> Translations { get; set; }
     }
 }

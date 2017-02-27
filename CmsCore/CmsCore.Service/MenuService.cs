@@ -11,6 +11,7 @@ namespace CmsCore.Service
     public interface IMenuService {
         IEnumerable<Menu> Search(string search, int sortColumnIndex, string sortDirection, int displayStart, int displayLength, out int totalRecords, out int totalDisplayRecords);
         IEnumerable<Menu> GetMenus();
+        Menu GetMenuByLocationName(string menuLocation);
         Menu GetMenu(long id);
         void CreateMenu(Menu menu);
         void UpdateMenu(Menu menu);
@@ -29,6 +30,11 @@ namespace CmsCore.Service
             this.unitOfWork = unitOfWork;
         }
         #region IMenuServiceMembers
+        public Menu GetMenuByLocationName(string menuLocation)
+        {
+            var menu = menuRepository.Get(m => m.MenuLocation.Name == menuLocation);
+            return menu;
+        }
         public IEnumerable<Menu> GetMenus() {
             var menus = menuRepository.GetAll();
             return menus;

@@ -111,8 +111,8 @@ namespace CmsCore.Admin.Controllers
                              p.Id.ToString(),
                              p.Name.ToString(),
                              p.Url.ToString(),
-                             p.Description.ToString(),
-                             p.Target.ToString(),
+                             (p.Description != null?p.Description.ToString():string.Empty),
+                             (p.Target != null?p.Target.ToString():string.Empty),
                              p.IsVisible.ToString(),
 
                              string.Empty

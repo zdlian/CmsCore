@@ -1,4 +1,5 @@
 ﻿using CmsCore.Model.Entities;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,9 @@ namespace CmsCore.Model.EntityBuilders
             entityBuilder.Property(p => p.SeoDescription);
             entityBuilder.Property(p => p.SeoKeywords);
             entityBuilder.Property(p => p.IsPublished).IsRequired();
+            entityBuilder.HasOne(p => p.Language).WithMany(l => l.Posts).HasForeignKey(p => p.LanguageId).OnDelete(DeleteBehavior.Restrict);
 
-            
+
         }
 
     }

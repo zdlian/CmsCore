@@ -15,6 +15,7 @@ namespace CmsCore.Model.EntityBuilders
             entityBuilder.Property(e => e.SeoTitle).HasMaxLength(200);
             entityBuilder.HasOne(e => e.Template).WithMany(t => t.Pages).HasForeignKey(p => p.TemplateId);
             entityBuilder.HasOne(e => e.ParentPage).WithMany(p => p.ChildPages).HasForeignKey(p => p.ParentPageId).OnDelete(DeleteBehavior.Restrict);
+            entityBuilder.HasOne(p => p.Language).WithMany(l => l.Pages).HasForeignKey(p => p.LanguageId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

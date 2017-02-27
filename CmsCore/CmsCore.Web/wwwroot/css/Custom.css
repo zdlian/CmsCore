@@ -1,4 +1,7 @@
-﻿video { 
+﻿header .header-topbar {
+    background-color: #093085;
+}
+video { 
     position: absolute;
     top: 50%;
     left: 50%;

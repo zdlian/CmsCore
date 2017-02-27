@@ -15,6 +15,7 @@ namespace CmsCore.Model.Entities
             ViewCount = 0;
             ChildProducts = new HashSet<Product>();
             ProductProductCategories = new HashSet<ProductProductCategory>();
+            LanguageId = 1;
         }
         public string Title { get; set; }
         public string Slug { get; set; }
@@ -37,5 +38,7 @@ namespace CmsCore.Model.Entities
         public bool IsPublished { get; set; }
         public long ViewCount { get; set; }
         public virtual ICollection<ProductProductCategory> ProductProductCategories { get; set; }
+        public long LanguageId { get; set; }
+        public virtual Language Language { get; set; }
     }
 }
