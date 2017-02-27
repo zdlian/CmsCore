@@ -1,5 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="js/generate-slug.js" />
+/// <reference path="js/pages/formfield-index.js" />
+/// <reference path="js/pages/form-index.js" />
 /// <reference path="js/pages/language-index.js" />
 /// <reference path="js/pages/link-category-index.js" />
 /// <reference path="js/pages/link-index.js" />

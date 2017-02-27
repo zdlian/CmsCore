@@ -1,8 +1,8 @@
-﻿@model KariyerPortali.Admin.ViewModels.FormFieldFormViewModel
-    @using KariyerPortali.Admin.Helpers
+﻿@model FormFieldViewModel
+  
 <!DOCTYPE html>
 <meta charset="utf-8" />
-<title>@ViewBag.Title-@Html.Translate("Kariyer Portalı")</title>
+<title>@ViewBag.Title-Kariyer Portalı</title>
 <br />
 <style>
     textarea {
@@ -13,11 +13,11 @@
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
-            <a href="@Url.Action("Index","Form")">@Html.Translate("Formlar")</a>
+            <a href="@Url.Action("Index","Form")">Formlar")</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>@Html.Translate("Yeni Form Alanı")</span>
+            <span>Yeni Form Alanı</span>
         </li>
     </ul>
     <div class="page-toolbar">
@@ -31,7 +31,7 @@
             <div class="portlet-title">
                 <div class="caption font-dark">
                     <i class="icon-settings font-dark"></i>
-                    <span class="caption-subject bold uppercase">@Html.Translate("Yeni Form Alanı")</span>
+                    <span class="caption-subject bold uppercase">Yeni Form Alanı")</span>
                 </div>
             </div>
             <div class="row">
@@ -56,28 +56,24 @@
                                 
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <text>@Html.Translate("Form Seçiniz:")</text><br />
+                                        <text>Form Seçiniz:</text><br />
                                         @Html.DropDownList("FormId", (SelectList)ViewBag.Forms, "Seçiniz", new { @tabindex = "1", @class = "form-control", @selected="FormId"})
                                         @Html.ValidationMessageFor(model => model.FormId, "", new { @class = "text-danger" })
                                     </div>
+                                    
+                                    @*<div class="form-group">
+                                        <text>Form Alanı Tipi Seçiniz:</text>
+                                        @Html.EnumDropDownListFor(model => model.FieldType,"Seçiniz", new { @tabindex = "3", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.FieldType, "", new { @class = "text-danger" })
+                                    </div>*@
                                     <div class="form-group">
-                                        <text>@Html.Translate("Form Alanı İsmi Giriniz:")</text>
-                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @tabindex = "2", @class = "form-control spinner", autofocus = "autofocus" } })
-                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="form-group">
-                                        <text>@Html.Translate("Form Alanı Tipi Seçiniz:")</text>
-                                        @Html.EnumDropDownListFor(model => model.FormType,"Seçiniz", new { @tabindex = "3", @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.FormType, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="form-group">
-                                        <text>@Html.Translate("Zorunlu Alan")</text>
+                                        <text>Zorunlu Alan</text>
                                         @Html.CheckBoxFor(model => model.Required, new { @tabindex = "4", @class = "form-control spinner" })
                                         @Html.ValidationMessageFor(model => model.Required, "", new { @class = "text-danger" })
                                     </div>
                                     </div>
                                     <div class="form-group">
-                                        <text>@Html.Translate("Varsayılan Değer Giriniz:")</text>
+                                        <text>Varsayılan Değer Giriniz:</text>
                                         @Html.TextBoxFor(model => model.Value, new { @tabindex = "5", @class = "form-control spinner" })
                                         @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
                                     </div>
@@ -86,7 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" value="@Html.Translate("Ekle")"/>
+                        <input type="submit" value="Ekle"/>
                         <!-- END SAMPLE FORM PORTLET-->
                         <!-- BEGIN SAMPLE FORM PORTLET-->
                 }
@@ -96,7 +92,7 @@
         </div>
     </div>
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 }
 
 
