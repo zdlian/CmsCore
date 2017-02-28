@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.ParentMenuItemId)
-                            @Html.DropDownList("ParentMenuItemId", (IEnumerable<SelectListItem>)ViewBag.ParentMenuItemId, new { @tabindex = "2", @class = "form-control" })
+                            @Html.DropDownList("ParentMenuItemId", (IEnumerable<SelectListItem>)ViewBag.ParentMenuItemId, "<seçiniz>", new { @tabindex = "2", @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.ParentMenuItemId, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">

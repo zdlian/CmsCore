@@ -32,7 +32,7 @@ namespace CmsCore.Service
         #region IMenuServiceMembers
         public Menu GetMenuByLocationName(string menuLocation)
         {
-            var menu = menuRepository.Get(m => m.MenuLocation.Name == menuLocation);
+            var menu = menuRepository.Get(m => m.MenuLocation.Name == menuLocation, "MenuItems");
             return menu;
         }
         public IEnumerable<Menu> GetMenus() {

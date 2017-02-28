@@ -13,7 +13,7 @@ namespace CmsCore.Model.Entities
         public string Target { get; set; }
         public long? ParentMenuItemId { get; set; }
         public virtual MenuItem ParentMenuItem { get; set; }
-        public virtual ICollection<MenuItem> ChildMenuItems { get; set; }
+        public ICollection<MenuItem> ChildMenuItems { get; set; }
         public long? MenuId { get; set; }
         public virtual Menu Menu { get; set; }
     }

@@ -16,7 +16,7 @@ namespace CmsCore.Model.Entities
         public string Name { get; set; }
         public long? MenuLocationId { get; set; }
         public virtual MenuLocation MenuLocation { get; set; }
-        public virtual ICollection<MenuItem> MenuItems { get; set; }
+        public ICollection<MenuItem> MenuItems { get; set; }
         public long LanguageId { get; set; }
         public virtual Language Language { get; set; }
         

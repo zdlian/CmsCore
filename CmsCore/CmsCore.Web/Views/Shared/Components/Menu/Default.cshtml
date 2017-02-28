@@ -4,7 +4,7 @@
 {
 
     <li @(item.ChildMenuItems != null && item.ChildMenuItems.Count() > 0 ? "class='dropdown'" : "")>
-        <a href="@item.Url" class="main-menu" @(item.Target != null || item.Target != "" ? "target='" + item.Target + "'" : "") >Hakkımızda@(item.ChildMenuItems != null && item.ChildMenuItems.Count() > 0 ? "<span class='fa fa - angle - down icons - dropdown'></span>" : "")</a>
+        <a href="@item.Url" class="main-menu" @(item.Target != null || item.Target != "" ? "target='" + item.Target + "'" : "") >@item.Name@(item.ChildMenuItems != null && item.ChildMenuItems.Count() > 0 ? "<span class='fa fa - angle - down icons - dropdown'></span>" : "")</a>
         @if (item.ChildMenuItems != null && item.ChildMenuItems.Count() > 0)
         {
             <ul class="dropdown-menu edugate-dropdown-menu-1">
@@ -17,9 +17,10 @@
         }
 </li>
 }
+    <li class="button-search"><p class="main-menu"><i class="fa fa-search"></i></p></li>
     <div class="nav-search hide">
         <form>
-            <input type="text" placeholder="Search" class="searchbox" />
+            <input type="text" placeholder="Ara" class="searchbox" />
             <button type="submit" class="searchbutton fa fa-search"></button>
         </form>
     </div>

@@ -37,14 +37,14 @@ namespace CmsCore.Admin.Controllers
                 menuItemService.SaveMenuItem();
                 return RedirectToAction("Index", "MenuItem");
             }
-            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name", menuItem.Id);
-            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name");
+            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name", menuItem.ParentMenuItemId);
+            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name", menuItem.MenuId);
             return View(menuItem);
         }
         public IActionResult Edit(long id){
             var menuItem = menuItemService.GetMenuItem(id);
-            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name",menuItem.Id);
-            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name");
+            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name",menuItem.ParentMenuItemId);
+            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name", menuItem.MenuId);
             return View(menuItem);
         }
         [HttpPost]
@@ -54,8 +54,8 @@ namespace CmsCore.Admin.Controllers
                 menuItemService.SaveMenuItem();
                 return RedirectToAction("Index", "MenuItem");
             }
-            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name", menuItem.Id);
-            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name");
+            ViewBag.ParentMenuItemId = new SelectList(menuItemService.GetMenuItems(), "Id", "Name", menuItem.ParentMenuItemId);
+            ViewBag.MenuId = new SelectList(menuService.GetMenus(), "Id", "Name", menuItem.MenuId);
             return View();
         }
         public IActionResult Delete(long id){

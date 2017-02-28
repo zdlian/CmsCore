@@ -367,16 +367,6 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Menu" asp-action="MenuLocationIndex" class="nav-link">
-                                        <span class="title">Menu Locations</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a asp-controller="MenuItem" asp-action="Index" class="nav-link">
-                                        <span class="title">Menu Items</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a asp-controller="Template" asp-action="Index" class="nav-link">
                                         <span class="title">Templates</span>
                                     </a>
@@ -600,7 +590,9 @@
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>
 
-        @RenderSection("scripts", required: false)
             </div>
+        
+        @RenderSection("scripts", required: false)
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
     </body>
 </html>

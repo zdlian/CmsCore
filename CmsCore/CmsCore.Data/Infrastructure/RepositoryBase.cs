@@ -61,31 +61,35 @@ namespace CmsCore.Data.Infrastructure
 
         public virtual T GetById(long id, params string[] navigations)
         {
+            var set = dbSet.AsQueryable();
             foreach (string nav in navigations)
-                dbSet.Include(nav);
-            
-            return dbSet.Find(id);
+                set = set.Include(nav);
+
+            return set.FirstOrDefault(f => f.Id == id);
         }
 
         public virtual IEnumerable<T> GetAll(params string[] navigations)
         {
+            var set = dbSet.AsQueryable();
             foreach (string nav in navigations)
-                dbSet.Include(nav);
-            return dbSet.AsEnumerable();
+                set = set.Include(nav);
+            return set.AsEnumerable();
         }
 
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where, params string[] navigations)
         {
+            var set = dbSet.AsQueryable();
             foreach (string nav in navigations)
-                dbSet.Include(nav);
-            return dbSet.Where(where).AsEnumerable();
+                set = set.Include(nav);
+            return set.Where(where).AsEnumerable();
         }
 
         public T Get(Expression<Func<T, bool>> where, params string[] navigations)
         {
+            var set = dbSet.AsQueryable();
             foreach (string nav in navigations)
-                dbSet.Include(nav);
-            return dbSet.Where(where).FirstOrDefault<T>();
+                set = set.Include(nav);
+            return set.Where(where).FirstOrDefault<T>();
         }
 
         #endregion
